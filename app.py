@@ -469,6 +469,67 @@ def progressive_range(lst):
     return ranges
 
 #----------------------------------------------------------------------
+   #----------------------------------------------------------------------
+
+def get_frequency_band(frequency, freq_bands_hz_name):
+
+    for low, high, name in freq_bands_hz_name:
+        if low <= frequency < high:
+            return name
+    return "Out of range"
+
+#----------------------------------------------------------------------
+# Function to assign frequency bands (as provided before)
+def assign_frequency_bands(frequencies, freq_bands):
+    band_labels = [
+        "Sub-Bass",
+        "Bass",
+        "Low Midrange",
+        "Midrange",
+        "Upper Midrange",
+        "Presence",
+        "Brilliance",
+        "Air"
+    ]
+
+    # Initialize an empty list to store the bands
+    frequency_band_assignment = []
+
+    # Iterate through the list of frequencies
+    for freq in frequencies:
+        # Assign frequency to a band
+        assigned_band = None
+        for i, (low, high) in enumerate(freq_bands):
+            if low <= freq < high:
+                assigned_band = band_labels[i]
+                break
+
+        # If frequency does not fit into any band, append "Out of Range"
+        if assigned_band is None:
+            assigned_band = "Out of Range"
+
+        frequency_band_assignment.append(assigned_band)
+
+    return frequency_band_assignment
+
+
+
+
+#----------------------------------------------------------------------
+def get_significant_frequencies(yf, xf, target_percentage):
+    """
+    Identify the frequencies that contribute to a specific percentage of the total spectrum energy.
+
+    Parameters:
+    yf (numpy array): FFT magnitudes (positive frequencies only)
+    xf (numpy array): Frequencies corresponding to the FFT magnitudes
+    target_percentage (float): The target percentage of the total energy (e.g., 0.20 for 20%)
+
+    Returns:
+    numpy array: Frequencies that contribute to the target percentage of the total energy
+    """
+    # Get the magnitude of the FFT
+    N = len(yf)
     yf_magnitude = np.abs(yf[:N//2])
 
     # Total energy of the spectrum
