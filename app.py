@@ -1,6 +1,7 @@
 
 # imports
 import streamlit as st
+import requests
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -558,6 +559,38 @@ def get_significant_frequencies(yf, xf, target_percentage):
 
 st.title("Cymbal analysis")
 st.write("This app loads cymbal audio files and presents their key features")
+
+
+
+
+# Define file options in a dropdown menu
+files = {
+    "File 1": "https://raw.githubusercontent.com/username/repo/main/file1.csv",
+    "File 2": "https://raw.githubusercontent.com/username/repo/main/file2.csv",
+    "File 3": "https://raw.githubusercontent.com/username/repo/main/file3.csv"
+}
+
+# Dropdown menu for file selection
+file_choice = st.selectbox("Choose a file to load:", options=list(files.keys()))
+
+# Load the selected file
+if file_choice:
+    file_url = files[file_choice]
+    
+    # Fetch the file content from GitHub
+    response = requests.get(file_url)
+    if response.status_code == 200:
+        # Load the file
+        st.write("file loaded ")
+    else:
+        st.error("Failed to load the file. Please check the URL or file permissions.")
+
+
+
+
+
+
+
 
 # Generate sample data for plotting
 x = np.linspace(0, 10, 100)
