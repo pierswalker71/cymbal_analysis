@@ -566,7 +566,8 @@ st.write("This app loads cymbal audio files and presents their key features")
 # Define file options in a dropdown menu
 files = {
     "Ride": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-08-28 20in2786g (Sa ride) - stick - crash.wav",
-  
+    "Crash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 16in1143g (Sa crash) - stick - crash.wav",
+    "Splash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 12in419g (Sa splash) - stick - crash.wav",
 }
 
 # Dropdown menu for file selection
