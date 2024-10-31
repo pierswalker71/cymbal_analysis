@@ -595,6 +595,50 @@ else:
     #st.audio(audio_bytes, format="audio/wav")
 
 
+# Load wav file with librosa
+# y is time series, sr is sample rate
+y, sr = librosa.load(wav_file_path, sr=None)
+
+# Crop the waveform to remove blank space at either end
+y_original = y.copy()
+y = signal_remove_blank_space(y,sr)
+
+
+#--------------------------
+
+# How random the peak distribution is
+# Min = 0 (all peaks in same place)
+# Max = log(len(yf_normalised))
+
+# Calculate spectral entropy
+#spectral_entropy = entropy(prob_distribution)
+metrics["overall_spectral_entropy"] = entropy(yf_normalised)
+
+# Count the number of this number of top peaks in each band
+top_peaks_across_bands_num = 20 # ie how many of these are in each band
+
+peaks_per_band = []
+for band in freq_bands:
+    lower_bound, upper_bound = band
+    count_in_band = sum((lower_bound <= peak <= upper_bound) for peak in top_frequencies_sorted[:top_peaks_across_bands_num])
+    peaks_per_band.append(count_in_band)
+
+metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,peaks_per_band)}
+
+
+# Sort frequencies by their magnitude in descending order
+sorted_indices = np.argsort(yf_magnitude)[::-1]
+sorted_magnitudes = yf_magnitude[sorted_indices]
+sorted_frequencies = xf[sorted_indices]
+
+
+
+#fig, ax = plt.subplots()
+
+#ax.plot(range(len(xf)), sorted_frequencies)
+#ax.set_ylim([0,10000])
+#ax.set_xlim([0,10000])
+
 
 
 
@@ -612,8 +656,8 @@ col3, col4 = st.columns(2)
 # Plot 1
 with col1:
     fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x))
-    ax.set_title("Sine Wave")
+    ax.plot(range(len(xf)), sorted_frequencies)
+    ax.set_title("sorted freq")
     st.pyplot(fig)
 
 # Plot 2
@@ -642,24 +686,24 @@ with col4:
 
 
 # Generate and display multiple plots in a vertical layout
-for i in range(4):
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x + i))
-    ax.set_title(f"Plot {i+1}")
-    st.pyplot(fig)
+#for i in range(4):
+ #   fig, ax = plt.subplots()
+#    ax.plot(x, np.sin(x + i))
+ #   ax.set_title(f"Plot {i+1}")
+#    st.pyplot(fig)
 
 
 
 
 with st.expander("View First Row of Plots"):
-    col1, col2 = st.columns(2)
-    with col1:
+    col5, col6 = st.columns(2)
+    with col5:
         # Plot 1
         fig, ax = plt.subplots()
         ax.plot(x, np.sin(x))
         st.pyplot(fig)
 
-    with col2:
+    with col6:
         # Plot 2
         fig, ax = plt.subplots()
         ax.plot(x, np.cos(x))
