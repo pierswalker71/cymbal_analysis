@@ -597,7 +597,7 @@ else:
 
 # Load wav file with librosa
 # y is time series, sr is sample rate
-y, sr = librosa.load(wav_file_path, sr=None)
+y, sr = librosa.load(audio_bytes, sr=None)
 
 # Crop the waveform to remove blank space at either end
 y_original = y.copy()
