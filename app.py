@@ -580,14 +580,14 @@ if file_choice:
     
     
 response = requests.get(file_url)
-    if response.status_code == 200:
-        audio_bytes = BytesIO(response.content)
+if response.status_code == 200:
+    audio_bytes = BytesIO(response.content)
         
-        # Play the audio file in Streamlit
-        #st.audio(audio_bytes, format="audio/wav")
-        st.write('file loaded ok')
-    else:
-        st.error("Failed to load the audio file.")
+    # Play the audio file in Streamlit
+    #st.audio(audio_bytes, format="audio/wav")
+    st.write('file loaded ok')
+else:
+    st.error("Failed to load the audio file.")
 
 
 
