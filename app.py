@@ -600,7 +600,7 @@ st.title("Cymbal analysis")
 st.write("This app loads cymbal audio files and presents their key features")
 
 
-
+st.header("Select audio clip", divider="gray")
 
 # Define file options in a dropdown menu
 files = {
@@ -622,8 +622,9 @@ if response.status_code == 200:
     audio_bytes = BytesIO(response.content)
         
     # Play the audio file in Streamlit
+    st.write('Play audio file')
     st.audio(audio_bytes, format="audio/wav")
-    st.write('file loaded ok')
+    #st.write('file loaded ok')
 else:
     st.error("Failed to load the audio file.")
 
@@ -821,7 +822,7 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 
 
 
-
+st.header("Time-based charts", divider="gray")
 
 # Generate sample data for plotting
 x = np.linspace(0, 10, 100)
@@ -846,13 +847,14 @@ with col2:
    # ax.set_title("Cosine Wave")
     
     # Define target percentages to explore
-    target_percentages = np.linspace(0.05, 0.50,100)  # From 5% to 95%
+    target_percentages = np.linspace(0.05, 0.50,100)  # eg from 5% to 95%
 
     # Collect the highest significant frequency for each target percentage
     max_frequencies = [get_max_significant_frequency(yf, xf, p) for p in target_percentages]
 
     # Plot the results
     fig, ax = plt.subplots()
+    st.write('The frequencies which contribute to the top 50% energy')
     ax.plot(target_percentages,max_frequencies)
     ax.set_xlabel('Target Percentage of Total Energy')
     ax.set_ylabel('Significant Frequencies (Hz)')
@@ -873,7 +875,7 @@ with col4:
     ax.set_title("Hyperbolic Sine Wave")
     st.pyplot(fig)
 
-
+st.header("Frequency-based charts", divider="gray")
 
 
 
