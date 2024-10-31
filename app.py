@@ -13,8 +13,9 @@ from pydub import AudioSegment
 import librosa
 import librosa.display
 
-#import io
-#from IPython.display import Audio
+import requests
+import io inport BytesIO
+
 
 from scipy.signal import find_peaks
 from scipy.signal import butter, filtfilt
@@ -577,15 +578,15 @@ file_choice = st.selectbox("Choose a file to load:", options=list(files.keys()))
 if file_choice:
     file_url = files[file_choice]
     
-    # Fetch the file content from GitHub
-    response = requests.get(file_url)
+    
+response = requests.get(file_url)
     if response.status_code == 200:
-        # Load the file
-        st.write("file loaded ")
+        audio_bytes = BytesIO(response.content)
+        
+        # Play the audio file in Streamlit
+        st.audio(audio_bytes, format="audio/wav")
     else:
-        st.error("Failed to load the file. Please check the URL or file permissions.")
-
-
+        st.error("Failed to load the audio file.
 
 
 
