@@ -5,5 +5,5 @@ matplotlib
 pydub
 librosa
 scipy
-io
+#io
 requests
