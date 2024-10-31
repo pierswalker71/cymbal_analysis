@@ -589,6 +589,14 @@ if response.status_code == 200:
 else:
     st.error("Failed to load the audio file.")
 
+# Display a "Play" button
+if st.button("Play Audio"):
+    # Play the audio file in Streamlit
+    st.audio(audio_bytes, format="audio/wav")
+
+
+
+
 
 
 
