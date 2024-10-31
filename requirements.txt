@@ -2,8 +2,8 @@ streamlit
 pandas
 numpy
 matplotlib 
+plotly
 pydub
 librosa
 scipy
-#io
 requests
