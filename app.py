@@ -584,15 +584,15 @@ if response.status_code == 200:
     audio_bytes = BytesIO(response.content)
         
     # Play the audio file in Streamlit
-    #st.audio(audio_bytes, format="audio/wav")
+    st.audio(audio_bytes, format="audio/wav")
     st.write('file loaded ok')
 else:
     st.error("Failed to load the audio file.")
 
 # Display a "Play" button
-if st.button("Play Audio"):
+#if st.button("Play Audio"):
     # Play the audio file in Streamlit
-    st.audio(audio_bytes, format="audio/wav")
+    #st.audio(audio_bytes, format="audio/wav")
 
 
 
