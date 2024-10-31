@@ -587,7 +587,7 @@ response = requests.get(file_url)
         #st.audio(audio_bytes, format="audio/wav")
         st.write('file loaded ok')
     else:
-        st.error("Failed to load the audio file.
+        st.error("Failed to load the audio file.")
 
 
 
