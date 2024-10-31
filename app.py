@@ -344,10 +344,29 @@ with col2:
 
 # Plot 3
 with col3:
-    fig, ax = plt.subplots()
-    ax.plot(x, np.tan(x))
-    ax.set_title("Tangent Wave")
-    st.pyplot(fig)
+
+
+    import plotly.graph_objects as go
+
+    # Generate data for the plot
+    x = np.linspace(0, 10, 100)
+    y = np.tan(x)  # Tangent wave data
+
+    # Create a Plotly figure
+    fig = go.Figure()
+
+    # Add a line plot to the figure
+    fig.add_trace(go.Scatter(x=x, y=y, mode='lines', name='Tangent Wave'))
+
+    # Customize the layout
+    fig.update_layout(
+        title="Tangent Wave",
+        xaxis_title="X-axis",
+        yaxis_title="Tangent of X",
+    )
+
+    # Display the Plotly chart in Streamlit
+    st.plotly_chart(fig)
 
 # Plot 4
 with col4:
