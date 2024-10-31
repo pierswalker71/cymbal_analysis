@@ -584,7 +584,8 @@ response = requests.get(file_url)
         audio_bytes = BytesIO(response.content)
         
         # Play the audio file in Streamlit
-        st.audio(audio_bytes, format="audio/wav")
+        #st.audio(audio_bytes, format="audio/wav")
+        st.write('file loaded ok')
     else:
         st.error("Failed to load the audio file.
 
