@@ -554,6 +554,44 @@ def get_significant_frequencies(yf, xf, target_percentage):
 
     return significant_frequencies
 
+#----------------
+
+# Define the function to get the highest significant frequency
+def get_max_significant_frequency(yf, xf, target_percentage):
+    """
+    Identify the highest frequency that contributes to a specific percentage of the total spectrum energy.
+
+    Parameters:
+    yf (numpy array): FFT magnitudes (positive frequencies only)
+    xf (numpy array): Frequencies corresponding to the FFT magnitudes
+    target_percentage (float): The target percentage of the total energy (e.g., 0.20 for 20%)
+
+    Returns:
+    float: The highest frequency that contributes to the target percentage of the total energy
+    """
+    # Get the magnitude of the FFT for the positive frequencies
+    N = len(yf)
+    yf_magnitude = np.abs(yf[:N//2])  # Only keep positive frequencies
+
+    # Total energy of the spectrum
+    total_energy = np.sum(yf_magnitude)
+
+    # Sort frequencies by their magnitude in descending order
+    sorted_indices = np.argsort(yf_magnitude)[::-1]
+    sorted_magnitudes = yf_magnitude[sorted_indices]
+    sorted_frequencies = xf[sorted_indices]
+
+    # Compute the cumulative energy of sorted magnitudes
+    # simplistically energy corresponds to the amplitude
+    cumulative_energy = np.cumsum(sorted_magnitudes)
+
+    # Find the index where cumulative energy crosses the target energy
+    target_energy = total_energy * target_percentage
+    index = np.where(cumulative_energy >= target_energy)[0][0]
+
+    # Return the highest frequency that contributes to the target percentage of energy
+    return sorted_frequencies[index]
+
 #=================
     
 
@@ -655,6 +693,7 @@ top_frequencies_sorted, top_magnitudes_sorted = get_top_peaks(yf_normalised, pea
 # Determine the range of frequencies spanned by progressive top peaks
 # ie the ranges between the min and max freq of the top largest peaks
 top_frequency_ranges = progressive_range(top_frequencies_sorted)
+
 
 #----------------------------------------------------------------------
 metrics = {} # initialise metrics store
@@ -800,9 +839,24 @@ with col1:
 
 # Plot 2
 with col2:
+
+  
+    #fig, ax = plt.subplots()
+    #ax.plot(x, np.cos(x))
+   # ax.set_title("Cosine Wave")
+    
+    # Define target percentages to explore
+    target_percentages = np.linspace(0.05, 0.50,100)  # From 5% to 95%
+
+    # Collect the highest significant frequency for each target percentage
+    max_frequencies = [get_max_significant_frequency(yf, xf, p) for p in target_percentages]
+
+    # Plot the results
     fig, ax = plt.subplots()
-    ax.plot(x, np.cos(x))
-    ax.set_title("Cosine Wave")
+    ax.plot(target_percentages,max_frequencies)
+    ax.set_xlabel('Target Percentage of Total Energy')
+    ax.set_ylabel('Significant Frequencies (Hz)')
+    ax.set_title('Significant Frequencies vs. Target Percentage of Total Energy')
     st.pyplot(fig)
 
 # Plot 3
@@ -835,11 +889,14 @@ with col4:
 
 with st.expander("View First Row of Plots"):
     col5, col6 = st.columns(2)
+  
     with col5:
         # Plot 1
         fig, ax = plt.subplots()
         ax.plot(x, np.sin(x))
         st.pyplot(fig)
+      
+    
 
     with col6:
         # Plot 2
