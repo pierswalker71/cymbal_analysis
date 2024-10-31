@@ -14,7 +14,7 @@ import librosa
 import librosa.display
 
 import requests
-import io inport BytesIO
+from io import BytesIO
 
 
 from scipy.signal import find_peaks
