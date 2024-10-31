@@ -9,7 +9,7 @@ st.title("Cymbal analysis")
 st.write("This app loads cymbal audio files and presents their key features")
 
 
-st.header("Select audio clip", divider="gray")
+st.header("Selection of audio clip", divider="gray")
 
 # Define file options in a dropdown menu
 files = {
@@ -241,11 +241,83 @@ col1, col2 = st.columns(2)
 col3, col4 = st.columns(2)
 
 # Plot 1
+
 with col1:
-    fig, ax = plt.subplots()
-    ax.plot(range(len(xf)), sorted_frequencies)
-    ax.set_title("sorted freq")
-    st.pyplot(fig)
+    #fig, ax = plt.subplots()
+    #ax.plot(range(len(xf)), sorted_frequencies)
+    #ax.set_title("sorted freq")
+    fig = go.Figure()
+    initial_peak_value=0.5
+    decay_point=2.5
+    max_time_for_plotting=10
+    height=500
+    width=700
+
+    # Generate time values for the waveform
+    x_vals = np.linspace(0, len(y) / sr, num=len(y))
+
+    fig.add_trace(go.Scatter(x=x_vals, y=y, mode='lines', line=dict(color='black', width=1),
+                             name="Waveform", showlegend=True),
+                  )
+
+    # Add vertical line for decay time
+    fig.add_shape(type='line',
+                  x0=decay_point, y0=min(y), x1=decay_point, y1=max(y),
+                  line=dict(color="blue", dash="dash"),
+                  name="Decay Time",
+                  )
+
+    # Add horizontal line for peak value
+    fig.add_shape(type='line',
+                  x0=0, y0=initial_peak_value, x1=max_time_for_plotting, y1=initial_peak_value,
+                  line=dict(color="grey", dash="dash"),
+                  name="Peak Value",
+                  )
+
+    # Update layout
+    fig.update_xaxes(title_text="Time (s)", range=[0, max_time_for_plotting])
+    fig.update_yaxes(title_text="Amplitude")
+
+    fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
+    fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
+
+    fig.update_xaxes(showline=True, linecolor='black', linewidth=2)
+    fig.update_yaxes(showline=True, linecolor='black', linewidth=2)
+
+    # Add a center justified title, legend, and set the background to white, with custom height and width
+    fig.update_layout(
+        title=dict(
+            text=title,
+            x=0.5,  # Center justification
+            xanchor='center',
+            font=dict(size=18)
+        ),
+        legend=dict(
+            x=0.9, y=1,
+            traceorder="normal",
+            font_size=10,
+            bgcolor="White",  # Legend background color
+            bordercolor="Black",
+            borderwidth=1
+        ),
+        plot_bgcolor='white',  # Background color of the plot area
+        paper_bgcolor='white',  # Background color of the entire figure
+        height=height,  # Custom height
+        width=width    # Custom width
+    )
+
+
+
+
+    
+    st.plotly_chart(fig)
+
+
+
+
+
+
+
 
 # Plot 2
 with col2:
