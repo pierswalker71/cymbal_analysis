@@ -1,6 +1,5 @@
 import streamlit as st
 import audio_functions
-import requests
 
 #=================
     
