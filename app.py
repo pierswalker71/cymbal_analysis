@@ -1,9 +1,8 @@
 import streamlit as st # needed in app
 
-import audio_functions
-
 import sys
-st.write(sys.path)
+sys.path.append(".")  # Adds the current directory to the path
+import audio_functions
 
 
 # imports
