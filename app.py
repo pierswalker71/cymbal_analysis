@@ -880,7 +880,7 @@ with col1:
     # Add a center justified title, legend, and set the background to white, with custom height and width
     fig.update_layout(
         title=dict(
-            text=title,
+            text='title',
             x=0.5,  # Center justification
             xanchor='center',
             font=dict(size=18)
