@@ -4,8 +4,8 @@ import streamlit as st # needed in app
 
 
 # imports
-import requests
-from io import BytesIO
+#import requests
+#from io import BytesIO
 
 import pandas as pd
 import numpy as np
