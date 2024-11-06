@@ -1,6 +1,6 @@
 import streamlit as st # needed in app
 
-#import audio_functions
+import audio_functions
 
 
 # imports
