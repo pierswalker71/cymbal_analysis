@@ -1,7 +1,30 @@
-import streamlit as st
+import streamlit as st # needed in app
+
 import audio_functions
+
+# imports
+import requests
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
+from matplotlib.ticker import MaxNLocator
+import numpy as np
+
+from pydub import AudioSegment
+import librosa
+import librosa.display
+
 import requests
 from io import BytesIO
+
+
+from scipy.signal import find_peaks
+from scipy.signal import butter, filtfilt
+from scipy.ndimage import gaussian_filter1d
+from scipy.stats import kurtosis
+from scipy.stats import entropy
 
 #=================
     
