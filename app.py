@@ -1,9 +1,7 @@
 import streamlit as st # needed in app
 
-import sys
-sys.path.append(".")  # Adds the current directory to the path
 import audio_functions
-
+importlib.reload(audio_functions)
 
 # imports
 #import requests
