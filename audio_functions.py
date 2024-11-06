@@ -1,3 +1,6 @@
+import librosa
+import librosa.display
+
 def signal_remove_blank_space(y,sr,  y_crop_initial_buffer_time=0.25):
   # finds onset of sound and crops the file prior to that with a buffer
 
