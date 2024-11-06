@@ -2,6 +2,9 @@ import streamlit as st # needed in app
 
 import audio_functions
 
+import sys
+st.write(sys.path)
+
 
 # imports
 #import requests
