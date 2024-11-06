@@ -1,6 +1,7 @@
 import streamlit as st # needed in app
 
 import audio_functions
+import importlib
 importlib.reload(audio_functions)
 
 # imports
