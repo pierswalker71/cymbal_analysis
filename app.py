@@ -275,11 +275,6 @@ with st.expander("Audio waveform",expanded=True):
     fig.update_xaxes(title_text="Time (s)", range=[0, max_time_for_plotting])
     fig.update_yaxes(title_text="Amplitude")
     
-    #fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
-    #fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
-    #fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
-    #fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
-
     fig.update_layout(
         legend=dict(
             x=0.9, y=1,
@@ -338,18 +333,21 @@ with st.expander("Significant frequencies",expanded=True):
     fig.update_layout(title_text="The significant frequencies which contribute to the total audio energye", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Proportion of total energy")
     fig.update_yaxes(title_text="Significant frequencies (Hz)")
-    fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
-    fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
+    fig.update_yaxes(range=[0, max(y) * 1.1])
+    #fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
+    #fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
 
     fig.update_layout(     
-        xaxis=dict(title_font=dict(color="black"),  
-                    tickfont=dict(color="black") 
+        xaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
         ),
         yaxis=dict(
-                   title_font=dict(color="black"),  
-                   tickfont=dict(color="black") 
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
         ),
-        yaxis_range=[0, max(max_frequencies) * 1.1]
     )
     
     st.write('This chart identifies the frequencies which contribute to the top 50% of the audio energy.')
