@@ -44,7 +44,7 @@ files = {
 }
 
 # Dropdown menu for file selection
-st.write('Choose a an audio wav file to load:')
+st.write('Choose an audio wav file to load:')
 file_choice = st.selectbox("Select file:", options=list(files.keys()))
 
 # Load the selected file
@@ -338,5 +338,5 @@ with st.expander("Significant frequencies",expanded=True):
         yaxis_range=[0, max(max_frequencies) * 1.1]
     )
     
-    st.write('The frequencies which contribute to the top 50% energy')
+    st.write('This chart identifies the frequencies which contribute to the top 50% of the audio energy. The x-axis represents the cumultative proportion from 0 to 50% energy, and the y-axis identifies the frequencies')
     st.plotly_chart(fig)
