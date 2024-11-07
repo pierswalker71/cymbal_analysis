@@ -347,8 +347,6 @@ with st.expander("Significant frequencies",expanded=True):
         ),
     )
     
-
-    st.write(text)
     st.write('This chart identifies the frequencies which contribute to the top 50% of the audio energy.\n'
              'x-axis - cumultative proportion from 0 to 50% energy\n'
               'y-axis - identifies the frequencies')
