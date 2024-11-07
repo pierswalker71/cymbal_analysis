@@ -44,7 +44,8 @@ files = {
 }
 
 # Dropdown menu for file selection
-file_choice = st.selectbox("Choose a file to load:", options=list(files.keys()))
+st.write('Choose a file to load:')
+file_choice = st.selectbox("", options=list(files.keys()))
 
 # Load the selected file
 if file_choice:
@@ -55,7 +56,7 @@ if response.status_code == 200:
     audio_bytes = BytesIO(response.content)
         
     # Play the audio file in Streamlit
-    st.write('Play audio file')
+    st.write('Play chosen audio file')
     st.audio(audio_bytes, format="audio/wav")
     #st.write('file loaded ok')
 else:
