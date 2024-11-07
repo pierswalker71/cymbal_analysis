@@ -339,7 +339,6 @@ with st.expander("Significant frequencies",expanded=True):
         'text': "The significant frequencies which contribute to the total audio energy",
         'x': 0.5, 
         'xanchor': 'center',
-        font=dict(size=18)
         },
         xaxis_title="Proportion of total energy",
         xaxis=dict(title_font=dict(color="black")), 
