@@ -231,16 +231,17 @@ for band in freq_bands:
 metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,peaks_per_band)}
 
 #==============================================================
-# Generate plots
+# **** Generate plots ****
 #==============================================================
 
 
-
+#==============================================================
 st.header("Time-based charts", divider="gray")
+#==============================================================
 
-#==============================================================
+#--------------------------------------------------------------
 # Plot 1
-#==============================================================
+#--------------------------------------------------------------
 with st.expander("Audio waveform",expanded=True):
 
     fig = go.Figure()
@@ -301,9 +302,18 @@ with st.expander("Audio waveform",expanded=True):
     )
     st.plotly_chart(fig)
 
+
+
+
+
+
 #==============================================================
+st.header("Frequency-based charts", divider="gray")
+#==============================================================
+
+#--------------------------------------------------------------
 # Plot 2
-#==============================================================
+#--------------------------------------------------------------
 with st.expander("Significant frequencies",expanded=True):
     
     # Define target percentages to explore
@@ -330,10 +340,3 @@ with st.expander("Significant frequencies",expanded=True):
     
     st.write('The frequencies which contribute to the top 50% energy')
     st.plotly_chart(fig)
-
-
-
-
-#==============================================================
-st.header("Frequency-based charts", divider="gray")
-
