@@ -238,11 +238,11 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 
 st.header("Time-based charts", divider="gray")
 
-with st.expander("single column",expanded=True):
-    
-    #==============================================================
-    # Plot 1 - Audio waveform
-    #==============================================================
+#==============================================================
+# Plot 1
+#==============================================================
+with st.expander("Audio waveform",expanded=True):
+
     fig = go.Figure()
     initial_peak_value=0.5
     decay_point=2.5
@@ -302,14 +302,12 @@ with st.expander("single column",expanded=True):
         height=height,  # Custom height
         width=width    # Custom width
     )
-
     st.plotly_chart(fig)
 
-
-
-    #==============================================================
-    # Plot 2 - Percentages
-    #==============================================================
+#==============================================================
+# Plot 2
+#==============================================================
+with st.expander("Significant frequencies",expanded=True):
     
     # Define target percentages to explore
     target_percentages = np.linspace(0.05, 0.50,100)  # eg from 5% to 95%
