@@ -235,10 +235,6 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 #==============================================================
 
 
-#==============================================================
-st.header("Simple charts", divider="gray")
-#==============================================================
-
 #--------------------------------------------------------------
 # Plot 1
 #--------------------------------------------------------------
@@ -391,11 +387,7 @@ with st.expander("Frequency spectrum",expanded=True):
     fig.update_xaxes(title_text='Time (s)', range=[0, 3])
     fig.update_yaxes(title_text='Energy')
     fig.update_yaxes(range=[0, np.max([np.max(arr) for arr in energy_decay])*1.05])
-
-    fig.update_layout(
-        title_text="Frequency band energy decay",
-        height=900, width=1200
-    )
+    #fig.update_layout(height=900, width=1200)
 
     fig.update_layout(     
         xaxis=dict(
@@ -459,3 +451,8 @@ with st.expander("Significant frequencies",expanded=True):
     
     st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy. (x-axis - cumultative proportion from 0 to 50% energys; y-axis - identifies the frequencies)")
     st.plotly_chart(fig)
+
+#==============================================================
+st.header("?? charts", divider="gray")
+#==============================================================
+
