@@ -248,8 +248,8 @@ with st.expander("Audio waveform",expanded=True):
     initial_peak_value=0.5
     decay_point=2.5
     max_time_for_plotting=10
-    height=500
-    width=700
+    height=
+    width=
 
     # Generate time values for the waveform
     x_vals = np.linspace(0, len(y) / sr, num=len(y))
@@ -277,12 +277,12 @@ with st.expander("Audio waveform",expanded=True):
     fig.update_yaxes(title_text="Amplitude")
     fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
     fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
-    fig.update_xaxes(showline=True, linecolor='black', linewidth=2)
-    fig.update_yaxes(showline=True, linecolor='black', linewidth=2)
+    fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
+    fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
 
     fig.update_layout(
         title=dict(
-            text='title',
+            text='Audio waveform in time',
             x=0.5,  # Center justification
             xanchor='center',
             font=dict(size=18)
@@ -297,8 +297,8 @@ with st.expander("Audio waveform",expanded=True):
         ),
         plot_bgcolor='white',  # Background color of the plot area
         paper_bgcolor='white',  # Background color of the entire figure
-        height=height,  # Custom height
-        width=width    # Custom width
+        height=500,  
+        width=700  
     )
     st.plotly_chart(fig)
 
@@ -330,13 +330,18 @@ with st.expander("Significant frequencies",expanded=True):
         mode='lines+markers',  # Shows both lines and points
         name='Significant Frequencies'
     ))
-    
+
+    fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
+    fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
+
     fig.update_layout(
-        title="Significant Frequencies vs. Target Percentage of Total Energy",
-        xaxis_title="Target Percentage of Total Energy",
-        yaxis_title="Significant Frequencies (Hz)",
+        title="The significant frequencies which contribute to the total audio energy",
+        xaxis_title="Proportion of total energy",
+        yaxis_title="Significant frequencies (Hz)",
         yaxis_range=[0, max(max_frequencies) * 1.1]
     )
     
     st.write('This chart identifies the frequencies which contribute to the top 50% of the audio energy. The x-axis represents the cumultative proportion from 0 to 50% energy, and the y-axis identifies the frequencies')
+    st.write('The x-axis represents the cumultative proportion from 0 to 50% energy, the y-axis identifies the frequencies')
+   
     st.plotly_chart(fig)
