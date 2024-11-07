@@ -274,10 +274,11 @@ with st.expander("Audio waveform",expanded=True):
     fig.update_layout(title_text="Audio waveform in time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Time (s)", range=[0, max_time_for_plotting])
     fig.update_yaxes(title_text="Amplitude")
-    fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
-    fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
-    fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
-    fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
+    
+    #fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
+    #fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
+    #fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
+    #fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
 
     fig.update_layout(
         legend=dict(
@@ -289,12 +290,14 @@ with st.expander("Audio waveform",expanded=True):
             borderwidth=1
         ),
         xaxis=dict(
-        title_font=dict(color="black"),  
-        tickfont=dict(color="black") 
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
         ),
         yaxis=dict(
-        title_font=dict(color="black"),  
-        tickfont=dict(color="black") 
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
         ),
         plot_bgcolor='white',  # Background color of the plot area
         paper_bgcolor='white',  # Background color of the entire figure
