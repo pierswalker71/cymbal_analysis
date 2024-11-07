@@ -357,6 +357,67 @@ with st.expander("Frequency spectrum",expanded=True):
 
     st.write("This chart presets the frequency spectrum of the audio waveform. (x-axis - frequency; y-axis - amplitude)")
     st.plotly_chart(fig)
+
+
+#--------------------------------------------------------------
+# Plot 3
+#--------------------------------------------------------------
+# Compute energy decay for each frequency band
+
+with st.expander("Frequency spectrum",expanded=True):
+    fig = go.Figure()
+    energy_decay, times = compute_energy_decay_per_band(y, sr, freq_bands)
+    
+    # Define line widths and line styles based on thresholds
+    line_widths = [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]  # Example
+    line_styles = assign_line_styles(normalized_band_energies, thresholds=[0.03, 0.06, 0.07, 0.1])
+    
+    # Add energy decay traces for each frequency band to the subplot
+    for i, (low, high) in enumerate(freq_bands):
+        label = f"{low}-{high} Hz"
+        fig.add_trace(
+            go.Scatter(
+                x=times,
+                y=energy_decay[i],
+                mode='lines',
+                line=dict(color=freq_band_colours[i], width=line_widths[i], dash=line_styles[i]),
+                name=label,
+                showlegend=True if i == 0 else False
+            ),
+    
+        )
+    
+    fig.update_layout(title_text="The energy in each frequency band", title_x=0.5, title_xanchor='center')
+    fig.update_xaxes(title_text='Time (s)', range=[0, 3])
+    fig.update_yaxes(title_text='Energy')
+    fig.update_yaxes(range=[0, np.max([np.max(arr) for arr in energy_decay])*1.05])
+
+    fig.update_layout(
+        title_text="Frequency band energy decay",
+        height=900, width=1200
+    )
+
+    fig.update_layout(     
+        xaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+        yaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+    )
+
+ 
+    # Add a legend
+    fig.update_layout(
+        legend=dict(x=1, y=1, traceorder="normal", font_size=10)
+    )
+
+    st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy. (x-axis - time in seconds; y-axis - the energy in each frequency band)")
+    st.plotly_chart(fig)
     
 #--------------------------------------------------------------
 # Plot 4
