@@ -270,7 +270,7 @@ with st.expander("Audio waveform",expanded=True):
     fig.update_layout(title_text="Audio waveform in time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Time (s)", range=[0, max_time_for_plotting])
     fig.update_yaxes(title_text="Amplitude")
-    fig.update_layout(height=100, width=400)
+    fig.update_layout(height=200, width=700)
     
     fig.update_layout(
         legend=dict(
@@ -293,8 +293,6 @@ with st.expander("Audio waveform",expanded=True):
         ),
         plot_bgcolor='white',  # Background color of the plot area
         paper_bgcolor='white',  # Background color of the entire figure
-        height=500,  
-        width=700  
     )
     
     st.write("This chart presets the amplitude of the audio waveform in time. (x-axis - time in seconds; y-axis - amplitude)")
