@@ -339,6 +339,9 @@ with st.expander("Audio waveform",expanded=True):
     fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
     fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
 
+    st.write("This chart presets the frequency spectrum of the audio waveform. (x-axis - frequency; y-axis - amplitude)")
+    st.plotly_chart(fig)
+
 #==============================================================
 st.header("????charts", divider="gray")
 #==============================================================
