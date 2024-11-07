@@ -300,9 +300,10 @@ with st.expander("Audio waveform",expanded=True):
         width=700  
     )
     
-    st.write('This chart presets the amplitude of the audio waveform in time.')
-    st.write('x-axis - time in seconds')
-    st.write('y-axis - amplitude')
+    text = """This chart presents the amplitude of the audio waveform in time.
+    x-axis - time in seconds
+    y-axis - amplitude"""
+    st.write(text)
     st.plotly_chart(fig)
 
 #==============================================================
@@ -347,7 +348,9 @@ with st.expander("Significant frequencies",expanded=True):
         ),
     )
     
-    st.write('This chart identifies the frequencies which contribute to the top 50% of the audio energy.')
-    st.write('x-axis - cumultative proportion from 0 to 50% energy')
-    st.write('y-axis - identifies the frequencies')
+
+    text = """This chart identifies the frequencies which contribute to the top 50% of the audio energy.
+    x-axis - cumultative proportion from 0 to 50% energ
+    y-axis - identifies the frequencies"""
+    st.write(text)
     st.plotly_chart(fig)
