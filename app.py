@@ -233,20 +233,16 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 #==============================================================
 # Generate plots
 #==============================================================
+
+
+
 st.header("Time-based charts", divider="gray")
 
-# Generate sample data for plotting
-x = np.linspace(0, 10, 100)
-
-# Create a 2x2 grid of columns
-col1, col2 = st.columns(2)
-col3, col4 = st.columns(2)
-
-#----------------------------------------------------
-# Plot 1
-
-#with col1:
 with st.expander("single column",expanded=True):
+    
+    #==============================================================
+    # Plot 1 - Audio waveform
+    #==============================================================
     fig = go.Figure()
     initial_peak_value=0.5
     decay_point=2.5
@@ -307,26 +303,13 @@ with st.expander("single column",expanded=True):
         width=width    # Custom width
     )
 
-
-
-
-    
     st.plotly_chart(fig)
 
 
 
-
-
-
-
-
-# Plot 2
-#with col2:
-
-  
-    #fig, ax = plt.subplots()
-    #ax.plot(x, np.cos(x))
-   # ax.set_title("Cosine Wave")
+    #==============================================================
+    # Plot 2 - Percentages
+    #==============================================================
     
     # Define target percentages to explore
     target_percentages = np.linspace(0.05, 0.50,100)  # eg from 5% to 95%
@@ -343,72 +326,6 @@ with st.expander("single column",expanded=True):
     ax.set_title('Significant Frequencies vs. Target Percentage of Total Energy')
     st.pyplot(fig)
 
-# Plot 3
-with col3:
-
-
-    
-
-    # Generate data for the plot
-    x = np.linspace(0, 10, 100)
-    y = np.tan(x)  # Tangent wave data
-
-    # Create a Plotly figure
-    fig = go.Figure()
-
-    # Add a line plot to the figure
-    fig.add_trace(go.Scatter(x=x, y=y, mode='lines', name='Tangent Wave'))
-
-    # Customize the layout
-    fig.update_layout(
-        title="Tangent Wave",
-        xaxis_title="X-axis",
-        yaxis_title="Tangent of X",
-    )
-
-    # Display the Plotly chart in Streamlit
-    st.plotly_chart(fig)
-
-# Plot 4
-with col4:
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sinh(x))
-    ax.set_title("Hyperbolic Sine Wave")
-    st.pyplot(fig)
 
 st.header("Frequency-based charts", divider="gray")
 
-
-
-# Generate and display multiple plots in a vertical layout
-#for i in range(4):
- #   fig, ax = plt.subplots()
-#    ax.plot(x, np.sin(x + i))
- #   ax.set_title(f"Plot {i+1}")
-#    st.pyplot(fig)
-
-
-
-
-with st.expander("single column",expanded=True):
-    # Plot 1
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x))
-    st.pyplot(fig)
-    
-with st.expander("multiple columnss",expanded=True):    
-    col5, col6 = st.columns(2)
-  
-    with col5:
-        # Plot 1
-        fig, ax = plt.subplots()
-        ax.plot(x, np.sin(x))
-        st.pyplot(fig)
-      
-    
-
-    with col6:
-        # Plot 2
-        fig, ax = plt.subplots()
-        ax.plot(x, np.cos(x))
-        st.pyplot(fig)
