@@ -303,12 +303,48 @@ with st.expander("Audio waveform",expanded=True):
     st.write("This chart presets the amplitude of the audio waveform in time. (x-axis - time in seconds; y-axis - amplitude)")
     st.plotly_chart(fig)
 
+#--------------------------------------------------------------
+# Plot 2
+#--------------------------------------------------------------
+with st.expander("Audio waveform",expanded=True):
+    
+    # Define some necessary constants for freq spectrum plot
+    max_freq = 6000
+    freq_spectrum_plot_top_peaks_num = 5
+    
+    # Add the frequency domain (FFT) plot to the second subplot
+    fig.add_trace(go.Scatter(x=xf, y=yf_normalised, mode='lines', line=dict(color='black', width=1), name="Spectrum"),
+                  row=1, col=2)
+    
+    # Annotate the top frequencies on the plot
+    for i in range(len(top_frequencies_sorted[:freq_spectrum_plot_top_peaks_num])):
+        fig.add_trace(go.Scatter(x=[top_frequencies_sorted[i]], y=[top_magnitudes_sorted[i]],
+                                 text=[f'{top_frequencies_sorted[i]:.0f}'],
+                                 mode='text', textposition="top right", showlegend=False, textfont=dict(color='black', size=8)),
+                      row=1, col=2)
+    
+    # Add colored backgrounds for each frequency band
+    for (lower_bound, upper_bound), color in zip(freq_bands, freq_band_colours):
+        fig.add_shape(type='rect', x0=lower_bound, x1=upper_bound, y0=0, y1=1,
+                      xref='x1', yref='paper', fillcolor=color, opacity=0.5, layer="below", line_width=0,
+                      row=1, col=2)
+    
+    # Update axes, titles, and layout for the subplot
+    fig.layout.annotations[1].text = f"Spectrum (peak: {round(metrics['top_freq_1'])} Hz. Top 5 range: {round(metrics['top_5_freq_range'])} Hz)"  # (row=1, col=2)
+    fig.update_xaxes(title_text="Frequency (Hz)", range=[0, max_freq], row=1, col=2)
+    fig.update_yaxes(title_text="Amplitude", row=1, col=2)
+    fig.update_yaxes(range=[0, max(yf_normalised)*1.05], row=1, col=2)
+    
+    # Add grid lines to the subplot
+    fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey', row=1, col=2)
+    fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey', row=1, col=2)
+
 #==============================================================
-st.header("Frequency-based charts", divider="gray")
+st.header("????charts", divider="gray")
 #==============================================================
 
 #--------------------------------------------------------------
-# Plot 2
+# Plot 4
 #--------------------------------------------------------------
 with st.expander("Significant frequencies",expanded=True):
     
