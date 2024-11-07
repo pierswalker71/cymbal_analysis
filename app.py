@@ -360,7 +360,7 @@ with st.expander("Frequency spectrum",expanded=True):
 #--------------------------------------------------------------
 # Compute energy decay for each frequency band
 
-with st.expander("Frequency spectrum",expanded=True):
+with st.expander("Energy in each frequency band",expanded=True):
     fig = go.Figure()
     energy_decay, times = compute_energy_decay_per_band(y, sr, freq_bands)
     
@@ -408,7 +408,7 @@ with st.expander("Frequency spectrum",expanded=True):
         legend=dict(x=1, y=1, traceorder="normal", font_size=10)
     )
 
-    st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy. (x-axis - time in seconds; y-axis - the energy in each frequency band)")
+    st.write("This chart presets the energy in each of the key frequency bands. (x-axis - time in seconds; y-axis - energy)")
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
