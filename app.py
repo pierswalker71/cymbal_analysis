@@ -274,14 +274,11 @@ with st.expander("Audio waveform",expanded=True):
     # Update layout
     fig.update_xaxes(title_text="Time (s)", range=[0, max_time_for_plotting])
     fig.update_yaxes(title_text="Amplitude")
-
     fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
     fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
-
     fig.update_xaxes(showline=True, linecolor='black', linewidth=2)
     fig.update_yaxes(showline=True, linecolor='black', linewidth=2)
 
-    # Add a center justified title, legend, and set the background to white, with custom height and width
     fig.update_layout(
         title=dict(
             text='title',
@@ -315,24 +312,24 @@ with st.expander("Significant frequencies",expanded=True):
     # Collect the highest significant frequency for each target percentage
     max_frequencies = [get_max_significant_frequency(yf, xf, p) for p in target_percentages]
 
-fig = go.Figure()
+    fig = go.Figure()
 
-fig.add_trace(go.Scatter(
-    x=target_percentages,
-    y=max_frequencies,
-    mode='lines+markers',  # Shows both lines and points
-    name='Significant Frequencies'
-))
-
-fig.update_layout(
-    title="Significant Frequencies vs. Target Percentage of Total Energy",
-    xaxis_title="Target Percentage of Total Energy",
-    yaxis_title="Significant Frequencies (Hz)",
-    yaxis_range=[0, max(max_frequencies) * 1.1]
-)
-
-st.write('The frequencies which contribute to the top 50% energy')
-st.plotly_chart(fig)
+    fig.add_trace(go.Scatter(
+        x=target_percentages,
+        y=max_frequencies,
+        mode='lines+markers',  # Shows both lines and points
+        name='Significant Frequencies'
+    ))
+    
+    fig.update_layout(
+        title="Significant Frequencies vs. Target Percentage of Total Energy",
+        xaxis_title="Target Percentage of Total Energy",
+        yaxis_title="Significant Frequencies (Hz)",
+        yaxis_range=[0, max(max_frequencies) * 1.1]
+    )
+    
+    st.write('The frequencies which contribute to the top 50% energy')
+    st.plotly_chart(fig)
 
 
 
