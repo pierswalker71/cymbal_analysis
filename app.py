@@ -44,8 +44,8 @@ files = {
 }
 
 # Dropdown menu for file selection
-st.write('Choose a file to load:')
-file_choice = st.selectbox("", options=list(files.keys()))
+st.write('Choose a an audio wav file to load:')
+file_choice = st.selectbox("Select file:", options=list(files.keys()))
 
 # Load the selected file
 if file_choice:
@@ -230,7 +230,9 @@ for band in freq_bands:
 
 metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,peaks_per_band)}
 
-#----------------------------------------------------
+#==============================================================
+# Generate plots
+#==============================================================
 st.header("Time-based charts", divider="gray")
 
 # Generate sample data for plotting
@@ -244,9 +246,6 @@ col3, col4 = st.columns(2)
 # Plot 1
 
 with col1:
-    #fig, ax = plt.subplots()
-    #ax.plot(range(len(xf)), sorted_frequencies)
-    #ax.set_title("sorted freq")
     fig = go.Figure()
     initial_peak_value=0.5
     decay_point=2.5
@@ -390,7 +389,13 @@ st.header("Frequency-based charts", divider="gray")
 
 
 
-with st.expander("View First Row of Plots"):
+with st.expander("single column",expanded=True):
+    # Plot 1
+    fig, ax = plt.subplots()
+    ax.plot(x, np.sin(x))
+    st.pyplot(fig)
+    
+with st.expander("multiple columnss",expanded=True):    
     col5, col6 = st.columns(2)
   
     with col5:
