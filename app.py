@@ -245,7 +245,8 @@ col3, col4 = st.columns(2)
 #----------------------------------------------------
 # Plot 1
 
-with col1:
+#with col1:
+with st.expander("single column",expanded=True):
     fig = go.Figure()
     initial_peak_value=0.5
     decay_point=2.5
@@ -320,7 +321,7 @@ with col1:
 
 
 # Plot 2
-with col2:
+#with col2:
 
   
     #fig, ax = plt.subplots()
