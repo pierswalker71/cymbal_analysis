@@ -11,21 +11,21 @@ from io import BytesIO
 import plotly.graph_objects as go
 import librosa
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+#import pandas as pd
+#import numpy as np
+#import matplotlib.pyplot as plt
 
 
 
-from pydub import AudioSegment
+#from pydub import AudioSegment
 
-import librosa.display
+#import librosa.display
 
-from scipy.signal import find_peaks
-from scipy.signal import butter, filtfilt
-from scipy.ndimage import gaussian_filter1d
-from scipy.stats import kurtosis
-from scipy.stats import entropy
+#from scipy.signal import find_peaks
+#from scipy.signal import butter, filtfilt
+#from scipy.ndimage import gaussian_filter1d
+#from scipy.stats import kurtosis
+#from scipy.stats import entropy
 
 #==============================================================
 # Start streamlit code
