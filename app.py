@@ -256,14 +256,14 @@ with st.expander("Audio waveform",expanded=True):
     fig.add_shape(type='line',
                   x0=decay_point, y0=min(y), x1=decay_point, y1=max(y),
                   line=dict(color="blue", dash="dash"),
-                  name="Decay Time",
+                  name="Decay Time", showlegend=True
                   )
 
     # Add horizontal line for peak value
     fig.add_shape(type='line',
                   x0=0, y0=initial_peak_value, x1=max_time_for_plotting, y1=initial_peak_value,
                   line=dict(color="grey", dash="dash"),
-                  name="Peak Value",
+                  name="Peak Value", showlegend=True
                   )
 
     # Update layout
