@@ -349,6 +349,8 @@ with st.expander("Frequency spectrum",expanded=True):
         showline=True, linecolor='black', linewidth=1,
         gridwidth=0.7, gridcolor='lightgrey',
         ),
+        plot_bgcolor='white',  
+        paper_bgcolor='white', 
     )
 
     st.write("This chart presets the frequency spectrum of the audio waveform. (x-axis - frequency; y-axis - amplitude)")
@@ -400,6 +402,8 @@ with st.expander("Energy in each frequency band",expanded=True):
         showline=True, linecolor='black', linewidth=1,
         gridwidth=0.7, gridcolor='lightgrey',
         ),
+        plot_bgcolor='white',  
+        paper_bgcolor='white'
     )
 
  
@@ -447,7 +451,9 @@ with st.expander("Significant frequencies",expanded=True):
         title_font=dict(color="black"), tickfont=dict(color="black"),
         showline=True, linecolor='black', linewidth=1,
         gridwidth=0.7, gridcolor='lightgrey',
-        ),
+        ), 
+        plot_bgcolor='white',  
+        paper_bgcolor='white'
     )
     
     st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy. (x-axis - cumultative proportion from 0 to 50% energys; y-axis - identifies the frequencies)")
