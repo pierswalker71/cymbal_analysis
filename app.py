@@ -1,43 +1,24 @@
+#==============================================================
+# imports
+#==============================================================
 import streamlit as st # needed in app
 
 from audio_functions import *
 
-#from audio_functions import signal_remove_blank_space
-#create_wav_from_m4a
-#calc_attack_time
-#generate_fft
-#normalise_fft
-#format_freq
-#find_freq_peaks
-#get_top_peaks
-#plot_normalized_spectrum
-#calc_energy_in_freq_bands
-#compute_dominant_frequencies
-#assign_line_styles
-#bandpass_filter
-#y_remove_nans
-#compute_energy_decay_per_band
-#calc_decay_time
-#progressive_range
-#get_frequency_band
-#assign_frequency_bands
-#get_significant_frequencies
-#get_max_significant_frequency
-
 # imports needed directly in this file
 import requests
 from io import BytesIO
+import plotly.graph_objects as go
+import librosa
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import plotly.graph_objects as go
 
-#from matplotlib.ticker import MaxNLocator
-import numpy as np
+
 
 from pydub import AudioSegment
-import librosa
+
 import librosa.display
 
 from scipy.signal import find_peaks
@@ -46,22 +27,12 @@ from scipy.ndimage import gaussian_filter1d
 from scipy.stats import kurtosis
 from scipy.stats import entropy
 
-# ===========================
-## Functions
-
-
-#----------------------------------------------------------------------
-
-
-
-
-#=================
-    
-
+#==============================================================
+# Start streamlit code
+#==============================================================
 
 st.title("Cymbal analysis")
 st.write("This app loads cymbal audio files and presents their key features")
-
 
 st.header("Selection of audio clip", divider="gray")
 
@@ -78,8 +49,7 @@ file_choice = st.selectbox("Choose a file to load:", options=list(files.keys()))
 # Load the selected file
 if file_choice:
     file_url = files[file_choice]
-    
-    
+        
 response = requests.get(file_url)
 if response.status_code == 200:
     audio_bytes = BytesIO(response.content)
@@ -91,12 +61,6 @@ if response.status_code == 200:
 else:
     st.error("Failed to load the audio file.")
 
-# Display a "Play" button
-#if st.button("Play Audio"):
-    # Play the audio file in Streamlit
-    #st.audio(audio_bytes, format="audio/wav")
-
-
 # Load wav file with librosa
 # y is time series, sr is sample rate
 y, sr = librosa.load(audio_bytes, sr=None)
@@ -104,9 +68,6 @@ y, sr = librosa.load(audio_bytes, sr=None)
 # Crop the waveform to remove blank space at either end
 y_original = y.copy()
 y = signal_remove_blank_space(y,sr)
-
-
-#--------------------------
 
 #==============================================================
 # Process waveform
@@ -129,7 +90,6 @@ freq_bands = [(low,high) for low,high,name in freq_bands_hz_name]
 freq_band_names = [name for low,high,name in freq_bands_hz_name]
 freq_band_colours = ['black', 'red','indigo', 'orange', 'blue', 'green', 'yellow','violet']
 
-
 #----------------------------------------------------------------------
 ## Generate frequency domain waveform
 
@@ -140,12 +100,10 @@ xf, yf = generate_fft(y, sr)
 yf_magnitude, total_energy, yf_normalised = normalise_fft(yf)
 normalized_band_energies = calc_energy_in_freq_bands(y, sr, freq_bands)
 
-
 # Sort frequencies by their magnitude in descending order
 sorted_indices = np.argsort(yf_magnitude)[::-1]
 sorted_magnitudes = yf_magnitude[sorted_indices]
 sorted_frequencies = xf[sorted_indices]
-
 
 #----------------------------------------------------------------------
 # Find freq peaks
@@ -157,7 +115,6 @@ top_frequencies_sorted, top_magnitudes_sorted = get_top_peaks(yf_normalised, pea
 # Determine the range of frequencies spanned by progressive top peaks
 # ie the ranges between the min and max freq of the top largest peaks
 top_frequency_ranges = progressive_range(top_frequencies_sorted)
-
 
 #----------------------------------------------------------------------
 metrics = {} # initialise metrics store
@@ -177,11 +134,9 @@ for p in range(5):
 for p in range(5):
     metrics[f"top_freq_{p+1}_band"] = get_frequency_band(top_frequencies_sorted[p],freq_bands_hz_name)
 
-
 # calc range of top frequency peaks
 metrics['top_3_freq_range'] = max(top_frequencies_sorted[:6]) - min(top_frequencies_sorted[:6])
 metrics['top_5_freq_range'] = max(top_frequencies_sorted[:4]) - min(top_frequencies_sorted[:4])
-
 
 # calc the number of freq
 #that contribute to top % energy
@@ -189,7 +144,6 @@ metrics['num_freq_in_top_5%_energy'] = get_significant_frequencies(yf, xf, 0.05)
 metrics['num_freq_in_top_10%_energy']  = get_significant_frequencies(yf, xf, 0.1)
 metrics['num_freq_in_top_20%_energy'] = get_significant_frequencies(yf, xf, 0.2)
 metrics['num_freq_in_top_50%_energy'] = get_significant_frequencies(yf, xf, 0.5)
-
 
 # Calculate attack and decay time of time waveform
 #metrics['attack_time'] = calc_attack_time(y, sr)
@@ -216,11 +170,9 @@ metrics['overall_zero_crossing_rate'] = np.mean(librosa.feature.zero_crossing_ra
 # onset strength - how strongly sound energy changes over time
 metrics['onset_strength']= np.mean(librosa.onset.onset_strength(y=y, sr=sr))
 
-
 #------------------------
 # Peaks range and variance
 # Simple measures of peak spread
-
 
 # Define the number of top frequency peaks
 freq_spectrum_top_peaks_num = 20
@@ -257,10 +209,7 @@ metrics["log_top_peaks_variance"] = np.var(log_top_freqs)
 # kurtosis of top frequency peaks
 metrics["top_peaks_kurtosis"] = kurtosis(top_freqs)
 
-
-
-#--------------------------
-
+#----------------------------------------------------
 # How random the peak distribution is
 # Min = 0 (all peaks in same place)
 # Max = log(len(yf_normalised))
@@ -280,11 +229,7 @@ for band in freq_bands:
 
 metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,peaks_per_band)}
 
-
-
-
-
-
+#----------------------------------------------------
 st.header("Time-based charts", divider="gray")
 
 # Generate sample data for plotting
@@ -294,6 +239,7 @@ x = np.linspace(0, 10, 100)
 col1, col2 = st.columns(2)
 col3, col4 = st.columns(2)
 
+#----------------------------------------------------
 # Plot 1
 
 with col1:
@@ -400,7 +346,7 @@ with col2:
 with col3:
 
 
-    import plotly.graph_objects as go
+    
 
     # Generate data for the plot
     x = np.linspace(0, 10, 100)
