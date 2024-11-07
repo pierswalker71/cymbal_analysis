@@ -302,8 +302,8 @@ with st.expander("Audio waveform",expanded=True):
     
     html_text = """
     <p>This chart presents the amplitude of the audio waveform in time.</p>
-    <p style='margin-top: -10px;'>x-axis - time in seconds</p>
-    <p style='margin-top: -10px;'>y-axis - amplitude</p>  
+    <p style='margin-top: -5px;'>x-axis - time in seconds</p>
+    <p style='margin-top: -5px;'>y-axis - amplitude</p>  
     """
     st.markdown(html_text, unsafe_allow_html=True)
     st.plotly_chart(fig)
