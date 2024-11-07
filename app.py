@@ -236,7 +236,7 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 
 
 #==============================================================
-st.header("Time-based charts", divider="gray")
+st.header("Simple charts", divider="gray")
 #==============================================================
 
 #--------------------------------------------------------------
@@ -303,6 +303,11 @@ with st.expander("Audio waveform",expanded=True):
     st.write("This chart presets the amplitude of the audio waveform in time. (x-axis - time in seconds; y-axis - amplitude)")
     st.plotly_chart(fig)
 
+
+#==============================================================
+st.header(" Frequency charts", divider="gray")
+#==============================================================
+
 #--------------------------------------------------------------
 # Plot 2
 #--------------------------------------------------------------
@@ -329,23 +334,30 @@ with st.expander("Frequency spectrum",expanded=True):
                       xref='x1', yref='paper', fillcolor=color, opacity=0.5, layer="below", line_width=0,
         )
     
-    # Update axes, titles, and layout for the subplot
+    
     #fig.layout.annotations[1].text = f"Spectrum (peak: {round(metrics['top_freq_1'])} Hz. Top 5 range: {round(metrics['top_5_freq_range'])} Hz)" 
+
+    fig.update_layout(title_text="Frequency spectrum", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Frequency (Hz)", range=[0, max_freq])
     fig.update_yaxes(title_text="Amplitude")
     fig.update_yaxes(range=[0, max(yf_normalised)*1.05])
     
-    # Add grid lines to the subplot
-    fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
-    fig.update_yaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
+    fig.update_layout(     
+        xaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+        yaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+    )
 
     st.write("This chart presets the frequency spectrum of the audio waveform. (x-axis - frequency; y-axis - amplitude)")
     st.plotly_chart(fig)
-
-#==============================================================
-st.header("????charts", divider="gray")
-#==============================================================
-
+    
 #--------------------------------------------------------------
 # Plot 4
 #--------------------------------------------------------------
