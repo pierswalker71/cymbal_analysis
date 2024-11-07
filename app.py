@@ -316,14 +316,35 @@ with st.expander("Significant frequencies",expanded=True):
     max_frequencies = [get_max_significant_frequency(yf, xf, p) for p in target_percentages]
 
     # Plot the results
-    fig, ax = plt.subplots()
-    st.write('The frequencies which contribute to the top 50% energy')
-    ax.plot(target_percentages,max_frequencies)
-    ax.set_xlabel('Target Percentage of Total Energy')
-    ax.set_ylabel('Significant Frequencies (Hz)')
-    ax.set_title('Significant Frequencies vs. Target Percentage of Total Energy')
-    st.pyplot(fig)
+   # fig, ax = plt.subplots()
+   # st.write('The frequencies which contribute to the top 50% energy')
+   # ax.plot(target_percentages,max_frequencies)
+   # ax.set_xlabel('Target Percentage of Total Energy')
+   # ax.set_ylabel('Significant Frequencies (Hz)')
+   # ax.set_title('Significant Frequencies vs. Target Percentage of Total Energy')
+   # st.pyplot(fig)
+
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(
+    x=target_percentages,
+    y=max_frequencies,
+    mode='lines+markers',  # Shows both lines and points
+    name='Significant Frequencies'
+))
+
+fig.update_layout(
+    title="Significant Frequencies vs. Target Percentage of Total Energy",
+    xaxis_title="Target Percentage of Total Energy",
+    yaxis_title="Significant Frequencies (Hz)"
+)
+
+st.write('The frequencies which contribute to the top 50% energy')
+st.plotly_chart(fig)
 
 
+
+
+#==============================================================
 st.header("Frequency-based charts", divider="gray")
 
