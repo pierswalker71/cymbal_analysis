@@ -248,8 +248,6 @@ with st.expander("Audio waveform",expanded=True):
     initial_peak_value=0.5
     decay_point=2.5
     max_time_for_plotting=10
-    height=
-    width=
 
     # Generate time values for the waveform
     x_vals = np.linspace(0, len(y) / sr, num=len(y))
