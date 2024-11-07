@@ -325,7 +325,7 @@ with st.expander("Frequency spectrum",expanded=True):
     for i in range(len(top_frequencies_sorted[:freq_spectrum_plot_top_peaks_num])):
         fig.add_trace(go.Scatter(x=[top_frequencies_sorted[i]], y=[top_magnitudes_sorted[i]],
                                  text=[f'{top_frequencies_sorted[i]:.0f}'],
-                                 mode='text', textposition="top right", showlegend=False, textfont=dict(color='black', size=8)),
+                                 mode='text', textposition="top right", showlegend=False, textfont=dict(color='black', size=10)),
                      )
     
     # Add colored backgrounds for each frequency band
@@ -378,7 +378,7 @@ with st.expander("Significant frequencies",expanded=True):
         name='Significant Frequencies'
     ))
 
-    fig.update_layout(title_text="The significant frequencies which contribute to the total audio energye", title_x=0.5, title_xanchor='center')
+    fig.update_layout(title_text="The significant frequencies which contribute to the total audio energy", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Proportion of total energy")
     fig.update_yaxes(title_text="Significant frequencies (Hz)")
     fig.update_yaxes(range=[0, max(max_frequencies) * 1.1])
