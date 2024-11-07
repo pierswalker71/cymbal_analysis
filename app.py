@@ -271,6 +271,7 @@ with st.expander("Audio waveform",expanded=True):
                   )
 
     # Update layout
+    fig.update_layout(title_text="Audio waveform in time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Time (s)", range=[0, max_time_for_plotting])
     fig.update_yaxes(title_text="Amplitude")
     fig.update_xaxes(showgrid=True, gridwidth=0.7, gridcolor='lightgrey')
@@ -279,12 +280,6 @@ with st.expander("Audio waveform",expanded=True):
     fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
 
     fig.update_layout(
-        title=dict(
-            text='Audio waveform in time',
-            x=0.5,  # Center justification
-            xanchor='center',
-            font=dict(size=18)
-        ),
         legend=dict(
             x=0.9, y=1,
             traceorder="normal",
@@ -293,8 +288,14 @@ with st.expander("Audio waveform",expanded=True):
             bordercolor="Black",
             borderwidth=1
         ),
-        xaxis=dict(title_font=dict(color="black")), 
-        yaxis=dict(title_font=dict(color="black")), 
+        xaxis=dict(
+        title_font=dict(color="black"),  
+        tickfont=dict(color="black") 
+        ),
+        yaxis=dict(
+        title_font=dict(color="black"),  
+        tickfont=dict(color="black") 
+        ),
         plot_bgcolor='white',  # Background color of the plot area
         paper_bgcolor='white',  # Background color of the entire figure
         height=500,  
@@ -331,19 +332,20 @@ with st.expander("Significant frequencies",expanded=True):
         name='Significant Frequencies'
     ))
 
+    fig.update_layout(title_text="The significant frequencies which contribute to the total audio energye", title_x=0.5, title_xanchor='center')
+    fig.update_xaxes(title_text="Proportion of total energy")
+    fig.update_yaxes(title_text="Significant frequencies (Hz)")
     fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
     fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
 
     fig.update_layout(     
-        title={
-        'text': "The significant frequencies which contribute to the total audio energy",
-        'x': 0.5, 
-        'xanchor': 'center',
-        },
-        xaxis_title="Proportion of total energy",
-        xaxis=dict(title_font=dict(color="black")), 
-        yaxis_title="Significant frequencies (Hz)",
-        yaxis=dict(title_font=dict(color="black")), 
+        xaxis=dict(title_font=dict(color="black"),  
+                    tickfont=dict(color="black") 
+        ),
+        yaxis=dict(
+                   title_font=dict(color="black"),  
+                   tickfont=dict(color="black") 
+        ),
         yaxis_range=[0, max(max_frequencies) * 1.1]
     )
     
