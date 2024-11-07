@@ -306,8 +306,8 @@ with st.expander("Audio waveform",expanded=True):
 #--------------------------------------------------------------
 # Plot 2
 #--------------------------------------------------------------
-with st.expander("Audio waveform",expanded=True):
-    
+with st.expander("Frequency spectrum",expanded=True):
+    fig = go.Figure()
     # Define some necessary constants for freq spectrum plot
     max_freq = 6000
     freq_spectrum_plot_top_peaks_num = 5
