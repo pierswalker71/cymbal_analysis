@@ -293,6 +293,8 @@ with st.expander("Audio waveform",expanded=True):
             bordercolor="Black",
             borderwidth=1
         ),
+        xaxis=dict(title_font=dict(color="black")), 
+        yaxis=dict(title_font=dict(color="black")), 
         plot_bgcolor='white',  # Background color of the plot area
         paper_bgcolor='white',  # Background color of the entire figure
         height=500,  
@@ -332,14 +334,21 @@ with st.expander("Significant frequencies",expanded=True):
     fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
     fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
 
-    fig.update_layout(
-        title="The significant frequencies which contribute to the total audio energy",
+    fig.update_layout(     
+        title={
+        'text': "The significant frequencies which contribute to the total audio energy",
+        'x': 0.5, 
+        'xanchor': 'center',
+        font=dict(size=18)
+        },
         xaxis_title="Proportion of total energy",
+        xaxis=dict(title_font=dict(color="black")), 
         yaxis_title="Significant frequencies (Hz)",
+        yaxis=dict(title_font=dict(color="black")), 
         yaxis_range=[0, max(max_frequencies) * 1.1]
     )
     
-    st.write('This chart identifies the frequencies which contribute to the top 50% of the audio energy. The x-axis represents the cumultative proportion from 0 to 50% energy, and the y-axis identifies the frequencies')
+    st.write('This chart identifies the frequencies which contribute to the top 50% of the audio energy.')
     st.write('The x-axis represents the cumultative proportion from 0 to 50% energy, the y-axis identifies the frequencies')
    
     st.plotly_chart(fig)
