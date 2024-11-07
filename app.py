@@ -270,7 +270,7 @@ with st.expander("Audio waveform",expanded=True):
     fig.update_layout(title_text="Audio waveform in time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Time (s)", range=[0, max_time_for_plotting])
     fig.update_yaxes(title_text="Amplitude")
-    fig.update_layout(height=600, width=700)
+    fig.update_layout(height=400, width=700)
     
     fig.update_layout(
         legend=dict(
@@ -336,7 +336,8 @@ with st.expander("Frequency spectrum",expanded=True):
     fig.update_xaxes(title_text="Frequency (Hz)", range=[0, max_freq])
     fig.update_yaxes(title_text="Amplitude")
     fig.update_yaxes(range=[0, max(yf_normalised)*1.05])
-    
+    fig.update_layout(height=400, width=700)
+
     fig.update_layout(     
         xaxis=dict(
         title_font=dict(color="black"), tickfont=dict(color="black"),
@@ -386,7 +387,7 @@ with st.expander("Energy in each frequency band",expanded=True):
     fig.update_xaxes(title_text='Time (s)', range=[0, 3])
     fig.update_yaxes(title_text='Energy')
     fig.update_yaxes(range=[0, np.max([np.max(arr) for arr in energy_decay])*1.05])
-    #fig.update_layout(height=900, width=1200)
+    fig.update_layout(height=400, width=700)
 
     fig.update_layout(     
         xaxis=dict(
@@ -434,7 +435,8 @@ with st.expander("Significant frequencies",expanded=True):
     fig.update_xaxes(title_text="Proportion of total energy")
     fig.update_yaxes(title_text="Significant frequencies (Hz)")
     fig.update_yaxes(range=[0, max(max_frequencies) * 1.1])
-
+    fig.update_layout(height=400, width=700)
+    
     fig.update_layout(     
         xaxis=dict(
         title_font=dict(color="black"), tickfont=dict(color="black"),
