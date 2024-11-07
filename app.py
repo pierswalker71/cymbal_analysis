@@ -330,7 +330,7 @@ with st.expander("Audio waveform",expanded=True):
         )
     
     # Update axes, titles, and layout for the subplot
-    fig.layout.annotations[1].text = f"Spectrum (peak: {round(metrics['top_freq_1'])} Hz. Top 5 range: {round(metrics['top_5_freq_range'])} Hz)" 
+    #fig.layout.annotations[1].text = f"Spectrum (peak: {round(metrics['top_freq_1'])} Hz. Top 5 range: {round(metrics['top_5_freq_range'])} Hz)" 
     fig.update_xaxes(title_text="Frequency (Hz)", range=[0, max_freq])
     fig.update_yaxes(title_text="Amplitude")
     fig.update_yaxes(range=[0, max(yf_normalised)*1.05])
