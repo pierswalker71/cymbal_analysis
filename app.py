@@ -333,9 +333,7 @@ with st.expander("Significant frequencies",expanded=True):
     fig.update_layout(title_text="The significant frequencies which contribute to the total audio energye", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Proportion of total energy")
     fig.update_yaxes(title_text="Significant frequencies (Hz)")
-    fig.update_yaxes(range=[0, max(y) * 1.1])
-    #fig.update_xaxes(showline=True, linecolor='black', linewidth=1)
-    #fig.update_yaxes(showline=True, linecolor='black', linewidth=1)
+    fig.update_yaxes(range=[0, max(max_frequencies) * 1.1])
 
     fig.update_layout(     
         xaxis=dict(
