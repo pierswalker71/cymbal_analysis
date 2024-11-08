@@ -241,8 +241,6 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 with st.expander("Audio waveform",expanded=True):
 
     fig = go.Figure()
-    initial_peak_value=0.5
-    decay_point=2.5
     max_time_for_plotting=10
 
     # Generate time values for the waveform
@@ -255,7 +253,7 @@ with st.expander("Audio waveform",expanded=True):
     # Add vertical line for decay time
     # Add vertical line for decay time as a scatter trace
     fig.add_trace(go.Scatter(
-       x=[decay_point, decay_point],
+       x=[decay_time_10pc, decay_time_10pc],
         y=[min(y), max(y)],
         mode='lines',
         line=dict(color="blue", dash="dash"),
