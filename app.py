@@ -456,7 +456,7 @@ with st.expander("Significant frequencies",expanded=True):
         paper_bgcolor='white'
     )
     
-    st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy. (x-axis - cumultative proportion from 0 to 50% energy.")
+    st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy.")
     st.plotly_chart(fig)
 
 #==============================================================
