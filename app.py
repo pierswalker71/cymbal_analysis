@@ -295,7 +295,7 @@ with st.expander("Audio waveform",expanded=True):
         paper_bgcolor='white',  # Background color of the entire figure
     )
     
-    st.write("This chart presets the amplitude of the audio waveform in time. (x-axis - time in seconds; y-axis - amplitude)")
+    st.write("This chart presets the amplitude of the audio waveform in time.")
     st.plotly_chart(fig)
 
 
@@ -353,7 +353,7 @@ with st.expander("Frequency spectrum",expanded=True):
         paper_bgcolor='white', 
     )
 
-    st.write("This chart presets the frequency spectrum of the audio waveform. (x-axis - frequency; y-axis - amplitude)")
+    st.write("This chart presets the frequency spectrum of the audio waveform.")
     st.plotly_chart(fig)
 
 
@@ -412,7 +412,7 @@ with st.expander("Energy in each frequency band",expanded=True):
         legend=dict(x=1, y=1, traceorder="normal", font_size=10)
     )
 
-    st.write("This chart presets the energy in each of the key frequency bands. (x-axis - time in seconds; y-axis - energy)")
+    st.write("This chart presets the energy in each of the key frequency bands.")
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
@@ -456,7 +456,7 @@ with st.expander("Significant frequencies",expanded=True):
         paper_bgcolor='white'
     )
     
-    st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy. (x-axis - cumultative proportion from 0 to 50% energys; y-axis - identifies the frequencies)")
+    st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy. (x-axis - cumultative proportion from 0 to 50% energy.")
     st.plotly_chart(fig)
 
 #==============================================================
