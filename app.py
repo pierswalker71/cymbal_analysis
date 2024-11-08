@@ -433,8 +433,8 @@ with st.expander("Significant frequencies",expanded=True):
     y=max_frequencies,
     mode='lines+markers',  # Shows both lines and points
     name='Significant Frequencies',
-    line=dict(color='darkblue'),  # Dark blue line
-    marker=dict(color='darkblue')  # Dark blue markers
+    line=dict(color='black'),
+    marker=dict(color='black') 
     ))
 
     fig.update_layout(title_text="The significant frequencies which contribute to the total audio energy", title_x=0.5, title_xanchor='center')
