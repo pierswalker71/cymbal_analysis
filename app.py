@@ -253,18 +253,23 @@ with st.expander("Audio waveform",expanded=True):
                   )
 
     # Add vertical line for decay time
-    fig.add_shape(type='line',
-                  x0=decay_point, y0=min(y), x1=decay_point, y1=max(y),
-                  line=dict(color="blue", dash="dash"),
-                  name="Decay Time", showlegend=True
-                  )
+    # Add vertical line for decay time as a scatter trace
+    fig.add_trace(go.Scatter(
+       x=[decay_point, decay_point],
+        y=[min(y), max(y)],
+        mode='lines',
+        line=dict(color="blue", dash="dash"),
+        name="Decay Time"
+    ))
 
-    # Add horizontal line for peak value
-    fig.add_shape(type='line',
-                  x0=0, y0=initial_peak_value, x1=max_time_for_plotting, y1=initial_peak_value,
-                  line=dict(color="grey", dash="dash"),
-                  name="Peak Value", showlegend=True
-                  )
+    # Add horizontal line for peak value as a scatter trace
+    fig.add_trace(go.Scatter(
+        x=[0, max_time_for_plotting],
+        y=[initial_peak_value, initial_peak_value],
+        mode='lines',
+        line=dict(color="grey", dash="dash"),
+        name="Peak Value"
+    ))
 
     # Update layout
     fig.update_layout(title_text="Audio waveform in time", title_x=0.5, title_xanchor='center')
