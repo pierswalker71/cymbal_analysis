@@ -432,7 +432,9 @@ with st.expander("Significant frequencies",expanded=True):
         x=target_percentages,
         y=max_frequencies,
         mode='lines+markers',  # Shows both lines and points
-        name='Significant Frequencies'
+        name='Significant Frequencies',
+        line=dict(color='darkblue'), 
+        marker=dict(color='darkblue')
     ))
 
     fig.update_layout(title_text="The significant frequencies which contribute to the total audio energy", title_x=0.5, title_xanchor='center')
