@@ -242,6 +242,8 @@ with st.expander("Audio waveform",expanded=True):
 
     fig = go.Figure()
     max_time_for_plotting=10
+    initial_peak_value=0.5
+    decay_point=2.5
 
     # Generate time values for the waveform
     x_vals = np.linspace(0, len(y) / sr, num=len(y))
@@ -253,7 +255,7 @@ with st.expander("Audio waveform",expanded=True):
     # Add vertical line for decay time
     # Add vertical line for decay time as a scatter trace
     fig.add_trace(go.Scatter(
-       x=[decay_time_10pc, decay_time_10pc],
+       x=[decay_point, decay_point],
         y=[min(y), max(y)],
         mode='lines',
         line=dict(color="blue", dash="dash"),
