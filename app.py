@@ -337,7 +337,7 @@ with st.expander("Audio waveform",expanded=True):
         paper_bgcolor='white',  # Background color of the entire figure
     )
     
-    st.write("This chart presets the amplitude of the audio waveform in time.")
+    st.write("Here you can see the amplitude of the audio waveform as it changes in time.")
     st.plotly_chart(fig)
 
 
@@ -395,7 +395,8 @@ with st.expander("Frequency spectrum",expanded=True):
         paper_bgcolor='white', 
     )
 
-    st.write("This chart presets the frequency spectrum of the audio waveform.")
+    st.write("Here you can see the frequency spectrum of the audio waveform.")
+    st.write("The peaks show the frequencies which are present most strongly in the sound.")
     st.plotly_chart(fig)
 
 
@@ -454,7 +455,7 @@ with st.expander("Energy in each frequency band",expanded=True):
         legend=dict(x=1, y=1, traceorder="normal", font_size=10)
     )
 
-    st.write("This chart presets the energy in each of the key frequency bands.")
+    st.write("Here you can see the amount energy in each of the key frequency bands.")
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
@@ -500,7 +501,7 @@ with st.expander("Significant frequencies",expanded=True):
         paper_bgcolor='white'
     )
     
-    st.write("This chart identifies the frequencies which contribute to the top 50% of the audio energy.")
+    st.write("Here you can see the frequencies which contribute to the top 50% of the total energy in the audio signal.")
     st.plotly_chart(fig)
 
 #==============================================================
