@@ -11,6 +11,10 @@ from io import BytesIO
 import plotly.graph_objects as go
 import librosa
 
+
+import urllib.parse
+
+
 #import pandas as pd
 #import numpy as np
 #import matplotlib.pyplot as plt
@@ -41,7 +45,12 @@ files_audio = {
 files_image = {
     "Ride": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 20in 2786g (Sa ride).jpg",
     "Crash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 16in 1143g (Sa crash).jpg",
-    "Splash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 12in 419g (Sa splash).jpg",
+    "Splash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 12in 419g (Sa splash) (2).jpg",
+}
+
+# Replace spaces with %20
+files_image_no_spaces = {
+    key: urllib.parse.quote(value, safe=":/") for key, value in files_image.items()
 }
 
 st.title("Cymbal analysis")
@@ -66,16 +75,31 @@ file_choice = st.selectbox("", options=list(files_audio.keys()))
 # Load the selected file
 if file_choice:
     file_url_audio = files_audio[file_choice]
-    file_url_image = files_image[file_choice]
-        
+    file_url_image = files_image_no_spaces[file_choice]
+
+st.write(file_url_image)
+
+response = requests.get(file_url_image)
+if response.status_code == 200:
+
+    # Show the image
+    st.write('Here is what the cymbal looks like')
+
+    
+    # Encode the file name
+    #encoded_file_name = urllib.parse.quote(file_url_image)
+    # Construct the URL
+    #image_url = f"https://raw.githubusercontent.com/username/repository/branch/{encoded_file_name}"
+
+    st.image(file_url_image, caption=file_choice)
+
+else:
+    st.error("Failed to load the image.")
+
 response = requests.get(file_url_audio)
 if response.status_code == 200:
     audio_bytes = BytesIO(response.content)
 
-    # Show the image
-    st.write('Here is what the cymbal looks like')
-    st.image(file_url_image, caption="file_choice", use_column_width=True)
-        
     # Play the audio file in Streamlit
     st.write('Here is what the cymbal sounds like')
     st.audio(audio_bytes, format="audio/wav")
