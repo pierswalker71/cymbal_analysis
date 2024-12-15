@@ -11,6 +11,10 @@ from io import BytesIO
 import plotly.graph_objects as go
 import librosa
 
+
+import urllib.parse
+
+
 #import pandas as pd
 #import numpy as np
 #import matplotlib.pyplot as plt
@@ -32,39 +36,72 @@ import librosa
 #==============================================================
 
 # Define file options in a dropdown menu
-files = {
+files_audio = {
     "Ride": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-08-28 20in2786g (Sa ride) - stick - crash.wav",
     "Crash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 16in1143g (Sa crash) - stick - crash.wav",
     "Splash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 12in419g (Sa splash) - stick - crash.wav",
 }
 
+files_image = {
+    "Ride": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 20in 2786g (Sa ride).jpg",
+    "Crash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 16in 1143g (Sa crash).jpg",
+    "Splash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 12in 419g (Sa splash) (2).jpg",
+}
+
+# Replace spaces with %20
+files_image_no_spaces = {
+    key: urllib.parse.quote(value, safe=":/") for key, value in files_image.items()
+}
 
 st.title("Cymbal analysis")
 intro_text = f'''
+Hi welcome to my cymbal analysis app.
+
 This app loads an audio file of the sound of the cymbal from a drumkit being hit, 
 analyses the waveform and presents some graphics that portray the different sounds in a visual way.
-There are currently {len(files)} different cymbal sounds to choose from ({", ".join(files.keys())}).
+
+There are currently {len(files_audio)} different cymbal sounds to choose from ({", ".join(files_audio.keys())}).
 '''
 st.write(intro_text)
 
-st.header("Selection of audio clip", divider="gray")
+st.header("Load cymbal audio file", divider="gray")
 
 
 
 # Dropdown menu for file selection
 st.write('Choose an audio wav file to load:')
-file_choice = st.selectbox("Select file:", options=list(files.keys()))
+file_choice = st.selectbox("", options=list(files_audio.keys()))
 
 # Load the selected file
 if file_choice:
-    file_url = files[file_choice]
-        
-response = requests.get(file_url)
+    file_url_audio = files_audio[file_choice]
+    file_url_image = files_image_no_spaces[file_choice]
+
+st.write(file_url_image)
+
+response = requests.get(file_url_image)
+if response.status_code == 200:
+
+    # Show the image
+    st.write('Here is what the cymbal looks like')
+
+    
+    # Encode the file name
+    #encoded_file_name = urllib.parse.quote(file_url_image)
+    # Construct the URL
+    #image_url = f"https://raw.githubusercontent.com/username/repository/branch/{encoded_file_name}"
+
+    st.image(file_url_image, caption=file_choice)
+
+else:
+    st.error("Failed to load the image.")
+
+response = requests.get(file_url_audio)
 if response.status_code == 200:
     audio_bytes = BytesIO(response.content)
-        
+
     # Play the audio file in Streamlit
-    st.write('Play chosen audio file')
+    st.write('Here is what the cymbal sounds like')
     st.audio(audio_bytes, format="audio/wav")
     #st.write('file loaded ok')
 else:
