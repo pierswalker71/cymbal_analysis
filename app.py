@@ -32,7 +32,11 @@ import librosa
 #==============================================================
 
 st.title("Cymbal analysis")
-st.write("This app loads cymbal audio files and presents their key features")
+intro_text = '''
+This app loads an audio file of the sound of the cymbal from a drumkit being hit, 
+analyses the waveform and presents some graphics that portray the different sounds in a visual way.
+'''
+st.write(intro_text)
 
 st.header("Selection of audio clip", divider="gray")
 
