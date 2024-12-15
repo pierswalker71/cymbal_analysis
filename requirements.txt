@@ -7,4 +7,3 @@ pydub
 librosa
 scipy
 requests
-urllib
