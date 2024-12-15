@@ -37,8 +37,8 @@ files_image_no_spaces = {
 }
 
 st.title("Cymbal analysis")
+st.write('Piers Walker 2024 [https://github.com/pierswalker71](https://github.com/pierswalker71)')
 intro_text = f'''
-Piers Walker 2024 [https://github.com/pierswalker71](https://github.com/pierswalker71)
 Hi welcome to my cymbal analysis app.
 
 This app loads an audio file of the sound of the cymbal from a drumkit being hit, 
