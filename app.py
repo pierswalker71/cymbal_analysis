@@ -72,7 +72,7 @@ if response.status_code == 200:
     image = Image.open(BytesIO(response.content))
 
     # Resize the image (maintaining aspect ratio)
-    new_width = 100
+    new_width = 300
     aspect_ratio = image.height / image.width
     new_height = int(new_width * aspect_ratio)
     resized_image = image.resize((new_width, new_height))
