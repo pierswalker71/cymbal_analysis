@@ -68,7 +68,7 @@ st.header("Load cymbal audio file", divider="gray")
 
 # Dropdown menu for file selection
 st.write('Choose an audio wav file to load.')
-st.write("There are currently {len(files_audio)} different cymbal sounds to choose from ({", ".join(files_audio.keys())}).")
+st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from ({", ".join(files_audio.keys())}).")
 
 file_choice = st.selectbox("", options=list(files_audio.keys()))
 
