@@ -43,7 +43,7 @@ st.title("Cymbal analysis")
 intro_text = f'''
 This app loads an audio file of the sound of the cymbal from a drumkit being hit, 
 analyses the waveform and presents some graphics that portray the different sounds in a visual way.
-There are currently {len(files)} different cymbal sounds to choose from ().
+There are currently {len(files)} different cymbal sounds to choose from ([c for c in files.keys]).
 '''
 st.write(intro_text)
 
