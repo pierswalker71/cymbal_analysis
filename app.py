@@ -77,8 +77,6 @@ if file_choice:
     file_url_audio = files_audio[file_choice]
     file_url_image = files_image_no_spaces[file_choice]
 
-st.write(file_url_image)
-
 response = requests.get(file_url_image)
 if response.status_code == 200:
 
