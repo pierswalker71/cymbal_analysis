@@ -12,6 +12,7 @@ import plotly.graph_objects as go
 import librosa
 
 import urllib.parse
+from PIL import Image
 
 #==============================================================
 # Start streamlit code
@@ -66,10 +67,15 @@ if response.status_code == 200:
     st.write('Here is what the cymbal looks like')
 
     
-    # Encode the file name
-    #encoded_file_name = urllib.parse.quote(file_url_image)
-    # Construct the URL
-    #image_url = f"https://raw.githubusercontent.com/username/repository/branch/{encoded_file_name}"
+    # Fetch and open the image
+    response = requests.get(file_url_image)
+    image = Image.open(BytesIO(response.content))
+
+    # Resize the image (maintaining aspect ratio)
+    new_width = 300
+    aspect_ratio = image.height / image.width
+    new_height = int(new_width * aspect_ratio)
+    resized_image = image.resize((new_width, new_height))
 
     st.image(file_url_image, caption=file_choice)
 
