@@ -96,6 +96,9 @@ with col2:
     else:
         st.error("Failed to load the audio file.")
 
+
+# Load data
+
 # Load wav file with librosa
 # y is time series, sr is sample rate
 y, sr = librosa.load(audio_bytes, sr=None)
@@ -268,7 +271,7 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 # **** Generate plots ****
 #==============================================================
 
-
+st.header("The waveform in time", divider="gray")
 #--------------------------------------------------------------
 # Plot 1
 #--------------------------------------------------------------
