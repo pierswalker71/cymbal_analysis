@@ -31,21 +31,25 @@ import librosa
 # Start streamlit code
 #==============================================================
 
-st.title("Cymbal analysis")
-intro_text = '''
-This app loads an audio file of the sound of the cymbal from a drumkit being hit, 
-analyses the waveform and presents some graphics that portray the different sounds in a visual way.
-'''
-st.write(intro_text)
-
-st.header("Selection of audio clip", divider="gray")
-
 # Define file options in a dropdown menu
 files = {
     "Ride": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-08-28 20in2786g (Sa ride) - stick - crash.wav",
     "Crash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 16in1143g (Sa crash) - stick - crash.wav",
     "Splash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 12in419g (Sa splash) - stick - crash.wav",
 }
+
+
+st.title("Cymbal analysis")
+intro_text = f'''
+This app loads an audio file of the sound of the cymbal from a drumkit being hit, 
+analyses the waveform and presents some graphics that portray the different sounds in a visual way.
+There are currently {len(files)} different cymbal sounds to choose from ().
+'''
+st.write(intro_text)
+
+st.header("Selection of audio clip", divider="gray")
+
+
 
 # Dropdown menu for file selection
 st.write('Choose an audio wav file to load:')
