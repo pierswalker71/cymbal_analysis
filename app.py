@@ -60,38 +60,41 @@ if file_choice:
     file_url_audio = files_audio[file_choice]
     file_url_image = files_image_no_spaces[file_choice]
 
-response = requests.get(file_url_image)
-if response.status_code == 200:
+col1, col2 = st.columns(2)
 
-    # Show the image
-    st.write('Here is what the cymbal looks like')
-
-    
-    # Fetch and open the image
+with col1:
     response = requests.get(file_url_image)
-    image = Image.open(BytesIO(response.content))
+    if response.status_code == 200:
 
-    # Resize the image (maintaining aspect ratio)
-    new_width = 300
-    aspect_ratio = image.height / image.width
-    new_height = int(new_width * aspect_ratio)
-    resized_image = image.resize((new_width, new_height))
+        # Show the image
+        st.write('Here is what the cymbal looks like')
 
-    st.image(resized_image, caption=file_choice)
+        # Fetch and open the image
+        response = requests.get(file_url_image)
+        image = Image.open(BytesIO(response.content))
 
-else:
-    st.error("Failed to load the image.")
+        # Resize the image (maintaining aspect ratio)
+        new_width = 300
+        aspect_ratio = image.height / image.width
+        new_height = int(new_width * aspect_ratio)
+        resized_image = image.resize((new_width, new_height))
 
-response = requests.get(file_url_audio)
-if response.status_code == 200:
-    audio_bytes = BytesIO(response.content)
+        # Display image
+        st.image(resized_image, caption=file_choice)
 
-    # Play the audio file in Streamlit
-    st.write('Here is what the cymbal sounds like')
-    st.audio(audio_bytes, format="audio/wav")
-    #st.write('file loaded ok')
-else:
-    st.error("Failed to load the audio file.")
+    else:
+        st.error("Failed to load the image.")
+
+with col2:
+    response = requests.get(file_url_audio)
+    if response.status_code == 200:
+        audio_bytes = BytesIO(response.content)
+
+        # Play the audio file in Streamlit
+        st.write('Here is what the cymbal sounds like')
+        st.audio(audio_bytes, format="audio/wav")
+    else:
+        st.error("Failed to load the audio file.")
 
 # Load wav file with librosa
 # y is time series, sr is sample rate
