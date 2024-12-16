@@ -357,9 +357,13 @@ st.header("The key frequencies", divider="gray")
 # Key stats
 
 st.markdown("The top peak frequencies are:")
-for p in range(1,5):
-    text = f"<b>{metrics[f"top_freq_{p}"]:.0f}Hz</b> ({metrics[f"top_freq_{p}_band"]} band)"
-    st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+
+text = f'''
+<b>{metrics[f"top_freq_1"]:.0f}Hz</b> ({metrics[f"top_freq_1_band"]})
+<b>{metrics[f"top_freq_2"]:.0f}Hz</b> ({metrics[f"top_freq_2_band"]})
+'''
+
+st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
 st.write(f"{metrics["top_freq_1"]:.0f} ({metrics["top_freq_1_band"]})")
 
