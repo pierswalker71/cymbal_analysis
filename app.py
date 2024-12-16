@@ -363,7 +363,7 @@ Top_5_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], re
 indices, values = zip(*Top_5_bands)
 
 st.write(f"{indices[0]}")
-st.write(f"{indices[1]}")
+st.write(f"{freq_bands}")
 
 text = f'''
 1. <b>{freq_band_names[indices[0]]}</b> ({100*values[0]:.0f}%) <br>
