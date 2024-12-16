@@ -175,8 +175,8 @@ for p in range(5):
     metrics[f"top_freq_{p+1}_band"] = get_frequency_band(top_frequencies_sorted[p],freq_bands_hz_name)
 
 # calc range of top frequency peaks
-metrics['top_3_freq_range'] = max(top_frequencies_sorted[:6]) - min(top_frequencies_sorted[:6])
-metrics['top_5_freq_range'] = max(top_frequencies_sorted[:4]) - min(top_frequencies_sorted[:4])
+metrics['top_3_freq_range'] = max(top_frequencies_sorted[:4]) - min(top_frequencies_sorted[:4])
+metrics['top_5_freq_range'] = max(top_frequencies_sorted[:6]) - min(top_frequencies_sorted[:6])
 
 # calc the number of freq
 #that contribute to top % energy
