@@ -178,8 +178,8 @@ for p in range(5):
 metrics['top_3_freq_range'] = max(top_frequencies_sorted[:4]) - min(top_frequencies_sorted[:4])
 metrics['top_5_freq_range'] = max(top_frequencies_sorted[:6]) - min(top_frequencies_sorted[:6])
 
-st.write(f"{top_frequencies_sorted[:4]})
-st.write(f"{max(top_frequencies_sorted[:4])})
+st.write(f"{top_frequencies_sorted[:4]}")
+st.write(f"{max(top_frequencies_sorted[:4])}")
 
 # calc the number of freq
 #that contribute to top % energy
