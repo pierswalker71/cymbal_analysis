@@ -275,6 +275,8 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 
 st.header("How long the cymbal rings for", divider="gray")
 
+# Key stats
+
 st.write(f"It takes {decay_time_50pc:.1f}s for the sound to decay to 50% its initial maximum amplitude.")
 #st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:bold;">{text}</p>', unsafe_allow_html=True)
 
@@ -283,6 +285,12 @@ st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; fon
 
 #--------------------------------------------------------------
 # Plot 1
+#--------------------------------------------------------------
+
+
+
+#--------------------------------------------------------------
+# Plot 2
 #--------------------------------------------------------------
 with st.expander("Audio waveform",expanded=True):
 
@@ -350,11 +358,19 @@ with st.expander("Audio waveform",expanded=True):
 
 
 #==============================================================
-st.header(" Frequency charts", divider="gray")
+st.header("The key frequencies", divider="gray")
 #==============================================================
 
+# Key stats
+
+text = f"The most significant frequency bands are <b>{decay_time_10pc:.1f}s</b>."
+st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+
+text = f"The key frequencies are <b>{decay_time_10pc:.1f}s</b>."
+st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+
 #--------------------------------------------------------------
-# Plot 2
+# Plot 3
 #--------------------------------------------------------------
 with st.expander("Frequency spectrum",expanded=True):
     fig = go.Figure()
@@ -409,7 +425,7 @@ with st.expander("Frequency spectrum",expanded=True):
 
 
 #--------------------------------------------------------------
-# Plot 3
+# Plot 4
 #--------------------------------------------------------------
 # Compute energy decay for each frequency band
 
@@ -467,7 +483,7 @@ with st.expander("Energy in each frequency band",expanded=True):
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
-# Plot 4
+# Plot 5
 #--------------------------------------------------------------
 with st.expander("Significant frequencies",expanded=True):
     
