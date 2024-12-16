@@ -276,10 +276,10 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 st.header("How long the cymbal rings for", divider="gray")
 
 text = f"It takes {decay_time_50pc:.1f}s for the sound to decay to 50% its initial maximum amplitude."
-st.markdown('<p style="color:blue; background-color:yellow; font-size:20px; font-weight:bold;">{text}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:bold;">{text}</p>', unsafe_allow_html=True)
 
 text = f"It takes {decay_time_10pc:.1f}s for the sound to decay to 10% its initial maximum amplitude."
-st.markdown('<p style="color:blue; background-color:yellow; font-size:20px; font-weight:bold;">{text}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:bold;">{text}</p>', unsafe_allow_html=True)
 
 #--------------------------------------------------------------
 # Plot 1
