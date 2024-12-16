@@ -39,10 +39,10 @@ files_image_no_spaces = {
 st.title("Cymbal analysis")
 st.write('Piers Walker 2024 [https://github.com/pierswalker71](https://github.com/pierswalker71)')
 intro_text = f'''
-Hi welcome to my cymbal analysis app.
+Hi welcome to my cymbal analyser.
 
-This app loads an audio file of the sound of the cymbal from a drumkit being hit, 
-analyses the waveform and presents some graphics that portray the different sounds in a visual way.
+You can select an audio file of one of the cymbals from my drumkit being hit. The audio file will be  
+analysed in both time and frequency and you will be presented with some graphics that portray the sound in intreresting and informative ways.
 '''
 st.write(intro_text)
 
@@ -68,7 +68,7 @@ with col1:
     if response.status_code == 200:
 
         # Show the image
-        st.write('Here is what the cymbal looks like')
+        st.write('Here is what the cymbal looks like:')
 
         # Fetch and open the image
         response = requests.get(file_url_image)
@@ -92,7 +92,7 @@ with col2:
         audio_bytes = BytesIO(response.content)
 
         # Play the audio file in Streamlit
-        st.write('Here is what the cymbal sounds like')
+        st.write('Here is what the cymbal sounds like:')
         st.audio(audio_bytes, format="audio/wav")
     else:
         st.error("Failed to load the audio file.")
