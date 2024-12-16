@@ -357,24 +357,26 @@ st.header("The key frequencies", divider="gray")
 # Key stats
 
 st.markdown("The top peak frequencies are:")
-
 text = f'''
-<b>{metrics[f"top_freq_1"]:.0f}Hz</b> ({metrics[f"top_freq_1_band"]}) 
-<br>
-<b>{metrics[f"top_freq_2"]:.0f}Hz</b> ({metrics[f"top_freq_2_band"]})
-<br>
-<b>{metrics[f"top_freq_3"]:.0f}Hz</b> ({metrics[f"top_freq_3_band"]})
-<br>
-<b>{metrics[f"top_freq_4"]:.0f}Hz</b> ({metrics[f"top_freq_4_band"]})
-<br>
+<b>{metrics[f"top_freq_1"]:.0f}Hz</b> ({metrics[f"top_freq_1_band"]}) <br>
+<b>{metrics[f"top_freq_2"]:.0f}Hz</b> ({metrics[f"top_freq_2_band"]}) <br>
+<b>{metrics[f"top_freq_3"]:.0f}Hz</b> ({metrics[f"top_freq_3_band"]}) <br>
+<b>{metrics[f"top_freq_4"]:.0f}Hz</b> ({metrics[f"top_freq_4_band"]}) <br>
 <b>{metrics[f"top_freq_5"]:.0f}Hz</b> ({metrics[f"top_freq_5_band"]})
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
-st.write(f"{metrics["top_freq_1"]:.0f} ({metrics["top_freq_1_band"]})")
-
-text = f"The key frequencies are <b>{decay_time_10pc:.1f}s</b>."
+st.markdown("The range of the top peak frequencies are:")
+text = f'''
+Range of top 3 peaks is <b>{metrics['top_3_freq_range']:.0f}Hz</b> <br>
+Range of top 5 peaks is <b>{metrics['top_5_freq_range']}Hz</b>
+'''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+
+
+metrics['top_3_freq_range'] = max(top_frequencies_sorted[:6]) - min(top_frequencies_sorted[:6])
+metrics['top_5_freq_range']
+
 
 #--------------------------------------------------------------
 # Plot 2
