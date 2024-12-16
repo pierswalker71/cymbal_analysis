@@ -501,6 +501,8 @@ with st.expander("Frequency bands", expanded=True):
         fig.data[2 + i].update(yaxis='y2')  # Update the stalks to use the secondary y-axis
 
     # Display the figure in the Streamlit app
+    
+    st.write("Here you can see the amount of energy and the number of the peak frequencies in each of the audio bands.")
     st.plotly_chart(fig, use_container_width=True)
 
 
