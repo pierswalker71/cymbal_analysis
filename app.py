@@ -277,8 +277,8 @@ st.header("How long the cymbal rings for", divider="gray")
 
 # Key stats
 
-st.write(f"It takes {decay_time_50pc:.1f}s for the sound to decay to 50% its initial maximum amplitude.")
-#st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:bold;">{text}</p>', unsafe_allow_html=True)
+st.write(f"{metrics["top_freq_1"]} ({metrics["top_freq_1_band"]} band)")
+
 
 text = f"It takes <b>{decay_time_10pc:.1f}s</b> for the sound to decay to 10% its initial maximum amplitude."
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
