@@ -495,6 +495,8 @@ with st.expander("Frequency bands", expanded=True):
             traceorder="normal",
             font_size=10
         )
+        plot_bgcolor='white',  
+        paper_bgcolor='white', 
     )
 
     # Assign the Scatter trace for peaks to use the secondary y-axis
