@@ -365,9 +365,6 @@ indices, values = zip(*Top_5_bands)
 # Generate formatted frequency labels
 formatted_labels = [format_freq(low, high) for (low, high) in freq_bands]
 
-st.write(f"{indices[0]}")
-st.write(f"{freq_bands}")
-
 text = f'''
 1. <b>{freq_band_names[indices[0]]} ({formatted_labels[indices[0]]})</b> ({100*values[0]:.0f}% total energy) <br>
 2. <b>{freq_band_names[indices[1]]} ({formatted_labels[indices[1]]})</b> ({100*values[1]:.0f}% total energy) <br>
