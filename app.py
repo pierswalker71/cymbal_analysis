@@ -58,6 +58,7 @@ file_choice = st.selectbox("", options=list(files_audio.keys()))
 
 # Load the selected file
 if file_choice:
+    st.write(f"**You have chosen the {file_choice} cymbal**")
     file_url_audio = files_audio[file_choice]
     file_url_image = files_image_no_spaces[file_choice]
 
