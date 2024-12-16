@@ -277,8 +277,7 @@ st.header("How long the cymbal rings for", divider="gray")
 
 # Key stats
 
-st.write(f"{metrics["top_freq_1"]} ({metrics["top_freq_1_band"]} band)")
-
+st.write(f"It takes {decay_time_50pc:.1f}s for the sound to decay to 50% its initial maximum amplitude.")
 
 text = f"It takes <b>{decay_time_10pc:.1f}s</b> for the sound to decay to 10% its initial maximum amplitude."
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
@@ -363,8 +362,7 @@ st.header("The key frequencies", divider="gray")
 
 # Key stats
 
-text = f"The most significant frequency bands are <b>{decay_time_10pc:.1f}s</b>."
-st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+st.write(f"{metrics["top_freq_1"]:.1f} ({metrics["top_freq_1_band"]} band)")
 
 text = f"The key frequencies are <b>{decay_time_10pc:.1f}s</b>."
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
