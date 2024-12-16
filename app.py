@@ -285,12 +285,6 @@ st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; fon
 #--------------------------------------------------------------
 # Plot 1
 #--------------------------------------------------------------
-
-
-
-#--------------------------------------------------------------
-# Plot 2
-#--------------------------------------------------------------
 with st.expander("Audio waveform",expanded=True):
 
     fig = go.Figure()
@@ -362,10 +356,19 @@ st.header("The key frequencies", divider="gray")
 
 # Key stats
 
-st.write(f"{metrics["top_freq_1"]:.1f} ({metrics["top_freq_1_band"]} band)")
+text = f"The top 5 peak frequencies are <b>{metrics["top_freq_1"]:.0f}Hz</b> ({metrics["top_freq_1_band"]} band)"
+st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+
+st.write(f"{metrics["top_freq_1"]:.0f} ({metrics["top_freq_1_band"]} band)")
 
 text = f"The key frequencies are <b>{decay_time_10pc:.1f}s</b>."
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+
+#--------------------------------------------------------------
+# Plot 2
+#--------------------------------------------------------------
+
+
 
 #--------------------------------------------------------------
 # Plot 3
