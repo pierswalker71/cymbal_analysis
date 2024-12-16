@@ -359,7 +359,7 @@ st.header("The key frequencies", divider="gray")
 st.markdown("The top peak frequencies are:")
 text = f'''
 <div style="color:blue; background-color:yellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">
-    <ul>
+    <ul style="margin: 0; padding-left: 20px;">
         <li><b>{metrics[f"top_freq_1"]:.0f}Hz</b> ({metrics[f"top_freq_1_band"]})</li> <br>
         <li><b>{metrics[f"top_freq_2"]:.0f}Hz</b> ({metrics[f"top_freq_2_band"]})</li> <br>
         <li><b>{metrics[f"top_freq_3"]:.0f}Hz</b> ({metrics[f"top_freq_3_band"]})</li> <br>
