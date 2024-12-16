@@ -368,10 +368,13 @@ st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; fon
 
 st.markdown("**The range of the top peak frequencies are:**")
 text = f'''
-Range of top 3 peaks is <b>{metrics['top_3_freq_range']:,.0f}Hz</b> ({(100*metrics['top_3_freq_range']/{metrics['top_3_freq_range']):,.0f}{}% top peak)</li> <br>
-Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b> ({}% top peak)</li>
+Range of top 3 peaks is <b>{metrics['top_3_freq_range']:,.0f}Hz</b> 
+({(100 * metrics['top_3_freq_range'] / metrics['top_peak']):,.0f}% of top peak)<br>
+Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b> 
+({(100 * metrics['top_5_freq_range'] / metrics['top_peak']):,.0f}% of top peak)
 '''
-st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
+
 
 #--------------------------------------------------------------
 # Plot 2
