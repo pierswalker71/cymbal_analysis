@@ -432,8 +432,7 @@ with st.expander("Frequency spectrum",expanded=True):
         paper_bgcolor='white', 
     )
 
-    st.write("Here you can see the frequency spectrum of the audio waveform.")
-    st.write("The peaks show the frequencies which are present most strongly in the sound.")
+    st.write("Here you can see the frequency spectrum of the audio waveform. The peaks show the frequencies which are present most strongly in the sound.")
     st.plotly_chart(fig)
 
 
