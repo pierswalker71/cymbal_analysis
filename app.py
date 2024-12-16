@@ -280,7 +280,7 @@ st.write("**How long it takes for the sound to die down**.")
 st.write(f"It takes {decay_time_50pc:.1f}s for the sound to decay to 50% its initial peak value.")
 
 text = f"It takes <b>{decay_time_10pc:.1f}s</b> for the sound to decay to 10% its initial peak value."
-st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
 #--------------------------------------------------------------
 # Plot 1
@@ -372,7 +372,7 @@ text = f'''
 4. <b>{freq_band_names[indices[3]]} ({formatted_labels[indices[3]]}Hz)</b> ({100*values[3]:.0f}% total energy) <br>
 5. <b>{freq_band_names[indices[4]]} ({formatted_labels[indices[4]]}Hz)</b> ({100*values[4]:.0f}% total energy) <br>
 '''
-st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
 
 st.markdown("**The top 5 peak frequencies are:**")
@@ -383,7 +383,7 @@ text = f'''
 4. <b>{metrics[f"top_freq_4"]:,.0f}Hz</b> ({metrics[f"top_freq_4_band"]}) <br>
 5. <b>{metrics[f"top_freq_5"]:,.0f}Hz</b> ({metrics[f"top_freq_5_band"]})
 '''
-st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
 st.markdown("**The range of the top peak frequencies are:**")
 text = f'''
@@ -392,7 +392,7 @@ Range of top 3 peaks is <b>{metrics['top_3_freq_range']:,.0f}Hz</b>
 Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b> 
 ({(100 * metrics['top_5_freq_range'] / metrics['top_freq_1']):,.0f}% of top peak)
 '''
-st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
 
 #--------------------------------------------------------------
