@@ -494,7 +494,7 @@ with st.expander("Frequency bands", expanded=True):
             y=1,
             traceorder="normal",
             font_size=10
-        )
+        ),
         plot_bgcolor='white',  
         paper_bgcolor='white', 
     )
