@@ -363,9 +363,9 @@ Top_3_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], re
 indices, values = zip(*Top_3_bands)
 
 text = f'''
-1. <b>{indices[0]:,.0f}Hz</b> ({indices[0]}) <br>
-2. <b>{indices[1]:,.0f}Hz</b> ({indices[1]}) <br>
-3. <b>{indices[2]:,.0f}Hz</b> ({indices[2]}) <br>
+1. <b>{freq_band_names[indices[0]]:,.0f}Hz</b> ({values[0]}) <br>
+2. <b>{freq_band_names[indices[1]]:,.0f}Hz</b> ({values[1]}) <br>
+3. <b>{freq_band_names[indices[2]]:,.0f}Hz</b> ({values[2]}) <br>
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
