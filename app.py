@@ -59,6 +59,7 @@ file_choice = st.selectbox("", options=list(files_audio.keys()))
 # Load the selected file
 if file_choice:
     st.write(f"**You have chosen the {file_choice} cymbal**")
+    st.markdown('<p style="text-align:center; font-size:20px;">This text is centered!</p>', unsafe_allow_html=True)
     file_url_audio = files_audio[file_choice]
     file_url_image = files_image_no_spaces[file_choice]
 
