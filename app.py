@@ -366,11 +366,11 @@ indices, values = zip(*Top_5_bands)
 formatted_labels = [format_freq(low, high) for (low, high) in freq_bands]
 
 text = f'''
-1. <b>{freq_band_names[indices[0]]} ({formatted_labels[indices[0]]})</b> ({100*values[0]:.0f}% total energy) <br>
-2. <b>{freq_band_names[indices[1]]} ({formatted_labels[indices[1]]})</b> ({100*values[1]:.0f}% total energy) <br>
-3. <b>{freq_band_names[indices[2]]} ({formatted_labels[indices[2]]})</b> ({100*values[2]:.0f}% total energy) <br>
-4. <b>{freq_band_names[indices[3]]} ({formatted_labels[indices[3]]})</b> ({100*values[3]:.0f}% total energy) <br>
-5. <b>{freq_band_names[indices[4]]} ({formatted_labels[indices[4]]})</b> ({100*values[4]:.0f}% total energy) <br>
+1. <b>{freq_band_names[indices[0]]} ({formatted_labels[indices[0]]}Hz)</b> ({100*values[0]:.0f}% total energy) <br>
+2. <b>{freq_band_names[indices[1]]} ({formatted_labels[indices[1]]}Hz)</b> ({100*values[1]:.0f}% total energy) <br>
+3. <b>{freq_band_names[indices[2]]} ({formatted_labels[indices[2]]}Hz)</b> ({100*values[2]:.0f}% total energy) <br>
+4. <b>{freq_band_names[indices[3]]} ({formatted_labels[indices[3]]}Hz)</b> ({100*values[3]:.0f}% total energy) <br>
+5. <b>{freq_band_names[indices[4]]} ({formatted_labels[indices[4]]}Hz)</b> ({100*values[4]:.0f}% total energy) <br>
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
