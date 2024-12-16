@@ -356,6 +356,9 @@ st.header("The key frequencies", divider="gray")
 
 # Key stats
 
+st.markdown("**Most of the sound energy is concentrated in the following bands:**")
+st.write(normalized_band_energies)
+
 st.markdown("**The top peak frequencies are:**")
 text = f'''
 1. <b>{metrics[f"top_freq_1"]:,.0f}Hz</b> ({metrics[f"top_freq_1_band"]}) <br>
