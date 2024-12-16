@@ -68,7 +68,7 @@ with col1:
     if response.status_code == 200:
 
         # Show the image
-        st.write('Here is what the cymbal looks like:')
+        st.write('**Here is what the cymbal looks like:**')
 
         # Fetch and open the image
         response = requests.get(file_url_image)
@@ -92,7 +92,7 @@ with col2:
         audio_bytes = BytesIO(response.content)
 
         # Play the audio file in Streamlit
-        st.write('Here is what the cymbal sounds like:')
+        st.write('**Here is what the cymbal sounds like:**')
         st.audio(audio_bytes, format="audio/wav")
     else:
         st.error("Failed to load the audio file.")
