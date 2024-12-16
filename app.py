@@ -52,7 +52,7 @@ st.header("Load cymbal audio file", divider="gray")
 
 # Dropdown menu for file selection
 st.write('Choose an audio wav file to load.')
-st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from ({", ".join(files_audio.keys())}).")
+#st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from ({", ".join(files_audio.keys())}).")
 
 file_choice = st.selectbox("", options=list(files_audio.keys()))
 
@@ -379,6 +379,102 @@ st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; fon
 #--------------------------------------------------------------
 # Plot 2
 #--------------------------------------------------------------
+with st.expander("Frequency bands", expanded=True):
+    # Generate formatted frequency labels
+    formatted_labels = [format_freq(low, high) for (low, high) in freq_bands]
+
+    # Create the figure
+    fig = go.Figure()
+
+    # Bar chart for normalized energy distribution
+    fig.add_trace(
+        go.Bar(
+            x=formatted_labels,
+            y=normalized_band_energies,
+            marker=dict(color=freq_band_colours),
+            name="Energy",
+            opacity=0.7,
+            showlegend=True
+        )
+    )
+
+    # Count the number of peaks in each band
+    top_peaks_across_bands_num = 20
+
+    peaks_per_band = []
+    for band in freq_bands:
+        lower_bound, upper_bound = band
+        count_in_band = sum((lower_bound <= peak <= upper_bound) for peak in top_frequencies_sorted[:top_peaks_across_bands_num])
+        peaks_per_band.append(count_in_band)
+
+    # Overlay the number of peaks on the secondary y-axis (stalks with round tops)
+    x_values = formatted_labels
+    y_values = peaks_per_band
+
+    fig.add_trace(
+        go.Scatter(
+            x=x_values,
+            y=y_values,
+            mode='markers',
+            line=dict(color='black'),
+            marker=dict(symbol='star', size=10),
+            name=f'Number of peaks in top {top_peaks_across_bands_num}',
+        )
+    )
+
+    # Adding vertical lines to represent the stalks
+    for i in range(len(x_values)):
+        fig.add_trace(
+            go.Scatter(
+                x=[x_values[i], x_values[i]],
+                y=[0, y_values[i]],
+                mode='lines',
+                line=dict(color='black', width=1),
+                showlegend=False
+            )
+        )
+
+    # Set the y-axis for both axes to start at zero and configure dual y-axes
+    fig.update_layout(
+        yaxis=dict(
+            title='Proportion of energy',
+            range=[0, None]
+        ),
+        yaxis2=dict(
+            title='Number of peaks',
+            overlaying='y',
+            side='right',
+            range=[0, None]
+        ),
+        xaxis=dict(
+            title='Frequency Band (Hz)'
+        ),
+        annotations=[
+            dict(
+                x=0.5,
+                y=1.15,
+                xref='paper',
+                yref='paper',
+                text='Energy and number of peaks in key frequency bands',
+                showarrow=False,
+                font=dict(size=12)
+            )
+        ],
+        legend=dict(
+            x=0.85,
+            y=1,
+            traceorder="normal",
+            font_size=10
+        )
+    )
+
+    # Assign the Scatter trace for peaks to use the secondary y-axis
+    fig.data[1].update(yaxis='y2')
+    for i in range(len(x_values)):
+        fig.data[2 + i].update(yaxis='y2')  # Update the stalks to use the secondary y-axis
+
+    # Display the figure in the Streamlit app
+    st.plotly_chart(fig, use_container_width=True)
 
 
 
