@@ -373,11 +373,6 @@ Range of top 5 peaks is <b>{metrics['top_5_freq_range']}Hz</b>
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
-
-metrics['top_3_freq_range'] = max(top_frequencies_sorted[:6]) - min(top_frequencies_sorted[:6])
-metrics['top_5_freq_range']
-
-
 #--------------------------------------------------------------
 # Plot 2
 #--------------------------------------------------------------
