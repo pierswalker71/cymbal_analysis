@@ -273,6 +273,10 @@ metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,pea
 #==============================================================
 
 st.header("How long the cymbal rings for", divider="gray")
+
+st.write(f"It takes {decay_time_50pc.}s for the sound to decay to 50% its initial maximum amplitude.")
+st.write(f"It takes {decay_time_10pc}s for the sound to decay to 10% its initial maximum amplitude.")
+st.markdown('<p style="color:blue; background-color:yellow; font-size:20px; font-weight:bold;">Eye-catching text!</p>', unsafe_allow_html=True)
 #--------------------------------------------------------------
 # Plot 1
 #--------------------------------------------------------------
@@ -339,7 +343,6 @@ with st.expander("Audio waveform",expanded=True):
     )
     
     st.write("Here you can see the amplitude of the audio waveform as it changes in time.")
-    st.write(f"It takes {decay_time_50pc}s for the sound to decay to 50% and {decay_time_10pc}s to decay to 50% max amplitude ")
     st.plotly_chart(fig)
 
 
