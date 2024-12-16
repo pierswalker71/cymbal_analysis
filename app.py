@@ -369,7 +369,7 @@ st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; fon
 st.markdown("The range of the top peak frequencies are:")
 text = f'''
 Range of top 3 peaks is <b>{metrics['top_3_freq_range']:.0f}Hz</b> <br>
-Range of top 5 peaks is <b>{metrics['top_5_freq_range']}Hz</b>
+Range of top 5 peaks is <b>{metrics['top_5_freq_range']:.0f}Hz</b>
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
