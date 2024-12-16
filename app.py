@@ -358,18 +358,18 @@ st.header("The key frequencies", divider="gray")
 
 st.markdown("The top peak frequencies are:")
 text = f'''
-<b>{metrics[f"top_freq_1"]:.0f}Hz</b> ({metrics[f"top_freq_1_band"]}) <br>
-<b>{metrics[f"top_freq_2"]:.0f}Hz</b> ({metrics[f"top_freq_2_band"]}) <br>
-<b>{metrics[f"top_freq_3"]:.0f}Hz</b> ({metrics[f"top_freq_3_band"]}) <br>
-<b>{metrics[f"top_freq_4"]:.0f}Hz</b> ({metrics[f"top_freq_4_band"]}) <br>
-<b>{metrics[f"top_freq_5"]:.0f}Hz</b> ({metrics[f"top_freq_5_band"]})
+<li><b>{metrics[f"top_freq_1"]:.0f}Hz</b> ({metrics[f"top_freq_1_band"]})</li> <br>
+<li><b>{metrics[f"top_freq_2"]:.0f}Hz</b> ({metrics[f"top_freq_2_band"]})</li> <br>
+<li><b>{metrics[f"top_freq_3"]:.0f}Hz</b> ({metrics[f"top_freq_3_band"]})</li> <br>
+<li><b>{metrics[f"top_freq_4"]:.0f}Hz</b> ({metrics[f"top_freq_4_band"]})</li> <br>
+<li><b>{metrics[f"top_freq_5"]:.0f}Hz</b> ({metrics[f"top_freq_5_band"]})</li>
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
 st.markdown("The range of the top peak frequencies are:")
 text = f'''
-Range of top 3 peaks is <b>{metrics['top_3_freq_range']:.0f}Hz</b> <br>
-Range of top 5 peaks is <b>{metrics['top_5_freq_range']:.0f}Hz</b>
+<li>Range of top 3 peaks is <b>{metrics['top_3_freq_range']:.0f}Hz</b></li> <br>
+<li>Range of top 5 peaks is <b>{metrics['top_5_freq_range']:.0f}Hz</b></li>
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
