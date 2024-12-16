@@ -456,16 +456,25 @@ with st.expander("Frequency bands", expanded=True):
     fig.update_layout(
         yaxis=dict(
             title='Proportion of energy',
+           title_font=dict(color="black"), tickfont=dict(color="black"),
+            showline=True, linecolor='black', linewidth=1,
+            gridwidth=0.7, gridcolor='lightgrey',
             range=[0, None]
         ),
         yaxis2=dict(
             title='Number of peaks',
+            title_font=dict(color="black"), tickfont=dict(color="black"),
+            showline=True, linecolor='black', linewidth=1,
+            gridwidth=0.7, gridcolor='lightgrey',
             overlaying='y',
             side='right',
-            range=[0, None]
+            range=[0, None],
         ),
         xaxis=dict(
-            title='Frequency Band (Hz)'
+            title='Frequency Band (Hz)',
+            title_font=dict(color="black"), tickfont=dict(color="black"),
+            showline=True, linecolor='black', linewidth=1,
+            gridwidth=0.7, gridcolor='lightgrey',
         ),
         annotations=[
             dict(
