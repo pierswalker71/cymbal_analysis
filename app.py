@@ -357,7 +357,18 @@ st.header("The key frequencies", divider="gray")
 # Key stats
 
 st.markdown("**Most of the sound energy is concentrated in the following bands:**")
-st.write(normalized_band_energies)
+
+Top_3_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], reverse=True)[:3]
+# Extract indices and values
+indices, values = zip(*Top_3_bands)
+
+text = f'''
+1. <b>{indices[0]:,.0f}Hz</b> ({indices[0]}) <br>
+2. <b>{indices[1]:,.0f}Hz</b> ({indices[1]}) <br>
+3. <b>{indices[2]:,.0f}Hz</b> ({indices[2]}) <br>
+'''
+st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
+
 
 st.markdown("**The top peak frequencies are:**")
 text = f'''
