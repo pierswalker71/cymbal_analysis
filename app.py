@@ -362,15 +362,18 @@ Top_5_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], re
 # Extract indices and values
 indices, values = zip(*Top_5_bands)
 
+# Generate formatted frequency labels
+formatted_labels = [format_freq(low, high) for (low, high) in freq_bands]
+
 st.write(f"{indices[0]}")
 st.write(f"{freq_bands}")
 
 text = f'''
-1. <b>{freq_band_names[indices[0]]}</b> ({100*values[0]:.0f}%) <br>
-2. <b>{freq_band_names[indices[1]]}</b> ({100*values[1]:.0f}%) <br>
-3. <b>{freq_band_names[indices[2]]}</b> ({100*values[2]:.0f}%) <br>
-4. <b>{freq_band_names[indices[3]]}</b> ({100*values[3]:.0f}%) <br>
-5. <b>{freq_band_names[indices[4]]}</b> ({100*values[4]:.0f}%) <br>
+1. <b>{freq_band_names[indices[0]]} ({formatted_labels[indices[0]]})</b> ({100*values[0]:.0f}% total energy) <br>
+2. <b>{freq_band_names[indices[1]]} ({formatted_labels[indices[1]]})</b> ({100*values[1]:.0f}% total energy) <br>
+3. <b>{freq_band_names[indices[2]]} ({formatted_labels[indices[2]]})</b> ({100*values[2]:.0f}% total energy) <br>
+4. <b>{freq_band_names[indices[3]]} ({formatted_labels[indices[3]]})</b> ({100*values[3]:.0f}% total energy) <br>
+5. <b>{freq_band_names[indices[4]]} ({formatted_labels[indices[4]]})</b> ({100*values[4]:.0f}% total energy) <br>
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
@@ -399,8 +402,7 @@ st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; fon
 # Plot 2
 #--------------------------------------------------------------
 with st.expander("Frequency bands", expanded=True):
-    # Generate formatted frequency labels
-    formatted_labels = [format_freq(low, high) for (low, high) in freq_bands]
+
 
     # Create the figure
     fig = go.Figure()
