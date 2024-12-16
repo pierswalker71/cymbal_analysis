@@ -356,23 +356,24 @@ st.header("The key frequencies", divider="gray")
 
 # Key stats
 
-st.markdown("**Most of the sound energy is concentrated in the following bands:**")
-
-st.write(freq_band_names)
-
-Top_3_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], reverse=True)[:3]
+st.markdown("**Most of the sound energy is concentrated in the following 5 bands:**")
+st.write(indices[0])
+st.write(indices[1])
+Top_5_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], reverse=True)[:5]
 # Extract indices and values
-indices, values = zip(*Top_3_bands)
+indices, values = zip(*Top_5_bands)
 
 text = f'''
 1. <b>{freq_band_names[indices[0]]}</b> ({100*values[0]:.0f}%) <br>
 2. <b>{freq_band_names[indices[1]]}</b> ({100*values[1]:.0f}%) <br>
 3. <b>{freq_band_names[indices[2]]}</b> ({100*values[2]:.0f}%) <br>
+4. <b>{freq_band_names[indices[3]]}</b> ({100*values[3]:.0f}%) <br>
+5. <b>{freq_band_names[indices[4]]}</b> ({100*values[4]:.0f}%) <br>
 '''
 st.markdown(f'<p style="color:blue; background-color:yellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
 
-st.markdown("**The top peak frequencies are:**")
+st.markdown("**The top 5 peak frequencies are:**")
 text = f'''
 1. <b>{metrics[f"top_freq_1"]:,.0f}Hz</b> ({metrics[f"top_freq_1_band"]}) <br>
 2. <b>{metrics[f"top_freq_2"]:,.0f}Hz</b> ({metrics[f"top_freq_2_band"]}) <br>
