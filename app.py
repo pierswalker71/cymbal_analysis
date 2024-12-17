@@ -584,6 +584,7 @@ energy_decay, times = compute_energy_decay_per_band(y, sr, freq_bands)
 max_values_with_indices = [(i, arr.max()) for i, arr in enumerate(energy_decay)]
 sorted_max_values = sorted(max_values_with_indices, key=lambda x: x[1], reverse=True)
 energy_decay_top_indices = [index for index, _ in sorted_max_values[:3]] # hard code 3
+
 energy_decay_top_freq_band_names = freq_band_names[energy_decay_top_indices]
 
 with st.expander("Energy in each frequency band",expanded=True):
@@ -636,7 +637,7 @@ with st.expander("Energy in each frequency band",expanded=True):
     )
 
     st.write("Here you can see the amount energy in each of the key frequency bands and how they change over time.")
-    st.write(f"The top 3 bands with the largest peaks are {energy_decay_top_freq_band_names}") 
+    st.write(f"The top 3 bands with the largest peaks are {energy_decay_top_indices}") 
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
