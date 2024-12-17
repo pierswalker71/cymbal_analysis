@@ -949,7 +949,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
     #st.write(f"The mean prominant frequency is {np.mean(dominant_freq_2):,.0f} and the median is {np.median(dominant_freq_2):,.0f}.")
     #st.write(f"The min prominant frequency is {np.min(dominant_freq_2):,.0f} and the max is {np.max(dominant_freq_2):,.0f}.")
 
-    #st.write(f"{dominant_freq_1}")
+    st.write(f"{dominant_freq_1}")
     
     st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
     
