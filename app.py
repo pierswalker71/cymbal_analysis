@@ -946,31 +946,10 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     )
 
     st.write("Here you can see how the peak frequencies evolve over time. The most prominent frequency peaks are identified within small, overlapping time windows, and this process is repeated continuously throughout the duration of the audio file")
-    st.write("""Additionally, if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also shown.""")
 
-    #dominant_freq_1 = dominant_freqs[:, 0].tolist() #  just the first one
-    #dominant_freq_1 = [freq for freq in dominant_freq_1 if freq != 0] # ignore zeros
-    #st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
-    #st.write(f"The min prominant frequency is {np.min(dominant_freq_1):,.0f} and the max is {np.max(dominant_freq_1):,.0f}.")
+    # frequency stats
 
-    st.plotly_chart(fig, use_container_width=True)
-
-    # stats to find common frequencies
-    
-    #counts, bins = np.histogram(dominant_freqs, bins=20)  # Adjust 'bins' as needed
-    ## Sort bins by count in descending order and get the top 
-    #sorted_indices = np.argsort(counts)[::-1]  # Indices sorted by descending count
-    
-    #top_3_stable_points = []
-    #for i in range(min(3, len(sorted_indices))):  # Ensure we don't exceed the number of bins
-    #    bin_index = sorted_indices[i]
-    #    bin_centre = (bins[bin_index] + bins[bin_index + 1]) / 2  # Bin center
-    #    top_3_stable_points.append((bin_centre, counts[bin_index]))
-
-    #st.write("Top common frequencies (simple histogram peaks):")
-    #for i, (bin_centre, count) in enumerate(top_3_stable_points, 1):
-    #    st.write(f"{i}. Stable Point: {bin_centre:,.0f}, Count: {count}")
-
+    #st.write(f"The mean prominant frequency is {np.mean(dominant_freq):,.0f} and the median is {np.median(dominant_freq):,.0f}.")
 
     from sklearn.cluster import KMeans
     n_clusters = 4
@@ -980,10 +959,10 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     # Apply KMeans clustering to identify stable groups
     kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
     centroids = kmeans.cluster_centers_
-    centroid_values = ", ".join(f"{value:.4f}" for value in centroids.flatten())
+    centroid_values = ", ".join(f"{value:.0f}" for value in centroids.flatten())
     st.write(f"Top {n_clusters} frequency clusters: {centroid_values}")
 
-    
+    st.plotly_chart(fig, use_container_width=True)
 
 #==============================================================    
 #--------------------------------------------------------------
