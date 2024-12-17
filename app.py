@@ -880,7 +880,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
     for (lower_bound, upper_bound), color in zip(freq_bands, freq_band_colours):
         fig.add_shape(
             type='rect',
-            x0=0, x1=max_time_for_plotting,
+            x0=0, x1=times[-1], # all the way to the end
             y0=lower_bound, y1=upper_bound,
             fillcolor=color,
             opacity=0.5,
