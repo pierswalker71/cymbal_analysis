@@ -1045,6 +1045,6 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
         centroids = kmeans.cluster_centers_
     
         centroid_values = ", ".join(f"{value:,.0f}Hz" for value in centroids.flatten())
-        st.write(f"The top {n_clusters} fundamental frequency clusters: {centroid_values}")
+        st.write(f"The top {n_clusters} fundamental frequency clusters are {centroid_values}")
 
     st.plotly_chart(fig, use_container_width=True)
