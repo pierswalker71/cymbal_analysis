@@ -411,6 +411,12 @@ Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b>
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
+
+text = f'''
+The median frequency that contributes to 50% of the total signal energy is {metrics["significant_frequency_max_frequencies_median"]:,.0f}Hz
+'''
+st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
+
 #==============================================================
 #--------------------------------------------------------------
 # Plot 2
