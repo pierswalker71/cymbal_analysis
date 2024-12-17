@@ -355,7 +355,7 @@ with st.expander("Audio waveform",expanded=True):
 
 
 #==============================================================
-st.header("The key frequencies", divider="gray")
+st.header("The key frequencies and frequency bands", divider="gray")
 #==============================================================
 
 # Key stats
@@ -389,9 +389,9 @@ st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px
 st.markdown("**The range of the top peak frequencies are:**")
 text = f'''
 Range of top 3 peaks is <b>{metrics['top_3_freq_range']:,.0f}Hz</b> 
-({(100 * metrics['top_3_freq_range'] / metrics['top_freq_1']):,.0f}% of top peak)<br>
+({(100 * metrics['top_3_freq_range'] / metrics['top_freq_1']):,.0f}% of top peak value)<br>
 Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b> 
-({(100 * metrics['top_5_freq_range'] / metrics['top_freq_1']):,.0f}% of top peak)
+({(100 * metrics['top_5_freq_range'] / metrics['top_freq_1']):,.0f}% of top peak value)
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
@@ -603,8 +603,55 @@ with st.expander("Frequency spectrum",expanded=True):
     st.plotly_chart(fig)
 
 
+    
 #--------------------------------------------------------------
 # Plot 4
+#--------------------------------------------------------------
+with st.expander("Significant frequencies",expanded=True):
+    
+    # Define target percentages to explore
+    target_percentages = np.linspace(0.05, 0.50,100)  # eg from 5% to 95%
+
+    # Collect the highest significant frequency for each target percentage
+    max_frequencies = [get_max_significant_frequency(yf, xf, p) for p in target_percentages]
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+    x=target_percentages,
+    y=max_frequencies,
+    mode='lines+markers',  # Shows both lines and points
+    name='Significant Frequencies',
+    line=dict(color='black'),
+    marker=dict(color='black') 
+    ))
+
+    fig.update_layout(title_text="The significant frequencies which contribute to the total audio energy", title_x=0.5, title_xanchor='center')
+    fig.update_xaxes(title_text="Proportion of total energy")
+    fig.update_yaxes(title_text="Significant frequencies (Hz)")
+    fig.update_yaxes(range=[0, max(max_frequencies) * 1.1])
+    fig.update_layout(height=400, width=700)
+    
+    fig.update_layout(     
+        xaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+        yaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ), 
+        plot_bgcolor='white',  
+        paper_bgcolor='white'
+    )
+    
+    st.write("Here you can see the frequencies which contribute to the top 50% of the total energy in the audio signal.")
+    st.plotly_chart(fig)
+    
+#--------------------------------------------------------------
+# Plot 5
 #--------------------------------------------------------------
 # Compute energy decay for each frequency band
 
@@ -736,52 +783,6 @@ with st.expander("Energy in each frequency band",expanded=True):
     st.plotly_chart(fig, use_container_width=True)
 
 
-    
-#--------------------------------------------------------------
-# Plot 5
-#--------------------------------------------------------------
-with st.expander("Significant frequencies",expanded=True):
-    
-    # Define target percentages to explore
-    target_percentages = np.linspace(0.05, 0.50,100)  # eg from 5% to 95%
-
-    # Collect the highest significant frequency for each target percentage
-    max_frequencies = [get_max_significant_frequency(yf, xf, p) for p in target_percentages]
-
-    fig = go.Figure()
-
-    fig.add_trace(go.Scatter(
-    x=target_percentages,
-    y=max_frequencies,
-    mode='lines+markers',  # Shows both lines and points
-    name='Significant Frequencies',
-    line=dict(color='black'),
-    marker=dict(color='black') 
-    ))
-
-    fig.update_layout(title_text="The significant frequencies which contribute to the total audio energy", title_x=0.5, title_xanchor='center')
-    fig.update_xaxes(title_text="Proportion of total energy")
-    fig.update_yaxes(title_text="Significant frequencies (Hz)")
-    fig.update_yaxes(range=[0, max(max_frequencies) * 1.1])
-    fig.update_layout(height=400, width=700)
-    
-    fig.update_layout(     
-        xaxis=dict(
-        title_font=dict(color="black"), tickfont=dict(color="black"),
-        showline=True, linecolor='black', linewidth=1,
-        gridwidth=0.7, gridcolor='lightgrey',
-        ),
-        yaxis=dict(
-        title_font=dict(color="black"), tickfont=dict(color="black"),
-        showline=True, linecolor='black', linewidth=1,
-        gridwidth=0.7, gridcolor='lightgrey',
-        ), 
-        plot_bgcolor='white',  
-        paper_bgcolor='white'
-    )
-    
-    st.write("Here you can see the frequencies which contribute to the top 50% of the total energy in the audio signal.")
-    st.plotly_chart(fig)
 
 #==============================================================
 st.header("?? charts", divider="gray")
