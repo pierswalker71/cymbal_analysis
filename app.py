@@ -43,11 +43,19 @@ Hi, welcome to my cymbal sound analyser.
 
 You can select an audio file of one of my drumkit cymbals being hit, which wil then be  
 analysed in both time and frequency. You will see some key metrics and charts that portray the sound in interesting ways.
+
+Sections:
+- Load cymbal audio file
+- Time characteristics
+- Frequency stats
+- Overall frequency characteristics
+- Frequency characteristics over time
 '''
 st.write(intro_text)
 
+#==============================================================
 st.header("Load cymbal audio file", divider="gray")
-
+#==============================================================
 
 
 # Dropdown menu for file selection
@@ -291,7 +299,7 @@ metrics["significant_frequency_max_frequencies_max"] = np.max(significant_freque
 
 
 #==============================================================
-st.header("Time characteristicse", divider="gray")
+st.header("Time characteristics", divider="gray")
 #==============================================================
 
 # Key stats
