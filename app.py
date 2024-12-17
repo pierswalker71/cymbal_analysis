@@ -830,4 +830,3 @@ with st.expander("Energy in each frequency band",expanded=True):
     )
     
     st.plotly_chart(fig, use_container_width=True)
-
