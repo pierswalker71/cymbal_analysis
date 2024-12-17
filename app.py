@@ -689,8 +689,8 @@ with st.expander("Significant frequencies",expanded=True):
     
     st.write("Here you can see the frequencies which cumultatively add up to the top 50% of the total energy in the audio signal.")
 
-    st.write(f"The mean of these values is {np.mean(max_frequencies):,.0f}, and the median is {np.median(max_frequencies):,.0f}")
-
+    st.write(f"The mean of these values is {np.mean(max_frequencies):,.0f}Hz and the median is {np.median(max_frequencies):,.0f}Hz.")
+    st.write(f"The minimum value is {np.min(max_frequencies):,.0f}Hz and the maximum value is {np.max(max_frequencies):,.0f}Hz.")
     
     st.plotly_chart(fig)
 #==============================================================    
