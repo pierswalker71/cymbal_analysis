@@ -864,7 +864,7 @@ with st.expander("Energy in each frequency band",expanded=True):
 #==============================================================
 with st.expander("Dominant frequencies over time",expanded=True):
 
-    top_n = 2
+    top_n = 3
     dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
     st.write(f"{dominant_freqs}")
 
