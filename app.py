@@ -508,7 +508,7 @@ with st.expander("Frequency bands", expanded=True):
     st.write("Here you can see the amount of energy and the number of the peak frequencies in each of the audio bands.")
 
     text = f'''
-        The bands containing the most energy are 
+        The bands containing the most energy are: 
         {freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz) ({100*Top_energy_bands_values[0]:.0f}% total energy),
         {freq_band_names[Top_energy_bands_indices[1]]} ({freq_band_labels[Top_energy_bands_indices[1]]}Hz) ({100*Top_energy_bands_values[1]:.0f}% total energy),
         {freq_band_names[Top_energy_bands_indices[2]]} ({freq_band_labels[Top_energy_bands_indices[2]]}Hz) ({100*Top_energy_bands_values[2]:.0f}% total energy) 
@@ -528,10 +528,11 @@ with st.expander("Frequency bands", expanded=True):
     peaks_per_band_top_freq_band_labels = [freq_band_labels[i] for i in peaks_per_band_top_indices]
     
     peaks_per_band_top_freq_band_combined_strings = [
-        f"{name} ({label}) - {peaks} peaks"
+        f"{name} ({label}Hz) - {peaks} peaks"
         for peaks, name, label in zip(peaks_per_band_top_peak_num, peaks_per_band_top_freq_band_names, peaks_per_band_top_freq_band_labels)
     ]
-    st.write(f"The bands with the most number of top 20 peaks are {peaks_per_band_top_freq_band_combined_strings}")
+    combined_string = ", ".join(peaks_per_band_top_freq_band_combined_strings)
+    st.write(f"The bands with the most number of top 20 peaks are: {combined_string}")
     st.plotly_chart(fig, use_container_width=True)
 
 
