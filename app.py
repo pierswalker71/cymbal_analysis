@@ -828,7 +828,6 @@ with st.expander("High energy frequency bands",expanded=True):
     times = np.linspace(0, 10, 1000)  # Example time array
     max_time_for_plotting = np.max(times)  # Maximum time for plotting
     
-    # Create a standalone Plotly figure
     fig = go.Figure()
     
     # Plot each frequency band as a smoothed, normalized energy decay curve
@@ -918,10 +917,6 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
             )
         )
     
-    # Compute pitches
-    pitches, voiced_flag, voiced_probs = librosa.pyin(y, fmin=librosa.note_to_hz('C2'), fmax=librosa.note_to_hz('C7'))
-    pitches = np.array(pitches)
-    pitches_times = librosa.frames_to_time(np.arange(len(pitches)), sr=sr)
      
 
     fig.update_layout(title_text="Prominant frequencies over time", title_x=0.5, title_xanchor='center')
@@ -958,10 +953,36 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     #st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
     #st.write(f"The min prominant frequency is {np.min(dominant_freq_1):,.0f} and the max is {np.max(dominant_freq_1):,.0f}.")
     
-    #st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
+
 
     
     st.plotly_chart(fig, use_container_width=True)
+
+
+
+    import matplotlib.pyplot as plt
+    
+    
+    # Create a histogram
+    counts, bins = np.histogram(dominant_freqs, bins=5)  # Adjust 'bins' as needed
+    
+    # Find bin with the most values
+    max_bin_index = np.argmax(counts)
+    stable_point = (bins[max_bin_index] + bins[max_bin_index + 1]) / 2
+
+    st.write(f"Stable Point (Histogram Peak): {stable_point}")
+    
+    # Plot the histogram for visualization
+    plt.hist(dominant_freqs_1, bins=5, color='blue', edgecolor='black')
+    plt.title("Frequency Histogram")
+    plt.xlabel("Frequency (Hz)")
+    plt.ylabel("Count")
+    plt.show()
+
+
+
+
+    
 
 #==============================================================    
 #--------------------------------------------------------------
@@ -1025,4 +1046,6 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     )
 
     st.write("""Here you can see if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it).""")
+    
+    #st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
     st.plotly_chart(fig, use_container_width=True)
