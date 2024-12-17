@@ -959,8 +959,8 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     # Apply KMeans clustering to identify stable groups
     kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
     centroids = kmeans.cluster_centers_
-    centroid_values = ", ".join(f"{value:,.0f}" for value in centroids.flatten())
-    st.write(f"The top {n_clusters} frequency clusters: {centroid_values}Hz")
+    centroid_values = ", ".join(f"{value:,.0f}Hz" for value in centroids.flatten())
+    st.write(f"The top {n_clusters} frequency clusters: {centroid_values}")
 
     st.plotly_chart(fig, use_container_width=True)
 
@@ -1027,5 +1027,16 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
 
     st.write("""Here you can see if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it).""")
     
-    #st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
+    st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
+    
+    n_clusters = 2
+    
+    # Reshape data for clustering
+    data = pitches.reshape(-1, 1)
+    # Apply KMeans clustering to identify stable groups
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
+    centroids = kmeans.cluster_centers_
+    centroid_values = ", ".join(f"{value:,.0f}Hz" for value in centroids.flatten())
+    st.write(f"The top {n_clusters} fundamental frequency clusters: {centroid_values}")
+
     st.plotly_chart(fig, use_container_width=True)
