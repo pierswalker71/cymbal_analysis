@@ -364,18 +364,16 @@ st.header("The key frequencies", divider="gray")
 
 st.markdown("**Most of the sound energy is concentrated in the following 5 bands:**")
 
-Top_5_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], reverse=True)[:5]
+Top_energy_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], reverse=True)[:5]
 # Extract indices and values
-indices, values = zip(*Top_5_bands)
-
-
+Top_energy_bands_indices, Top_energy_bands_values = zip(*Top_energy_bands)
 
 text = f'''
-1. <b>{freq_band_names[indices[0]]} ({freq_band_labels[indices[0]]}Hz)</b> ({100*values[0]:.0f}% total energy) <br>
-2. <b>{freq_band_names[indices[1]]} ({freq_band_labels[indices[1]]}Hz)</b> ({100*values[1]:.0f}% total energy) <br>
-3. <b>{freq_band_names[indices[2]]} ({freq_band_labels[indices[2]]}Hz)</b> ({100*values[2]:.0f}% total energy) <br>
-4. <b>{freq_band_names[indices[3]]} ({freq_band_labels[indices[3]]}Hz)</b> ({100*values[3]:.0f}% total energy) <br>
-5. <b>{freq_band_names[indices[4]]} ({freq_band_labels[indices[4]]}Hz)</b> ({100*values[4]:.0f}% total energy) <br>
+1. <b>{freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz)</b> ({100*Top_energy_bands_values[0]:.0f}% total energy) <br>
+2. <b>{freq_band_names[Top_energy_bands_indices[1]]} ({freq_band_labels[Top_energy_bands_indices[1]]}Hz)</b> ({100*Top_energy_bands_values[1]:.0f}% total energy) <br>
+3. <b>{freq_band_names[Top_energy_bands_indices[2]]} ({freq_band_labels[Top_energy_bands_indices[2]]}Hz)</b> ({100*Top_energy_bands_values[2]:.0f}% total energy) <br>
+4. <b>{freq_band_names[Top_energy_bands_indices[3]]} ({freq_band_labels[Top_energy_bands_indices[3]]}Hz)</b> ({100*Top_energy_bands_values[3]:.0f}% total energy) <br>
+5. <b>{freq_band_names[Top_energy_bands_indices[4]]} ({freq_band_labels[Top_energy_bands_indices[4]]}Hz)</b> ({100*Top_energy_bands_values[4]:.0f}% total energy) <br>
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
@@ -514,6 +512,17 @@ with st.expander("Frequency bands", expanded=True):
     # Display the figure in the Streamlit app
     
     st.write("Here you can see the amount of energy and the number of the peak frequencies in each of the audio bands.")
+
+    text = f'''
+        The bands containing the most energy are 
+        {freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz) ({100*Top_energy_bands_values[0]:.0f}% total energy)
+        {freq_band_names[Top_energy_bands_indices[1]]} ({freq_band_labels[Top_energy_bands_indices[1]]}Hz) ({100*Top_energy_bands_values[1]:.0f}% total energy)
+        {freq_band_names[Top_energy_bands_indices[2]]} ({freq_band_labels[Top_energy_bands_indices[2]]}Hz) ({100*Top_energy_bands_values[2]:.0f}% total energy)
+        {freq_band_names[Top_energy_bands_indices[3]]} ({freq_band_labels[Top_energy_bands_indices[3]]}Hz) ({100*Top_energy_bands_values[3]:.0f}% total energy)
+        {freq_band_names[Top_energy_bands_indices[4]]} ({freq_band_labels[Top_energy_bands_indices[4]]}Hz) ({100*Top_energy_bands_values[4]:.0f}% total energy)   
+          '''
+    st.write(f"{text}")
+    
     st.plotly_chart(fig, use_container_width=True)
 
 
