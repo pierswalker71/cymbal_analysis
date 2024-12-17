@@ -973,7 +973,7 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     st.write(f"Stable Point (Histogram Peak): {stable_point}")
     
     # Plot the histogram for visualization
-    plt.hist(dominant_freqs_1, bins=5, color='blue', edgecolor='black')
+    plt.hist(dominant_freqs, bins=5, color='blue', edgecolor='black')
     plt.title("Frequency Histogram")
     plt.xlabel("Frequency (Hz)")
     plt.ylabel("Count")
