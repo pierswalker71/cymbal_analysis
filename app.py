@@ -292,7 +292,7 @@ metrics["significant_frequency_max_frequencies_max"] = np.max(significant_freque
 st.header("How long the cymbal rings for", divider="gray")
 
 # Key stats
-st.write("**How long it takes for the sound to die down**.")
+st.write("**How long it takes for the sound to die down:**.")
 
 text = f"It takes <b>{decay_time_50pc:.1f}s</b> for the sound to decay to 50% its initial peak value."
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
