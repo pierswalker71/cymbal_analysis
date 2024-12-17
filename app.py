@@ -53,6 +53,18 @@ Sections:
 '''
 st.write(intro_text)
 
+tab1, tab2, tab3 = st.tabs(["Introduction", "Analysis", "Metrics"])
+
+with tab1:
+    st.write("This section introduces the tool and its purpose.")
+
+with tab2:
+    st.write("Here, we analyze the audio file in time and frequency domains.")
+
+with tab3:
+    st.write("This section shows key metrics extracted from the analysis.")
+    
+
 #==============================================================
 st.header("", divider="orange")
 st.header("Load cymbal audio file", divider="gray")
