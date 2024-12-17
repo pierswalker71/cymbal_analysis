@@ -949,7 +949,7 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
 
     # frequency stats
 
-    #st.write(f"The mean prominant frequency is {np.mean(dominant_freq):,.0f} and the median is {np.median(dominant_freq):,.0f}.")
+    st.write(f"The mean frequency across the time span is {np.mean(dominant_freq):,.0f}Hz and the median is {np.median(dominant_freq):,.0f}Hz.")
 
     from sklearn.cluster import KMeans
     n_clusters = 4
@@ -959,8 +959,8 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     # Apply KMeans clustering to identify stable groups
     kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
     centroids = kmeans.cluster_centers_
-    centroid_values = ", ".join(f"{value:.0f}" for value in centroids.flatten())
-    st.write(f"Top {n_clusters} frequency clusters: {centroid_values}")
+    centroid_values = ", ".join(f"{value:,.0f}" for value in centroids.flatten())
+    st.write(f"The top {n_clusters} frequency clusters: {centroid_values}Hz")
 
     st.plotly_chart(fig, use_container_width=True)
 
