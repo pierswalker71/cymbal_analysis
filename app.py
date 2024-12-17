@@ -864,7 +864,7 @@ with st.expander("Energy in each frequency band",expanded=True):
 #==============================================================
 with st.expander("Prominant frequencies over time",expanded=True):
 
-    top_n = 1
+    top_n = 2
     dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
 
     # Adjust dominant_freqs: Ensure it's 2D, even if top_n = 1
@@ -942,6 +942,11 @@ with st.expander("Prominant frequencies over time",expanded=True):
     dominant_freq_1 = [freq for freq in dominant_freq_1 if freq != 0] # ignore zeros
     st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
     st.write(f"The min prominant frequency is {np.min(dominant_freq_1):,.0f} and the max is {np.max(dominant_freq_1):,.0f}.")
+
+    dominant_freq_2 = dominant_freqs[:, 1].tolist() #  just the first one
+    dominant_freq_2 = [freq for freq in dominant_freq_2 if freq != 0] # ignore zeros
+    st.write(f"The mean prominant frequency is {np.mean(dominant_freq_2):,.0f} and the median is {np.median(dominant_freq_2):,.0f}.")
+    st.write(f"The min prominant frequency is {np.min(dominant_freq_2):,.0f} and the max is {np.max(dominant_freq_2):,.0f}.")
 
     #st.write(f"{dominant_freq_1}")
     
