@@ -387,7 +387,7 @@ text = f'''
 3. Top frequency band is <b>{freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz)</b>  <br>
 4. The median frequency that contributes to 50% of the total signal energy is <b>{metrics["significant_frequency_max_frequencies_median"]:,.0f}Hz</b>  <br>
 5. The overall spread of frequencies is <b>{metrics['overall_spectral_bandwidth']:,.0f}Hz</b>   <br>
-6. The spectral flatness is <b>{metrics['overall_spectral_flatness']:,.0f}</b> and zero crossing rate is <b>{metricsmetrics['overall_zero_crossing_rate']]:,.0f}</b> (measures of how noiselike the sound is)<br>
+6. The spectral flatness is <b>{metrics['overall_spectral_flatness']:,.0f}</b> and zero crossing rate is <b>{metricsmetrics['overall_zero_crossing_rate']:,.0f}</b> (measures of how noiselike the sound is)<br>
 7. The onset strength <b>{metrics['onset_strength']:,.0f}</b> (how strongly sound energy changes over time)  <br>                                                                                                        
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
