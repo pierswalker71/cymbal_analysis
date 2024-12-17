@@ -919,8 +919,9 @@ with st.expander("Prominant frequencies over time",expanded=True):
 
     fig.update_layout(title_text="Prominant frequencies over time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
-    fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
     ylims = [0, np.nanmax(dominant_freqs)]
+    fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+    
     
     # Add layout formatting
     fig.update_layout(
@@ -965,12 +966,24 @@ with st.expander("Prominant frequencies over time",expanded=True):
             name='Fundamental pitches (Hz)'
         )
     )
+
+    # Add coloured backgrounds for frequency bands
+    for (lower_bound, upper_bound), color in zip(freq_bands, freq_band_colours):
+        fig.add_shape(
+            type='rect',
+            x0=0, x1=times[-1], # all the way to the end
+            y0=lower_bound, y1=upper_bound,
+            fillcolor=color,
+            opacity=0.5,
+            layer="below",  # Add this line to ensure shapes are below traces
+            line_width=0
+        )
     
     fig.update_layout(title_text="Prominant frequencies over time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
-    fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
     ylims = [0, np.nanmax(pitches)]
-    
+    fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+
     # Add layout formatting
     fig.update_layout(
         plot_bgcolor='white',
