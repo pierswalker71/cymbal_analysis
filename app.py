@@ -286,9 +286,11 @@ st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px
 text = f"It takes <b>{decay_time_10pc:.1f}s</b> for the sound to decay to 10% its initial peak value."
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
+#==============================================================
 #--------------------------------------------------------------
 # Plot 1
 #--------------------------------------------------------------
+#==============================================================
 with st.expander("Audio waveform",expanded=True):
 
     fig = go.Figure()
@@ -396,13 +398,11 @@ Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b>
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
 
-
-
-
-
+#==============================================================
 #--------------------------------------------------------------
 # Plot 2
 #--------------------------------------------------------------
+#==============================================================
 with st.expander("Frequency bands", expanded=True):
 
 
@@ -423,8 +423,6 @@ with st.expander("Frequency bands", expanded=True):
 
     # Count the number of peaks in each band
     top_peaks_across_bands_num = 20
-
-
 
     # Overlay the number of peaks on the secondary y-axis (stalks with round tops)
     x_values = freq_band_labels
@@ -536,12 +534,12 @@ with st.expander("Frequency bands", expanded=True):
     st.plotly_chart(fig, use_container_width=True)
 
 
-
-
-
+#==============================================================
 #--------------------------------------------------------------
 # Plot 3
 #--------------------------------------------------------------
+#==============================================================
+
 with st.expander("Frequency spectrum",expanded=True):
     fig = go.Figure()
     # Define some necessary constants for freq spectrum plot
@@ -601,12 +599,13 @@ with st.expander("Frequency spectrum",expanded=True):
     st.write(f"{text}")
     
     st.plotly_chart(fig)
-
-
     
+#==============================================================   
 #--------------------------------------------------------------
 # Plot 4
 #--------------------------------------------------------------
+#==============================================================
+
 with st.expander("Significant frequencies",expanded=True):
     
     # Define target percentages to explore
@@ -649,10 +648,11 @@ with st.expander("Significant frequencies",expanded=True):
     
     st.write("Here you can see the frequencies which contribute to the top 50% of the total energy in the audio signal.")
     st.plotly_chart(fig)
-    
+#==============================================================    
 #--------------------------------------------------------------
-# Plot 5
+# Plots 5 and 6
 #--------------------------------------------------------------
+#==============================================================
 # Compute energy decay for each frequency band
 
 # Get energy-time profile for each band 
@@ -714,7 +714,6 @@ with st.expander("Energy in each frequency band",expanded=True):
         paper_bgcolor='white'
     )
 
- 
     # Add a legend
     fig.update_layout(
         legend=dict(x=1, y=1, traceorder="normal", font_size=10)
@@ -723,8 +722,6 @@ with st.expander("Energy in each frequency band",expanded=True):
     st.write("Here you can see the amount energy in each of the key frequency bands and how they change over time.")
     st.write(f"The top 3 bands with the largest peaks are {", ".join(energy_decay_top_freq_band_combined_strings)}.") 
     st.plotly_chart(fig)
-
-
 
     # Normalised energy
 
@@ -781,10 +778,4 @@ with st.expander("Energy in each frequency band",expanded=True):
     )
     
     st.plotly_chart(fig, use_container_width=True)
-
-
-
-#==============================================================
-st.header("?? charts", divider="gray")
-#==============================================================
 
