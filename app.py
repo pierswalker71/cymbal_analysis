@@ -676,7 +676,7 @@ with st.expander("Significant frequencies",expanded=True):
         )
 
     fig.update_layout(title_text="The significant frequencies which contribute to the total audio energy", title_x=0.5, title_xanchor='center')
-    fig.update_xaxes(title_text="Proportion of total energy (from 0 to 50%")
+    fig.update_xaxes(title_text="Proportion of total energy (from 0 to 50%)")
     fig.update_yaxes(title_text="Significant frequencies (Hz)")
     fig.update_yaxes(range=[0, max(max_frequencies) * 1.1])
     fig.update_layout(height=400, width=700)
