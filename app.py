@@ -585,7 +585,7 @@ max_values_with_indices = [(i, arr.max()) for i, arr in enumerate(energy_decay)]
 sorted_max_values = sorted(max_values_with_indices, key=lambda x: x[1], reverse=True)
 energy_decay_top_indices = [index for index, _ in sorted_max_values[:3]] # hard code 3
 
-energy_decay_top_freq_band_names = freq_band_names[energy_decay_top_indices]
+#energy_decay_top_freq_band_names = freq_band_names[energy_decay_top_indices]
 
 with st.expander("Energy in each frequency band",expanded=True):
     fig = go.Figure()
