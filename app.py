@@ -376,6 +376,18 @@ st.header("The key frequencies and frequency bands", divider="gray")
 
 # Key stats
 
+st.markdown("**Key frequency stats:**")
+text = f'''
+1. The top frequency is <b>{metrics[f"top_freq_1"]:,.0f}Hz</b> ({metrics[f"top_freq_1_band"]}) <br>
+2. Top frequency band is <b>{freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz)</b>
+3. The overall spectral centroid is <b>{metrics['overall_spectral_centroid']:,.0f}Hz</b> ({metrics[f"overall_spectral_centroid_band"]})  <br>
+4. The median frequency that contributes to 50% of the total signal energy is <b>{metrics["significant_frequency_max_frequencies_median"]:,.0f}Hz</b>  <br>
+'''
+st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
+
+
+
+
 st.markdown("**Most of the sound energy is concentrated in the following 5 bands:**")
 
 Top_energy_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], reverse=True)[:5]
@@ -411,12 +423,6 @@ Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b>
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
-st.markdown("**Key frequency stats:**")
-text = f'''
-The overall spectral centroid is {metrics['overall_spectral_centroid']:,.0f}Hz ({metrics[f"overall_spectral_centroid_band"]})
-The median frequency that contributes to 50% of the total signal energy is {metrics["significant_frequency_max_frequencies_median"]:,.0f}Hz
-'''
-st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
 
 
