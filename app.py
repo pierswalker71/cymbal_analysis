@@ -860,7 +860,6 @@ with st.expander("Energy in each frequency band",expanded=True):
 
 with st.expander("Dominant frequencies over time",expanded=True):
 
-    # Plot dominant frequencies per frame over time  - row 3 column 2
     top_n = 2
     dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
 
@@ -876,7 +875,7 @@ with st.expander("Dominant frequencies over time",expanded=True):
             x0=0, x1=max_time_for_plotting,
             y0=lower_bound, y1=upper_bound,
             fillcolor=color,
-            opacity=0.3,
+            #opacity=0.3,
             line_width=0
         )
     
@@ -923,6 +922,6 @@ with st.expander("Dominant frequencies over time",expanded=True):
             traceorder="normal",
             font=dict(size=10)
         ),
-        height=600, width=800
+        height=400, width=800
     )
     st.plotly_chart(fig, use_container_width=True)
