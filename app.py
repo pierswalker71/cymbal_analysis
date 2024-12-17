@@ -434,7 +434,7 @@ st.header("Frequencies and frequency bands", divider="gray")
 # Plot 2
 #--------------------------------------------------------------
 #==============================================================
-with st.expander("Frequency band colour scheme", expanded=True):
+with st.expander("Frequency band colour scheme", expanded=False):
     fig = go.Figure()
     
     # Add rectangles (bars) for each frequency band with color
@@ -451,11 +451,11 @@ with st.expander("Frequency band colour scheme", expanded=True):
     # Update layout to style the plot
     fig.update_layout(
         title=dict(
-            text="Frequency Band Color Scheme",
+            text="Frequency band colour scheme",
             font=dict(color="black", size=16)  # Title in black
         ),
         xaxis=dict(
-            title="Frequency Bands",
+            title="Frequency bands (Hz)",
             title_font=dict(color="black"),  # X-axis title in black
             tickfont=dict(color="black"),    # X-axis tick labels in black
             tickangle=45                     # Rotate x-axis labels
@@ -465,8 +465,8 @@ with st.expander("Frequency band colour scheme", expanded=True):
             range=[0, 0.6]
         ),
         legend=dict(
-            title=dict(text="Frequency Band Names", font=dict(color="black")),  # Legend title in black
-            font=dict(color="black")  # Legend labels in black
+            title=dict(text="Frequency band names", font=dict(color="black")),  
+            font=dict(color="black") 
         ),
         plot_bgcolor="white",  # White plot background
         paper_bgcolor="white"  # White overall background
