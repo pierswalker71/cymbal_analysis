@@ -1032,11 +1032,19 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     n_clusters = 2
     
     # Reshape data for clustering
-    data = pitches.reshape(-1, 1)
-    # Apply KMeans clustering to identify stable groups
-    kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
-    centroids = kmeans.cluster_centers_
-    centroid_values = ", ".join(f"{value:,.0f}Hz" for value in centroids.flatten())
-    st.write(f"The top {n_clusters} fundamental frequency clusters: {centroid_values}")
+    valid_pitches = pitches[~np.isnan(pitches)]
+    data = valid_pitches.reshape(-1, 1)
+    
+    if len(valid_pitches) >= n_clusters:
+        # Reshape data for clustering
+        data = valid_pitches.reshape(-1, 1)
+    
+        # Apply KMeans clustering to identify stable groups
+        kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
+        centroids = kmeans.cluster_centers_
+    
+        # Format cluster centers for display
+        centroid_values = ", ".join(f"{value:,.0f}Hz" for value in centroids.flatten())
+        st.write(f"The top {n_clusters} fundamental frequency clusters: {centroid_values}")
 
     st.plotly_chart(fig, use_container_width=True)
