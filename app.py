@@ -864,7 +864,7 @@ with st.expander("Energy in each frequency band",expanded=True):
 #==============================================================
 with st.expander("Dominant frequencies over time",expanded=True):
 
-    top_n = 3
+    top_n = 2
     dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
     st.write(f"{dominant_freqs}")
 
@@ -908,7 +908,7 @@ with st.expander("Dominant frequencies over time",expanded=True):
             x=pitches_times,
             y=pitches,
             mode='markers',
-            marker=dict(symbol='star', color='black', size=8),
+            marker=dict(symbol='star', color='black', size=6),
             name='Fundamental pitches (Hz)'
         )
     )
