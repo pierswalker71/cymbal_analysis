@@ -936,6 +936,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
     st.write("""Additionally, if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also shown.""")
 
     dominant_freq = dominant_freqs[:, 0].tolist() #  just the top one
+    st.write(f"{dominant_freq}")
     st.write(f"The mean prominant frequency is {np.mean(dominant_freq[dominant_freq != 0]):,.0f} and the median is {np.median(dominant_freq[dominant_freq != 0]):,.0f}.")
     st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
     
