@@ -886,7 +886,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
             line_width=0
         )
     
-    # Reverse the order of dominant frequencies for plotting
+    # Reverse the order of prominant frequencies for plotting
     for i in reversed(range(dominant_freqs.shape[1])):
         fig.add_trace(
             go.Scatter(
@@ -894,7 +894,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
                 y=dominant_freqs[:, i],
                 mode='lines',
                 line=dict(color=colors[i], width=2),
-                name=f'Dominant Freq {i+1}'
+                name=f'Prominant freq {i+1}'
             )
         )
     
@@ -935,9 +935,10 @@ with st.expander("Prominant frequencies over time",expanded=True):
     st.write("Here you can see how the peak frequencies evolve over time. The most prominent frequency peaks are identified within small, overlapping time windows, and this process is repeated continuously throughout the duration of the audio file")
     st.write("""Additionally, if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also shown.""")
 
-    dominant_freq = dominant_freqs[:, 0].tolist() #  just the top one
-    st.write(f"{dominant_freq}")
-    st.write(f"The mean prominant frequency is {np.mean(dominant_freq[dominant_freq != 0]):,.0f} and the median is {np.median(dominant_freq[dominant_freq != 0]):,.0f}.")
+    dominant_freq_1 = dominant_freqs[:, 0].tolist() #  just the top one
+    dominant_freq_1 = dominant_freq_1[dominant_freq_1 !=0] # ignore zeros
+    st.write(f"{dominant_freq_1}")
+    st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
     st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
     
     st.plotly_chart(fig, use_container_width=True)
