@@ -413,7 +413,7 @@ st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px
 
 st.markdown("**Key frequency stats:**")
 text = f'''
-The overall spectral centroid is {metrics['overall_spectral_centroid']]:,.0f}Hz ({metrics[f"overall_spectral_centroid_band"]})
+The overall spectral centroid is {metrics['overall_spectral_centroid']:,.0f}Hz ({metrics[f"overall_spectral_centroid_band"]})
 The median frequency that contributes to 50% of the total signal energy is {metrics["significant_frequency_max_frequencies_median"]:,.0f}Hz
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
