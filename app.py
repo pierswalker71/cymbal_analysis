@@ -624,7 +624,7 @@ with st.expander("Frequency spectrum",expanded=True):
 
     st.write("Here you can see the frequency spectrum of the audio waveform. The peaks show the frequencies which are present most strongly in the sound.")
     text = f'''
-    The top 5 peak frequencies are
+    The top 5 peak frequencies are:
     {metrics[f"top_freq_1"]:,.0f}Hz ({metrics[f"top_freq_1_band"]}), 
     {metrics[f"top_freq_2"]:,.0f}Hz ({metrics[f"top_freq_2_band"]}), 
     {metrics[f"top_freq_3"]:,.0f}Hz ({metrics[f"top_freq_3_band"]}), 
@@ -688,6 +688,10 @@ with st.expander("Significant frequencies",expanded=True):
     )
     
     st.write("Here you can see the frequencies which cumultatively add up to the top 50% of the total energy in the audio signal.")
+
+    st.write(f"{max_frequencies}")
+
+    
     st.plotly_chart(fig)
 #==============================================================    
 #--------------------------------------------------------------
