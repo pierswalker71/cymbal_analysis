@@ -964,12 +964,12 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     top_3_stable_points = []
     for i in range(min(3, len(sorted_indices))):  # Ensure we don't exceed the number of bins
         bin_index = sorted_indices[i]
-        stable_point = (bins[bin_index] + bins[bin_index + 1]) / 2  # Bin center
-        top_3_stable_points.append((stable_point, counts[bin_index]))
+        bin_centre = (bins[bin_index] + bins[bin_index + 1]) / 2  # Bin center
+        top_3_stable_points.append((bin_centre, counts[bin_index]))
 
     st.write("Top common frequencies (simple histogram peaks):")
-    for i, (stable_point, count) in enumerate(top_3_stable_points, 1):
-        print(f"{i}. Stable Point: {stable_point:.4f}, Count: {count}")
+    for i, (bin_centre, count) in enumerate(top_3_stable_points, 1):
+        st.write(f"{i}. Stable Point: {bin_centre:,.0f}, Count: {count}")
 
 
     from sklearn.cluster import KMeans
