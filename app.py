@@ -637,7 +637,7 @@ with st.expander("Energy in each frequency band",expanded=True):
     )
 
     st.write("Here you can see the amount energy in each of the key frequency bands and how they change over time.")
-    st.write(f"The top 3 bands with the largest peaks are {energy_decay_top_indices}") 
+    st.write(f"The top 3 bands with the largest peaks are {freq_band_names}") 
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
