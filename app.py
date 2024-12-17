@@ -707,10 +707,9 @@ with st.expander("Energy in each frequency band",expanded=True):
     # Apply log scaling to the y-axis
     fig.update_yaxes(type="log")
 
-    #fig.update_layout(title_text="The normalised energy decay over time", title_x=0.5, title_xanchor='center')
+    fig.update_layout(title_text="The normalised energy decay over time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text='Time (s)', range=[0, max_time_for_plotting])
     fig.update_yaxes(title_text='Normalised energy')
-    #fig.update_yaxes(range=[0, np.max([np.max(arr) for arr in energy_decay])*1.05])
     fig.update_layout(height=400, width=700)
     
     # Formatting axes and grid
