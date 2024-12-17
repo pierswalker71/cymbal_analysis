@@ -1031,7 +1031,7 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     # Reshape data for clustering
     valid_pitches = pitches[~np.isnan(pitches)]
 
-    st.write(f"The mean fundamental pitch is {np.mean(valid_pitches:,.0f}Hz and the median is {np.mean(valid_pitches:,.0f}Hz.")
+    st.write(f"The mean fundamental pitch is {np.mean(valid_pitches):,.0f}Hz and the median is {np.mean(valid_pitches):,.0f}Hz.")
 
     data = valid_pitches.reshape(-1, 1)
 
