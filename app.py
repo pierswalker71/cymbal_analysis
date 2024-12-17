@@ -495,20 +495,17 @@ with st.expander("Frequency bands", expanded=True):
             )
         )
 
-    fig.update_layout(title_text="Frequency spectrum", title_x=0.5, title_xanchor='center')
-    fig.update_xaxes(title_text="Frequency band (Hz)")
-    fig.update_yaxes(title_text="Proportion of energy")
-    fig.update_yaxes2(title_text="Number of peaks")
-    
     # Set the y-axis for both axes to start at zero and configure dual y-axes
     fig.update_layout(
         yaxis=dict(
+            title='Proportion of energy',
             title_font=dict(color="black"), tickfont=dict(color="black"),
             showline=True, linecolor='red', linewidth=1,
             gridwidth=0.3, gridcolor='rgba(255,153,153,0.7)',
             range=[0, None]
         ),
         yaxis2=dict(
+            title='Number of peaks',
             title_font=dict(color="black"), tickfont=dict(color="black"),
             showline=True, linecolor='black', linewidth=1,
             gridwidth=0.7, gridcolor='lightgrey',
@@ -517,6 +514,7 @@ with st.expander("Frequency bands", expanded=True):
             range=[0, None]
         ),
         xaxis=dict(
+            title='Frequency Band (Hz)',
             title_font=dict(color="black"), tickfont=dict(color="black"),
             showline=True, linecolor='black', linewidth=1,
             gridwidth=0.7, gridcolor='lightgrey',
@@ -771,7 +769,7 @@ with st.expander("Energy in each frequency band",expanded=True):
         legend=dict(x=1, y=1, traceorder="normal", font_size=10)
     )
 
-    st.write("Here you can see the amount of energy in each of the key frequency bands and how this changes over time.")
+    st.write("Here you can see the amount energy in each of the key frequency bands and how this changes over time.")
     st.write(f"The top 3 bands with the largest peaks are {", ".join(energy_decay_top_freq_band_combined_strings)}.") 
     st.plotly_chart(fig)
 
