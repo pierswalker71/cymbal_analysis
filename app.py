@@ -535,55 +535,6 @@ with st.expander("Frequency bands", expanded=True):
     st.write(f"The bands with the most number of top 20 peaks are: {combined_string}.")
     st.plotly_chart(fig, use_container_width=True)
 
-   # Normalised energy
-
-    normalized_energy_decay = [energy / np.max(energy) for energy in energy_decay]  # Normalization
-    smoothed_energy_decay = [gaussian_filter1d(energy, sigma=2) for energy in normalized_energy_decay]  # Smoothing
-    line_styles = assign_line_styles(normalized_band_energies, thresholds=[0.05, 0.06, 0.07, 0.1])
-    line_widths = [1.5 for _ in freq_bands]  # Uniform line widths
-    times = np.linspace(0, 10, 1000)  # Example time array
-    max_time_for_plotting = np.max(times)  # Maximum time for plotting
-    
-    # Create a standalone Plotly figure
-    fig = go.Figure()
-    
-    # Plot each frequency band as a smoothed, normalized energy decay curve
-    for i, (low, high) in enumerate(freq_bands):
-        label = f"{low}-{high} Hz"
-        fig.add_trace(
-            go.Scatter(
-                x=times,
-                y=smoothed_energy_decay[i],
-                mode='lines',
-                line=dict(color=freq_band_colours[i], width=line_widths[i], dash=line_styles[i]),
-                name=label
-            )
-        )
-    
-    # Apply log scaling to the y-axis
-    fig.update_yaxes(type="log")
-    
-    # Formatting axes and grid
-    fig.update_layout(
-        title="Normalised Energy Decay over Time",
-        xaxis=dict(
-            title="Time (s)",
-            range=[0, max_time_for_plotting]
-        ),
-        yaxis=dict(
-            title="Normalised Energy",
-            showgrid=True,
-            gridcolor="lightgrey",
-            gridwidth=0.7
-        ),
-        legend=dict(
-            x=1.02, y=1, traceorder="normal", font_size=10
-        )
-    )
-
-
-    st.plotly_chart(fig, use_container_width=True)
-
 
 
 
@@ -725,6 +676,59 @@ with st.expander("Energy in each frequency band",expanded=True):
     st.write("Here you can see the amount energy in each of the key frequency bands and how they change over time.")
     st.write(f"The top 3 bands with the largest peaks are {", ".join(energy_decay_top_freq_band_combined_strings)}.") 
     st.plotly_chart(fig)
+
+
+
+    # Normalised energy
+
+    normalized_energy_decay = [energy / np.max(energy) for energy in energy_decay]  # Normalization
+    smoothed_energy_decay = [gaussian_filter1d(energy, sigma=2) for energy in normalized_energy_decay]  # Smoothing
+    line_styles = assign_line_styles(normalized_band_energies, thresholds=[0.05, 0.06, 0.07, 0.1])
+    line_widths = [1.5 for _ in freq_bands]  # Uniform line widths
+    times = np.linspace(0, 10, 1000)  # Example time array
+    max_time_for_plotting = np.max(times)  # Maximum time for plotting
+    
+    # Create a standalone Plotly figure
+    fig = go.Figure()
+    
+    # Plot each frequency band as a smoothed, normalized energy decay curve
+    for i, (low, high) in enumerate(freq_bands):
+        label = f"{low}-{high} Hz"
+        fig.add_trace(
+            go.Scatter(
+                x=times,
+                y=smoothed_energy_decay[i],
+                mode='lines',
+                line=dict(color=freq_band_colours[i], width=line_widths[i], dash=line_styles[i]),
+                name=label
+            )
+        )
+    
+    # Apply log scaling to the y-axis
+    fig.update_yaxes(type="log")
+    
+    # Formatting axes and grid
+    fig.update_layout(
+        title="Normalised Energy Decay over Time",
+        xaxis=dict(
+            title="Time (s)",
+            range=[0, max_time_for_plotting]
+        ),
+        yaxis=dict(
+            title="Normalised Energy",
+            showgrid=True,
+            gridcolor="lightgrey",
+            gridwidth=0.7
+        ),
+        legend=dict(
+            x=1.02, y=1, traceorder="normal", font_size=10
+        )
+    )
+
+
+    st.plotly_chart(fig, use_container_width=True)
+
+
     
 #--------------------------------------------------------------
 # Plot 5
