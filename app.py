@@ -917,7 +917,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
     )
     
     # Set axis limits and labels
-    ylims = [np.nanmin(dominant_freqs), np.nanmax(dominant_freqs)]
+    #ylims = [np.nanmin(dominant_freqs), np.nanmax(dominant_freqs)]
     fig.update_xaxes(title_text='Time (s)', range=[0, max_time_for_plotting], showgrid=True, gridcolor='lightgrey')
     fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
     
@@ -943,10 +943,10 @@ with st.expander("Prominant frequencies over time",expanded=True):
     st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
     st.write(f"The min prominant frequency is {np.min(dominant_freq_1):,.0f} and the max is {np.max(dominant_freq_1):,.0f}.")
 
-    dominant_freq_2 = dominant_freqs[:, 1].tolist() #  just the first one
-    dominant_freq_2 = [freq for freq in dominant_freq_2 if freq != 0] # ignore zeros
-    st.write(f"The mean prominant frequency is {np.mean(dominant_freq_2):,.0f} and the median is {np.median(dominant_freq_2):,.0f}.")
-    st.write(f"The min prominant frequency is {np.min(dominant_freq_2):,.0f} and the max is {np.max(dominant_freq_2):,.0f}.")
+    #dominant_freq_2 = dominant_freqs[:, 1].tolist() #  just the first one
+    #dominant_freq_2 = [freq for freq in dominant_freq_2 if freq != 0] # ignore zeros
+    #st.write(f"The mean prominant frequency is {np.mean(dominant_freq_2):,.0f} and the median is {np.median(dominant_freq_2):,.0f}.")
+    #st.write(f"The min prominant frequency is {np.min(dominant_freq_2):,.0f} and the max is {np.max(dominant_freq_2):,.0f}.")
 
     #st.write(f"{dominant_freq_1}")
     
