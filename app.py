@@ -495,7 +495,7 @@ with st.expander("Frequency bands", expanded=True):
             )
         )
 
-    fig.update_layout(title_text="Energy and number of peaks in key frequency bands2", title_x=0.5, title_xanchor='center')
+    fig.update_layout(title_text="Energy and number of peaks in key frequency bands", title_x=0.5, title_xanchor='center')
 
     # Set the y-axis for both axes to start at zero and configure dual y-axes
     fig.update_layout(
@@ -521,17 +521,7 @@ with st.expander("Frequency bands", expanded=True):
             showline=True, linecolor='black', linewidth=1,
             gridwidth=0.7, gridcolor='lightgrey',
         ),
-        #annotations=[
-        #    dict(
-        #        x=0.5,
-        #        y=1.15,
-        #        xref='paper',
-        #        yref='paper',
-        #        text='Energy and number of peaks in key frequency bands',
-        #        showarrow=False,
-        #        font=dict(size=12)
-        #    )
-        #],
+        
         legend=dict(
             x=0.85,
             y=1,
