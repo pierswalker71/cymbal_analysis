@@ -397,26 +397,29 @@ Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b>
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
-
+#==============================================================
+#--------------------------------------------------------------
+# Plot 2
+#--------------------------------------------------------------
+#==============================================================
 with st.expander("Frequency band colour scheme", expanded=True):
     fig = go.Figure()
     
-    # Add rectangles (bars) for each frequency band with color
     for name, color, label in zip(freq_band_names, freq_band_colours, freq_band_labels):
         fig.add_trace(
             go.Bar(
                 x=[label],
-                y=[1],  # Constant height for all bars
+                y=[0.5],  # Smaller height for the bars
                 marker=dict(color=color, opacity=0.7),
                 name=name
             )
         )
     
-    # Update layout to resemble a legend
+    # Update layout to make the y-axis shorter
     fig.update_layout(
         title="Frequency Band Color Scheme",
-        xaxis=dict(title="Frequency Bands", tickmode="array", tickangle=45),
-        yaxis=dict(visible=False),  # Hide y-axis
+        xaxis=dict(title="Frequency Bands", tickangle=45),
+        yaxis=dict(visible=False, range=[0, 0.6]),  # Reduce y-axis range
         barmode="stack",  # Bars side-by-side
         showlegend=True,
         legend=dict(title="Frequency Band Names")
@@ -425,23 +428,13 @@ with st.expander("Frequency band colour scheme", expanded=True):
     st.plotly_chart(fig, use_container_width=True)
 
 
-
-
-
-
-
-
-
-
 #==============================================================
 #--------------------------------------------------------------
-# Plot 2
+# Plot 3
 #--------------------------------------------------------------
 #==============================================================
 with st.expander("Frequency bands", expanded=True):
 
-
-    # Create the figure
     fig = go.Figure()
 
     # Bar chart for normalized energy distribution
@@ -571,7 +564,7 @@ with st.expander("Frequency bands", expanded=True):
 
 #==============================================================
 #--------------------------------------------------------------
-# Plot 3
+# Plot 4
 #--------------------------------------------------------------
 #==============================================================
 
@@ -637,7 +630,7 @@ with st.expander("Frequency spectrum",expanded=True):
     
 #==============================================================   
 #--------------------------------------------------------------
-# Plot 4
+# Plot 5
 #--------------------------------------------------------------
 #==============================================================
 
@@ -691,7 +684,7 @@ with st.expander("Significant frequencies",expanded=True):
     st.plotly_chart(fig)
 #==============================================================    
 #--------------------------------------------------------------
-# Plots 5 and 6
+# Plots 6 and 7
 #--------------------------------------------------------------
 #==============================================================
 # Compute energy decay for each frequency band
