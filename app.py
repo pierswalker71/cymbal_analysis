@@ -513,7 +513,7 @@ with st.expander("Frequency bands", expanded=True):
         {freq_band_names[Top_energy_bands_indices[1]]} ({freq_band_labels[Top_energy_bands_indices[1]]}Hz) ({100*Top_energy_bands_values[1]:.0f}% total energy),
         {freq_band_names[Top_energy_bands_indices[2]]} ({freq_band_labels[Top_energy_bands_indices[2]]}Hz) ({100*Top_energy_bands_values[2]:.0f}% total energy) 
           '''
-    st.write(f"{text}")
+    st.write(f"{text}.")
 
 
     # Find bands with largest number of peaks
@@ -532,7 +532,7 @@ with st.expander("Frequency bands", expanded=True):
         for peaks, name, label in zip(peaks_per_band_top_peak_num, peaks_per_band_top_freq_band_names, peaks_per_band_top_freq_band_labels)
     ]
     combined_string = ", ".join(peaks_per_band_top_freq_band_combined_strings)
-    st.write(f"The bands with the most number of top 20 peaks are: {combined_string}")
+    st.write(f"The bands with the most number of top 20 peaks are: {combined_string}.")
     st.plotly_chart(fig, use_container_width=True)
 
 
