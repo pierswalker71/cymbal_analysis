@@ -419,6 +419,8 @@ with st.expander("Frequency band colour scheme", expanded=True):
         yaxis=dict(visible=False),  # Hide y-axis
         barmode="stack",  # Bars side-by-side
         showlegend=True,
+        legend=dict(title="Frequency Band Names")
+    )
     
 
 
