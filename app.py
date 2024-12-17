@@ -398,6 +398,39 @@ Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b>
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
 
+with st.expander("Frequency band colour scheme", expanded=True):
+fig = go.Figure()
+
+# Add rectangles (bars) for each frequency band with color
+for name, color, label in zip(freq_band_names, freq_band_colours, freq_band_labels):
+    fig.add_trace(
+        go.Bar(
+            x=[label],
+            y=[1],  # Constant height for all bars
+            marker=dict(color=color, opacity=0.7),
+            name=name
+        )
+    )
+
+# Update layout to resemble a legend
+fig.update_layout(
+    title="Frequency Band Color Scheme",
+    xaxis=dict(title="Frequency Bands", tickmode="array", tickangle=45),
+    yaxis=dict(visible=False),  # Hide y-axis
+    barmode="stack",  # Bars side-by-side
+    showlegend=True,
+    
+
+
+
+
+
+
+
+
+
+
+
 #==============================================================
 #--------------------------------------------------------------
 # Plot 2
@@ -652,7 +685,7 @@ with st.expander("Significant frequencies",expanded=True):
         paper_bgcolor='white'
     )
     
-    st.write("Here you can see the frequencies which contribute to the top 50% of the total energy in the audio signal.")
+    st.write("Here you can see the frequencies which cumultatively add up to the top 50% of the total energy in the audio signal.")
     st.plotly_chart(fig)
 #==============================================================    
 #--------------------------------------------------------------
