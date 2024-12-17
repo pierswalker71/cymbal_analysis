@@ -426,7 +426,7 @@ Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b>
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
 #==============================================================
-st.header("Frequencies and frequency bands", divider="gray")
+st.header("Overall frequency characteristics", divider="gray")
 #==============================================================
 
 
@@ -677,8 +677,6 @@ with st.expander("Frequency spectrum",expanded=True):
 
 with st.expander("Significant frequencies",expanded=True):
     
-
-
     fig = go.Figure()
 
     fig.add_trace(go.Scatter(
@@ -728,6 +726,12 @@ with st.expander("Significant frequencies",expanded=True):
     st.write(f"{text}")
     
     st.plotly_chart(fig)
+
+#==============================================================
+st.header("Frequency characteristics over time", divider="gray")
+#==============================================================
+
+
 #==============================================================    
 #--------------------------------------------------------------
 # Plots 6 and 7
@@ -864,7 +868,7 @@ with st.expander("Energy in each frequency band",expanded=True):
 # Plot 8
 #--------------------------------------------------------------
 #==============================================================
-with st.expander("Prominant frequencies over time",expanded=True):
+with st.expander("Prominant frequencies and fundamental pitches over time",expanded=True):
 
     top_n = 1
     dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
