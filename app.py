@@ -129,6 +129,7 @@ freq_bands_hz_name = [
 freq_bands = [(low,high) for low,high,name in freq_bands_hz_name]
 freq_band_names = [name for low,high,name in freq_bands_hz_name]
 freq_band_colours = ['black', 'red','indigo', 'orange', 'blue', 'green', 'yellow','violet']
+freq_band_labels = [format_freq(low, high) for (low, high) in freq_bands]
 
 #----------------------------------------------------------------------
 ## Generate frequency domain waveform
@@ -367,15 +368,14 @@ Top_5_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], re
 # Extract indices and values
 indices, values = zip(*Top_5_bands)
 
-# Generate formatted frequency labels
-formatted_labels = [format_freq(low, high) for (low, high) in freq_bands]
+
 
 text = f'''
-1. <b>{freq_band_names[indices[0]]} ({formatted_labels[indices[0]]}Hz)</b> ({100*values[0]:.0f}% total energy) <br>
-2. <b>{freq_band_names[indices[1]]} ({formatted_labels[indices[1]]}Hz)</b> ({100*values[1]:.0f}% total energy) <br>
-3. <b>{freq_band_names[indices[2]]} ({formatted_labels[indices[2]]}Hz)</b> ({100*values[2]:.0f}% total energy) <br>
-4. <b>{freq_band_names[indices[3]]} ({formatted_labels[indices[3]]}Hz)</b> ({100*values[3]:.0f}% total energy) <br>
-5. <b>{freq_band_names[indices[4]]} ({formatted_labels[indices[4]]}Hz)</b> ({100*values[4]:.0f}% total energy) <br>
+1. <b>{freq_band_names[indices[0]]} ({freq_band_labels[indices[0]]}Hz)</b> ({100*values[0]:.0f}% total energy) <br>
+2. <b>{freq_band_names[indices[1]]} ({freq_band_labels[indices[1]]}Hz)</b> ({100*values[1]:.0f}% total energy) <br>
+3. <b>{freq_band_names[indices[2]]} ({freq_band_labels[indices[2]]}Hz)</b> ({100*values[2]:.0f}% total energy) <br>
+4. <b>{freq_band_names[indices[3]]} ({freq_band_labels[indices[3]]}Hz)</b> ({100*values[3]:.0f}% total energy) <br>
+5. <b>{freq_band_names[indices[4]]} ({freq_band_labels[indices[4]]}Hz)</b> ({100*values[4]:.0f}% total energy) <br>
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
@@ -416,7 +416,7 @@ with st.expander("Frequency bands", expanded=True):
     # Bar chart for normalized energy distribution
     fig.add_trace(
         go.Bar(
-            x=formatted_labels,
+            x=freq_band_labels,
             y=normalized_band_energies,
             marker=dict(color=freq_band_colours),
             name="Energy",
@@ -435,7 +435,7 @@ with st.expander("Frequency bands", expanded=True):
         peaks_per_band.append(count_in_band)
 
     # Overlay the number of peaks on the secondary y-axis (stalks with round tops)
-    x_values = formatted_labels
+    x_values = freq_band_labels
     y_values = peaks_per_band
 
     fig.add_trace(
