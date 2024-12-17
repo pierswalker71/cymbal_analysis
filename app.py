@@ -949,7 +949,7 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
 
     # frequency stats
 
-    st.write(f"The mean frequency across the time span is {np.mean(dominant_freq):,.0f}Hz and the median is {np.median(dominant_freq):,.0f}Hz.")
+    st.write(f"The mean frequency across the time span is {np.mean(dominant_freqs):,.0f}Hz and the median is {np.median(dominant_freqs):,.0f}Hz.")
 
     from sklearn.cluster import KMeans
     n_clusters = 4
