@@ -186,6 +186,7 @@ metrics['num_freq_in_top_10%_energy']  = get_significant_frequencies(yf, xf, 0.1
 metrics['num_freq_in_top_20%_energy'] = get_significant_frequencies(yf, xf, 0.2)
 metrics['num_freq_in_top_50%_energy'] = get_significant_frequencies(yf, xf, 0.5)
 
+
 # Calculate attack and decay time of time waveform
 #metrics['attack_time'] = calc_attack_time(y, sr)
 decay_time_10pc, initial_peak_value = calc_decay_time(y, sr, percent_peak=0.1)
@@ -426,11 +427,7 @@ with st.expander("Frequency bands", expanded=True):
     # Count the number of peaks in each band
     top_peaks_across_bands_num = 20
 
-    peaks_per_band = []
-    for band in freq_bands:
-        lower_bound, upper_bound = band
-        count_in_band = sum((lower_bound <= peak <= upper_bound) for peak in top_frequencies_sorted[:top_peaks_across_bands_num])
-        peaks_per_band.append(count_in_band)
+
 
     # Overlay the number of peaks on the secondary y-axis (stalks with round tops)
     x_values = freq_band_labels
@@ -515,8 +512,8 @@ with st.expander("Frequency bands", expanded=True):
 
     text = f'''
         The bands containing the most energy are 
-        {freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz) ({100*Top_energy_bands_values[0]:.0f}% total energy),<br>
-        {freq_band_names[Top_energy_bands_indices[1]]} ({freq_band_labels[Top_energy_bands_indices[1]]}Hz) ({100*Top_energy_bands_values[1]:.0f}% total energy),<br>
+        {freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz) ({100*Top_energy_bands_values[0]:.0f}% total energy),
+        {freq_band_names[Top_energy_bands_indices[1]]} ({freq_band_labels[Top_energy_bands_indices[1]]}Hz) ({100*Top_energy_bands_values[1]:.0f}% total energy),
         {freq_band_names[Top_energy_bands_indices[2]]} ({freq_band_labels[Top_energy_bands_indices[2]]}Hz) ({100*Top_energy_bands_values[2]:.0f}% total energy) 
           '''
     st.write(f"{text}")
