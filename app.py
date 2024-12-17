@@ -866,6 +866,7 @@ with st.expander("Dominant frequencies over time",expanded=True):
 
     top_n = 2
     dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
+    st.write({dominant_freqs})
 
     # Plot the dominant frequency over time
     colors = ['black', 'white', 'darkgrey', 'lightgrey', 'whitesmoke']
