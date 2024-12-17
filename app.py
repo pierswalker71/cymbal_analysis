@@ -881,6 +881,7 @@ with st.expander("Dominant frequencies over time",expanded=True):
             y0=lower_bound, y1=upper_bound,
             fillcolor=color,
             opacity=0.5,
+            layer="below",  # Add this line to ensure shapes are below traces
             line_width=0
         )
     
