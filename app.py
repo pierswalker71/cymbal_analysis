@@ -864,7 +864,7 @@ with st.expander("Energy in each frequency band",expanded=True):
 #==============================================================
 with st.expander("Prominant frequencies over time",expanded=True):
 
-    top_n = 2
+    top_n = 1
     dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
 
     # Adjust dominant_freqs: Ensure it's 2D, even if top_n = 1
@@ -906,15 +906,15 @@ with st.expander("Prominant frequencies over time",expanded=True):
     pitches_times = librosa.frames_to_time(np.arange(len(pitches)), sr=sr)
     
     # Plot fundamental pitches as markers
-    fig.add_trace(
-        go.Scatter(
-            x=pitches_times,
-            y=pitches,
-            mode='markers',
-            marker=dict(symbol='star', color='black', size=6),
-            name='Fundamental pitches (Hz)'
-        )
-    )
+    #fig.add_trace(
+    #    go.Scatter(
+    #        x=pitches_times,
+    #        y=pitches,
+    #        mode='markers',
+    #        marker=dict(symbol='star', color='black', size=6),
+    #        name='Fundamental pitches (Hz)'
+    #    )
+    #)
     
     # Set axis limits and labels
     ylims = [0, np.nanmax(dominant_freqs)]
@@ -923,14 +923,14 @@ with st.expander("Prominant frequencies over time",expanded=True):
     
     # Add layout formatting
     fig.update_layout(
-        title=f"Prominant top {top_n} frequencies over time",
+        title=f"Prominant frequencies over time",
         plot_bgcolor='white',
         paper_bgcolor='white',
-        legend=dict(
-            x=1.0, y=1.0,
-            traceorder="normal",
-            font=dict(size=10)
-        ),
+        #legend=dict(
+        #    x=1.0, y=1.0,
+        #    traceorder="normal",
+        #    font=dict(size=10)
+        #),
         height=400, width=800
     )
 
