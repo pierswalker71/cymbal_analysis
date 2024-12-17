@@ -376,6 +376,10 @@ st.header("The key frequencies and frequency bands", divider="gray")
 
 # Key stats
 
+Top_energy_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], reverse=True)[:5]
+# Extract indices and values
+Top_energy_bands_indices, Top_energy_bands_values = zip(*Top_energy_bands)
+
 st.markdown("**Key frequency stats:**")
 text = f'''
 1. The top frequency is <b>{metrics[f"top_freq_1"]:,.0f}Hz</b> ({metrics[f"top_freq_1_band"]}) <br>
@@ -389,10 +393,6 @@ st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px
 
 
 st.markdown("**Most of the sound energy is concentrated in the following 5 bands:**")
-
-Top_energy_bands = sorted(enumerate(normalized_band_energies), key=lambda x: x[1], reverse=True)[:5]
-# Extract indices and values
-Top_energy_bands_indices, Top_energy_bands_values = zip(*Top_energy_bands)
 
 text = f'''
 1. <b>{freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz)</b> ({100*Top_energy_bands_values[0]:.0f}% total energy) <br>
