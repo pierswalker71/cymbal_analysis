@@ -527,7 +527,7 @@ with st.expander("Frequency bands", expanded=True):
             )
         )
 
-    fig.update_layout(title_text="Energy and number of peaks in key frequency bands", title_x=0.5, title_xanchor='center')
+    fig.update_layout(title_text="Energy and number of peaks in each frequency band", title_x=0.5, title_xanchor='center')
 
     # Set the y-axis for both axes to start at zero and configure dual y-axes
     fig.update_layout(
