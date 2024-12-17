@@ -933,5 +933,5 @@ with st.expander("Dominant frequencies over time",expanded=True):
 
     st.write("how the peak frequencies evolve over time. The most prominent frequency peaks are identified within small, overlapping time windows, 
     and this process is repeated continuously throughout the duration of the audio file")
-    st.write("""Additionally, if any fundamental pitches are detected (ie the bottom frequency when there are frequencies which are multiples of each other), these are also shown""")      
+    st.write("""Additionally, if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also displayed.""")
     st.plotly_chart(fig, use_container_width=True)
