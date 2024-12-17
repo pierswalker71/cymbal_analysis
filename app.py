@@ -405,6 +405,7 @@ st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px
 with st.expander("Frequency band colour scheme", expanded=True):
     fig = go.Figure()
     
+    # Add rectangles (bars) for each frequency band with color
     for name, color, label in zip(freq_band_names, freq_band_colours, freq_band_labels):
         fig.add_trace(
             go.Bar(
@@ -415,15 +416,30 @@ with st.expander("Frequency band colour scheme", expanded=True):
             )
         )
     
-    # Update layout to make the y-axis shorter
+    # Update layout to style the plot
     fig.update_layout(
-        title="Frequency Band Color Scheme",
-        xaxis=dict(title="Frequency Bands", tickangle=45),
-        yaxis=dict(visible=False, range=[0, 0.6]),  # Reduce y-axis range
-        barmode="stack",  # Bars side-by-side
-        showlegend=True,
-        legend=dict(title="Frequency Band Names")
+        title=dict(
+            text="Frequency Band Color Scheme",
+            font=dict(color="black", size=16)  # Title in black
+        ),
+        xaxis=dict(
+            title="Frequency Bands",
+            title_font=dict(color="black"),  # X-axis title in black
+            tickfont=dict(color="black"),    # X-axis tick labels in black
+            tickangle=45                     # Rotate x-axis labels
+        ),
+        yaxis=dict(
+            visible=False,  # Hide y-axis
+            range=[0, 0.6]
+        ),
+        legend=dict(
+            title=dict(text="Frequency Band Names", font=dict(color="black")),  # Legend title in black
+            font=dict(color="black")  # Legend labels in black
+        ),
+        plot_bgcolor="white",  # White plot background
+        paper_bgcolor="white"  # White overall background
     )
+    
     fig.update_layout(height=400, width=700)
     st.plotly_chart(fig, use_container_width=True)
 
