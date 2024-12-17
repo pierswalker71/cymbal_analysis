@@ -859,7 +859,7 @@ with st.expander("Energy in each frequency band",expanded=True):
 
 #==============================================================    
 #--------------------------------------------------------------
-# Plots 8 & 9
+# Plot 8
 #--------------------------------------------------------------
 #==============================================================
 with st.expander("Prominant frequencies over time",expanded=True):
@@ -904,35 +904,31 @@ with st.expander("Prominant frequencies over time",expanded=True):
     pitches, voiced_flag, voiced_probs = librosa.pyin(y, fmin=librosa.note_to_hz('C2'), fmax=librosa.note_to_hz('C7'))
     pitches = np.array(pitches)
     pitches_times = librosa.frames_to_time(np.arange(len(pitches)), sr=sr)
-    
-    # Plot fundamental pitches as markers
-    #fig.add_trace(
-    #    go.Scatter(
-    #        x=pitches_times,
-    #        y=pitches,
-    #        mode='markers',
-    #        marker=dict(symbol='star', color='black', size=6),
-    #        name='Fundamental pitches (Hz)'
-    #    )
-    #)
-    
+     
 
     fig.update_layout(title_text="Prominant frequencies over time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
     ylims = [0, np.nanmax(dominant_freqs)]
     fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
     
-    
-    # Add layout formatting
+    fig.update_layout(     
+        xaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+        yaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+        plot_bgcolor='white',  
+        paper_bgcolor='white'
+    )
+
+    # Add a legend
     fig.update_layout(
-        plot_bgcolor='white',
-        paper_bgcolor='white',
-        #legend=dict(
-        #    x=1.0, y=1.0,
-        #    traceorder="normal",
-        #    font=dict(size=10)
-        #),
-        height=400, width=800
+        legend=dict(x=1, y=1, traceorder="normal", font_size=10)
     )
 
     st.write("Here you can see how the peak frequencies evolve over time. The most prominent frequency peaks are identified within small, overlapping time windows, and this process is repeated continuously throughout the duration of the audio file")
@@ -948,7 +944,11 @@ with st.expander("Prominant frequencies over time",expanded=True):
     
     st.plotly_chart(fig, use_container_width=True)
 
-    # Plot pitches
+#==============================================================    
+#--------------------------------------------------------------
+# Plot 9
+#--------------------------------------------------------------
+#==============================================================
     fig = go.Figure()
     
     # Compute pitches
@@ -979,22 +979,30 @@ with st.expander("Prominant frequencies over time",expanded=True):
             line_width=0
         )
     
-    fig.update_layout(title_text="Prominant frequencies over time", title_x=0.5, title_xanchor='center')
+    fig.update_layout(title_text="Fundamental pitches over time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
     ylims = [0, np.nanmax(pitches)]
     fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
 
-    # Add layout formatting
-    fig.update_layout(
-        plot_bgcolor='white',
-        paper_bgcolor='white',
-        #legend=dict(
-        #    x=1.0, y=1.0,
-        #    traceorder="normal",
-        #    font=dict(size=10)
-        #),
-        height=400, width=800
+    fig.update_layout(     
+        xaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+        yaxis=dict(
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
+        ),
+        plot_bgcolor='white',  
+        paper_bgcolor='white'
     )
 
-    st.write("""Here you can see if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also shown.""")
+    # Add a legend
+    fig.update_layout(
+        legend=dict(x=1, y=1, traceorder="normal", font_size=10)
+    )
+
+    st.write("""Here you can see if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it).""")
     st.plotly_chart(fig, use_container_width=True)
