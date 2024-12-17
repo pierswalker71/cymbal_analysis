@@ -952,35 +952,34 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     #dominant_freq_1 = [freq for freq in dominant_freq_1 if freq != 0] # ignore zeros
     #st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
     #st.write(f"The min prominant frequency is {np.min(dominant_freq_1):,.0f} and the max is {np.max(dominant_freq_1):,.0f}.")
-    
 
-
-    
     st.plotly_chart(fig, use_container_width=True)
 
-
-
-    import matplotlib.pyplot as plt
+    # stats to find common frequencies
     
+    counts, bins = np.histogram(dominant_freqs, bins=20)  # Adjust 'bins' as needed
+    # Sort bins by count in descending order and get the top 
+    sorted_indices = np.argsort(counts)[::-1]  # Indices sorted by descending count
     
-    # Create a histogram
-    counts, bins = np.histogram(dominant_freqs, bins=5)  # Adjust 'bins' as needed
+    top_3_stable_points = []
+    for i in range(min(3, len(sorted_indices))):  # Ensure we don't exceed the number of bins
+        bin_index = sorted_indices[i]
+        stable_point = (bins[bin_index] + bins[bin_index + 1]) / 2  # Bin center
+        top_3_stable_points.append((stable_point, counts[bin_index]))
+
+    st.write("Top common frequencies (simple histogram peaks):")
+    for i, (stable_point, count) in enumerate(top_3_stable_points, 1):
+        print(f"{i}. Stable Point: {stable_point:.4f}, Count: {count}")
+
+
+    from sklearn.cluster import KMeans
     
-    # Find bin with the most values
-    max_bin_index = np.argmax(counts)
-    stable_point = (bins[max_bin_index] + bins[max_bin_index + 1]) / 2
-
-    st.write(f"Stable Point (Histogram Peak): {stable_point}")
-    
-    # Plot the histogram for visualization
-    plt.hist(dominant_freqs, bins=5, color='blue', edgecolor='black')
-    plt.title("Frequency Histogram")
-    plt.xlabel("Frequency (Hz)")
-    plt.ylabel("Count")
-    plt.show()
-
-
-
+    # Reshape data for clustering
+    data = dominant_freqs.reshape(-1, 1)
+    # Apply KMeans clustering to identify stable groups
+    kmeans = KMeans(n_clusters=4, random_state=42).fit(data)
+    centroids = kmeans.cluster_centers_
+    st.write(f"Common frequenciess (kmeans cluster centers): {centroids.flatten()}")
 
     
 
