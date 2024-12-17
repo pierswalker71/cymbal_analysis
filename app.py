@@ -620,7 +620,7 @@ with st.expander("Energy in each frequency band",expanded=True):
         legend=dict(x=1, y=1, traceorder="normal", font_size=10)
     )
 
-    st.write("Here you can see the amount energy in each of the key frequency bands.")
+    st.write("Here you can see the amount energy in each of the key frequency bands and how they change over time.")
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
