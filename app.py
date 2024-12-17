@@ -528,10 +528,10 @@ with st.expander("Frequency bands", expanded=True):
     peaks_per_band_top_freq_band_labels = [freq_band_labels[i] for i in peaks_per_band_top_indices]
     
     peaks_per_band_top_freq_band_combined_strings = [
-        f"{peaks} ({name}, {label})"
+        f"{name} ({label}) - {peaks} peaks"
         for peaks, name, label in zip(peaks_per_band_top_peak_num, peaks_per_band_top_freq_band_names, peaks_per_band_top_freq_band_labels)
     ]
-    st.write(f"{peaks_per_band_top_freq_band_combined_strings}")
+    st.write(f"The bands with the most number of top 20 peaks are {peaks_per_band_top_freq_band_combined_strings}")
     st.plotly_chart(fig, use_container_width=True)
 
 
