@@ -952,7 +952,8 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     st.write(f"The mean frequency across the time span is {np.mean(dominant_freqs):,.0f}Hz and the median is {np.median(dominant_freqs):,.0f}Hz.")
 
     from sklearn.cluster import KMeans
-    n_clusters = st.number_input(label, min_value=2, max_value=6,value=3)
+    
+    n_clusters = st.number_input('choose number of clusters', min_value=2, max_value=6,value=3)
     
     # Reshape data for clustering
     data = dominant_freqs.reshape(-1, 1)
@@ -1035,7 +1036,7 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
 
     data = valid_pitches.reshape(-1, 1)
 
-    n_clusters = st.number_input(label, min_value=2, max_value=6,value=2)
+    n_clusters = st.number_input('choose number of clusters', min_value=2, max_value=6,value=2)
 
     if len(valid_pitches) >= n_clusters:
         # Reshape data for clustering
