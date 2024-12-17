@@ -569,6 +569,15 @@ with st.expander("Frequency spectrum",expanded=True):
     )
 
     st.write("Here you can see the frequency spectrum of the audio waveform. The peaks show the frequencies which are present most strongly in the sound.")
+    test = f'''
+    The top 5 peak frequencies are
+    {metrics[f"top_freq_1"]:,.0f}Hz ({metrics[f"top_freq_1_band"]}), 
+    {metrics[f"top_freq_2"]:,.0f}Hz ({metrics[f"top_freq_2_band"]}), 
+    {metrics[f"top_freq_3"]:,.0f}Hz ({metrics[f"top_freq_3_band"]}), 
+    {metrics[f"top_freq_4"]:,.0f}Hz ({metrics[f"top_freq_4_band"]}), 
+    {metrics[f"top_freq_5"]:,.0f}Hz ({metrics[f"top_freq_5_band"]}). 
+    '''
+    st.write({text})
     st.plotly_chart(fig)
 
 
@@ -643,7 +652,7 @@ with st.expander("Energy in each frequency band",expanded=True):
     )
 
     st.write("Here you can see the amount energy in each of the key frequency bands and how they change over time.")
-    st.write(f"The top 3 bands with the largest peaks are {", ".join(energy_decay_top_freq_band_combined_strings)}") 
+    st.write(f"The top 3 bands with the largest peaks are {", ".join(energy_decay_top_freq_band_combined_strings)}.") 
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
