@@ -625,8 +625,14 @@ with st.expander("Significant frequencies",expanded=True):
     marker=dict(color='black') 
     ))
 
+    # Add colored backgrounds for each frequency band
+    for (lower_bound, upper_bound), color in zip(freq_bands, freq_band_colours):
+        fig.add_shape(type='rect', y0=lower_bound, y1=upper_bound, x0=0, x1=1,
+                      yref='y1', xref='paper', fillcolor=color, opacity=0.5, layer="below", line_width=0,
+        )
+
     fig.update_layout(title_text="The significant frequencies which contribute to the total audio energy", title_x=0.5, title_xanchor='center')
-    fig.update_xaxes(title_text="Proportion of total energy")
+    fig.update_xaxes(title_text="Proportion of total energy (from 0 to 50%")
     fig.update_yaxes(title_text="Significant frequencies (Hz)")
     fig.update_yaxes(range=[0, max(max_frequencies) * 1.1])
     fig.update_layout(height=400, width=700)
