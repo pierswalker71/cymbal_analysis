@@ -424,7 +424,7 @@ with st.expander("Frequency band colour scheme", expanded=True):
         showlegend=True,
         legend=dict(title="Frequency Band Names")
     )
-    
+    fig.update_layout(height=100, width=700)
     st.plotly_chart(fig, use_container_width=True)
 
 
