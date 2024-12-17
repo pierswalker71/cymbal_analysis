@@ -198,6 +198,9 @@ overall_spectral_centroid = np.mean(librosa.feature.spectral_centroid(y=y, sr=sr
 metrics['overall_spectral_centroid'] = overall_spectral_centroid
 metrics[f"overall_spectral_centroid_band"] = get_frequency_band(overall_spectral_centroid,freq_bands_hz_name)
 
+
+
+
 # bandwidth - oveall spread of frequencies
 metrics['overall_spectral_bandwidth'] = np.mean(librosa.feature.spectral_bandwidth(y=y, sr=sr))
 
@@ -397,6 +400,10 @@ Range of top 5 peaks is <b>{metrics['top_5_freq_range']:,.0f}Hz</b>
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
 
 
+
+
+
+
 #--------------------------------------------------------------
 # Plot 2
 #--------------------------------------------------------------
@@ -570,15 +577,21 @@ with st.expander("Frequency spectrum",expanded=True):
 #--------------------------------------------------------------
 # Compute energy decay for each frequency band
 
+# Get energy-time profile for each band 
+energy_decay, times = compute_energy_decay_per_band(y, sr, freq_bands)
+
+# Find bands with largest energy peaks
+max_values_with_indices = [(i, arr.max()) for i, arr in enumerate(energy_decay)]
+sorted_max_values = sorted(max_values_with_indices, key=lambda x: x[1], reverse=True)
+energy_decay_top_indices = [index for index, _ in sorted_max_values[:3]] # hard code 3
+energy_decay_top_freq_band_names = freq_band_names[energy_decay_top_indices]
+
 with st.expander("Energy in each frequency band",expanded=True):
     fig = go.Figure()
-    energy_decay, times = compute_energy_decay_per_band(y, sr, freq_bands)
-
-    st.write(energy_decay)
-    
+  
     # Define line widths and line styles based on thresholds
     line_widths = [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5] 
-    line_styles = assign_line_styles(normalized_band_energies, thresholds=[0.03, 0.06, 0.07, 0.1])
+    line_styles = assign_line_styles(normalized_band_energies, thresholds=[0.03, 0.06, 0.07, 0.1]) # non dot for top 3
     
     # Add energy decay traces for each frequency band to the subplot
     for i, (low, high) in enumerate(freq_bands):
@@ -623,6 +636,7 @@ with st.expander("Energy in each frequency band",expanded=True):
     )
 
     st.write("Here you can see the amount energy in each of the key frequency bands and how they change over time.")
+    st.write(f"The top 3 bands with the largest peaks are {energy_decay_top_freq_band_names}") 
     st.plotly_chart(fig)
     
 #--------------------------------------------------------------
