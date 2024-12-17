@@ -573,6 +573,8 @@ with st.expander("Frequency spectrum",expanded=True):
 with st.expander("Energy in each frequency band",expanded=True):
     fig = go.Figure()
     energy_decay, times = compute_energy_decay_per_band(y, sr, freq_bands)
+
+    st.write(energy_decay)
     
     # Define line widths and line styles based on thresholds
     line_widths = [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5] 
