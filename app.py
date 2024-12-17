@@ -859,7 +859,7 @@ with st.expander("Energy in each frequency band",expanded=True):
 
 #==============================================================    
 #--------------------------------------------------------------
-# Plot 8
+# Plots 8 & 9
 #--------------------------------------------------------------
 #==============================================================
 with st.expander("Prominant frequencies over time",expanded=True):
@@ -937,11 +937,52 @@ with st.expander("Prominant frequencies over time",expanded=True):
     st.write("Here you can see how the peak frequencies evolve over time. The most prominent frequency peaks are identified within small, overlapping time windows, and this process is repeated continuously throughout the duration of the audio file")
     st.write("""Additionally, if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also shown.""")
 
-    dominant_freq_1 = dominant_freqs[:, 0].tolist() #  just the first one
-    dominant_freq_1 = [freq for freq in dominant_freq_1 if freq != 0] # ignore zeros
-    st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
-    st.write(f"The min prominant frequency is {np.min(dominant_freq_1):,.0f} and the max is {np.max(dominant_freq_1):,.0f}.")
+    #dominant_freq_1 = dominant_freqs[:, 0].tolist() #  just the first one
+    #dominant_freq_1 = [freq for freq in dominant_freq_1 if freq != 0] # ignore zeros
+    #st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
+    #st.write(f"The min prominant frequency is {np.min(dominant_freq_1):,.0f} and the max is {np.max(dominant_freq_1):,.0f}.")
     
-    st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
+    #st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
+
     
+    st.plotly_chart(fig, use_container_width=True)
+
+    # Plot pitches
+    fig = go.Figure()
+    
+    # Compute pitches
+    pitches, voiced_flag, voiced_probs = librosa.pyin(y, fmin=librosa.note_to_hz('C2'), fmax=librosa.note_to_hz('C7'))
+    pitches = np.array(pitches)
+    pitches_times = librosa.frames_to_time(np.arange(len(pitches)), sr=sr)
+    
+    # Plot fundamental pitches as markers
+    fig.add_trace(
+        go.Scatter(
+            x=pitches_times,
+            y=pitches,
+            mode='markers',
+            marker=dict(symbol='star', color='black', size=6),
+            name='Fundamental pitches (Hz)'
+        )
+    )
+    
+    # Set axis limits and labels
+    ylims = [0, np.nanmax(pitches)]
+    fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') 
+    fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+    
+    # Add layout formatting
+    fig.update_layout(
+        title=f"Prominant frequencies over time",
+        plot_bgcolor='white',
+        paper_bgcolor='white',
+        #legend=dict(
+        #    x=1.0, y=1.0,
+        #    traceorder="normal",
+        #    font=dict(size=10)
+        #),
+        height=400, width=800
+    )
+
+    st.write("""Here you can see if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also shown.""")
     st.plotly_chart(fig, use_container_width=True)
