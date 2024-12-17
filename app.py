@@ -54,7 +54,7 @@ Sections:
 st.write(intro_text)
 
 #==============================================================
-st.header("", divider="gray")
+st.header("", divider="yellow")
 st.header("Load cymbal audio file", divider="gray")
 #==============================================================
 
