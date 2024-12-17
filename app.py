@@ -859,6 +859,14 @@ with st.expander("Energy in each frequency band",expanded=True):
 
 
 with st.expander("Dominant frequencies over time",expanded=True):
+
+    # Plot dominant frequencies per frame over time  - row 3 column 2
+    top_n = 2
+    dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
+
+    # Plot the dominant frequency over time
+    colors = ['black', 'white', 'darkgrey', 'lightgrey', 'whitesmoke']
+
     fig = go.Figure()
     
     # Add colored backgrounds for frequency bands
