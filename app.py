@@ -289,7 +289,10 @@ metrics["significant_frequency_max_frequencies_max"] = np.max(significant_freque
 # **** Generate plots ****
 #==============================================================
 
-st.header("How long the cymbal rings for", divider="gray")
+
+#==============================================================
+st.header("Time characteristicse", divider="gray")
+#==============================================================
 
 # Key stats
 st.write("**How long it takes for the sound to die down:**.")
@@ -609,7 +612,7 @@ with st.expander("Frequency bands", expanded=True):
 #--------------------------------------------------------------
 #==============================================================
 
-with st.expander("Frequency spectrum",expanded=True):
+with st.expander("High amplitude frequencies",expanded=True):
     fig = go.Figure()
     # Define some necessary constants for freq spectrum plot
     max_freq = 6000
@@ -675,7 +678,7 @@ with st.expander("Frequency spectrum",expanded=True):
 #--------------------------------------------------------------
 #==============================================================
 
-with st.expander("Significant frequencies",expanded=True):
+with st.expander("High energy frequencies",expanded=True):
     
     fig = go.Figure()
 
@@ -755,7 +758,7 @@ energy_decay_top_freq_band_combined_strings = [
     for name, label in zip(energy_decay_top_freq_band_names, energy_decay_top_freq_band_labels)
 ]
 
-with st.expander("Energy in each frequency band",expanded=True):
+with st.expander("High energy frequency bands",expanded=True):
     fig = go.Figure()
   
     # Define line widths and line styles based on thresholds
@@ -868,7 +871,7 @@ with st.expander("Energy in each frequency band",expanded=True):
 # Plot 8
 #--------------------------------------------------------------
 #==============================================================
-with st.expander("Prominant frequencies and fundamental pitches over time",expanded=True):
+with st.expander("High amplitude frequencies and fundamental pitches over time",expanded=True):
 
     top_n = 1
     dominant_freqs, times = compute_dominant_frequencies(y, sr, n_fft=2048, hop_length=128, top_n=top_n)
