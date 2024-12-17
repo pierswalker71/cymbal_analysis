@@ -382,9 +382,9 @@ Top_energy_bands_indices, Top_energy_bands_values = zip(*Top_energy_bands)
 
 st.markdown("**Key frequency stats:**")
 text = f'''
-3. The overall spectral centroid is <b>{metrics['overall_spectral_centroid']:,.0f}Hz</b> ({metrics[f"overall_spectral_centroid_band"]})  <br>
+1. The overall spectral centroid is <b>{metrics['overall_spectral_centroid']:,.0f}Hz</b> ({metrics[f"overall_spectral_centroid_band"]})  <br>
 2. The top frequency is <b>{metrics[f"top_freq_1"]:,.0f}Hz</b> ({metrics[f"top_freq_1_band"]}) <br>
-3. Top frequency band is <b>{freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz)  </b>
+3. Top frequency band is <b>{freq_band_names[Top_energy_bands_indices[0]]} ({freq_band_labels[Top_energy_bands_indices[0]]}Hz)</b>  <br>
 4. The median frequency that contributes to 50% of the total signal energy is <b>{metrics["significant_frequency_max_frequencies_median"]:,.0f}Hz</b>  <br>
 '''
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal; padding:10px; border-radius:5px;">{text}</p>', unsafe_allow_html=True)
