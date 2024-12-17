@@ -925,3 +925,4 @@ with st.expander("Dominant frequencies over time",expanded=True):
         ),
         height=600, width=800
     )
+    st.plotly_chart(fig, use_container_width=True)
