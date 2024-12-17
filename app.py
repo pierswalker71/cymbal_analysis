@@ -530,7 +530,7 @@ with st.expander("Frequency bands", expanded=True):
         f"{name} ({label})"
         for name, label in zip(peaks_per_band_top_freq_band_names, peaks_per_band_top_freq_band_labels)
     ]
-    st.write(f2{peaks_per_band_top_freq_band_combined_strings}")
+    st.write(f"{peaks_per_band_top_freq_band_combined_strings}")
     st.plotly_chart(fig, use_container_width=True)
 
 
