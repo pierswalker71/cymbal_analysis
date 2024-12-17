@@ -919,7 +919,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
     # Set axis limits and labels
     #ylims = [np.nanmin(dominant_freqs), np.nanmax(dominant_freqs)]
     fig.update_xaxes(title_text='Time (s)', range=[0, max_time_for_plotting], showgrid=True, gridcolor='lightgrey')
-    fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+    #fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
     
     # Add layout formatting
     fig.update_layout(
