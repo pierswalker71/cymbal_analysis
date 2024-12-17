@@ -200,9 +200,6 @@ overall_spectral_centroid = np.mean(librosa.feature.spectral_centroid(y=y, sr=sr
 metrics['overall_spectral_centroid'] = overall_spectral_centroid
 metrics[f"overall_spectral_centroid_band"] = get_frequency_band(overall_spectral_centroid,freq_bands_hz_name)
 
-
-
-
 # bandwidth - oveall spread of frequencies
 metrics['overall_spectral_bandwidth'] = np.mean(librosa.feature.spectral_bandwidth(y=y, sr=sr))
 
@@ -517,7 +514,23 @@ with st.expander("Frequency bands", expanded=True):
         {freq_band_names[Top_energy_bands_indices[2]]} ({freq_band_labels[Top_energy_bands_indices[2]]}Hz) ({100*Top_energy_bands_values[2]:.0f}% total energy) 
           '''
     st.write(f"{text}")
+
+
+    # Find bands with largest number of peaks
+    #metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,peaks_per_band)} 
+
+    max_values_with_indices = [(i, arr.max()) for i, arr in enumerate(peaks_per_band)]
+    sorted_max_values = sorted(max_values_with_indices, key=lambda x: x[1], reverse=True)
+    peaks_per_band_top_indices = [index for index, _ in sorted_max_values[:3]] # hard code 3
     
+    peaks_per_band_top_freq_band_names = [freq_band_names[i] for i in peaks_per_band_top_indices]
+    peaks_per_band_top_freq_band_labels = [freq_band_labels[i] for i in peaks_per_band_top_indices]
+    
+    peaks_per_band_top_freq_band_combined_strings = [
+        f"{name} ({label})"
+        for name, label in zip(peaks_per_band_top_freq_band_names, peaks_per_band_top_freq_band_labels)
+    ]
+    st.write(f2{peaks_per_band_top_freq_band_combined_strings}")
     st.plotly_chart(fig, use_container_width=True)
 
 
@@ -582,6 +595,7 @@ with st.expander("Frequency spectrum",expanded=True):
     {metrics[f"top_freq_5"]:,.0f}Hz ({metrics[f"top_freq_5_band"]}). 
     '''
     st.write(f"{text}")
+    
     st.plotly_chart(fig)
 
 
