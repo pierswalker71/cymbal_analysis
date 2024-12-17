@@ -957,29 +957,31 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
 
     # stats to find common frequencies
     
-    counts, bins = np.histogram(dominant_freqs, bins=20)  # Adjust 'bins' as needed
-    # Sort bins by count in descending order and get the top 
-    sorted_indices = np.argsort(counts)[::-1]  # Indices sorted by descending count
+    #counts, bins = np.histogram(dominant_freqs, bins=20)  # Adjust 'bins' as needed
+    ## Sort bins by count in descending order and get the top 
+    #sorted_indices = np.argsort(counts)[::-1]  # Indices sorted by descending count
     
-    top_3_stable_points = []
-    for i in range(min(3, len(sorted_indices))):  # Ensure we don't exceed the number of bins
-        bin_index = sorted_indices[i]
-        bin_centre = (bins[bin_index] + bins[bin_index + 1]) / 2  # Bin center
-        top_3_stable_points.append((bin_centre, counts[bin_index]))
+    #top_3_stable_points = []
+    #for i in range(min(3, len(sorted_indices))):  # Ensure we don't exceed the number of bins
+    #    bin_index = sorted_indices[i]
+    #    bin_centre = (bins[bin_index] + bins[bin_index + 1]) / 2  # Bin center
+    #    top_3_stable_points.append((bin_centre, counts[bin_index]))
 
-    st.write("Top common frequencies (simple histogram peaks):")
-    for i, (bin_centre, count) in enumerate(top_3_stable_points, 1):
-        st.write(f"{i}. Stable Point: {bin_centre:,.0f}, Count: {count}")
+    #st.write("Top common frequencies (simple histogram peaks):")
+    #for i, (bin_centre, count) in enumerate(top_3_stable_points, 1):
+    #    st.write(f"{i}. Stable Point: {bin_centre:,.0f}, Count: {count}")
 
 
     from sklearn.cluster import KMeans
+    n_clusters = 4
     
     # Reshape data for clustering
     data = dominant_freqs.reshape(-1, 1)
     # Apply KMeans clustering to identify stable groups
-    kmeans = KMeans(n_clusters=4, random_state=42).fit(data)
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
     centroids = kmeans.cluster_centers_
-    st.write(f"Common frequenciess (kmeans cluster centers): {centroids.flatten()}")
+     = ", ".join(f"{value:.4f}" for value in centroids.flatten())
+    st.write(f"Top {n_clusters} frequency clusters: {centroid_values}")
 
     
 
