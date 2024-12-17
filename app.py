@@ -528,7 +528,7 @@ with st.expander("Frequency bands", expanded=True):
     peaks_per_band_top_freq_band_labels = [freq_band_labels[i] for i in peaks_per_band_top_indices]
     
     peaks_per_band_top_freq_band_combined_strings = [
-        f"{name} ({label}Hz) - {peaks} peaks"
+        f"{name} ({label}Hz) ({peaks} peaks)"
         for peaks, name, label in zip(peaks_per_band_top_peak_num, peaks_per_band_top_freq_band_names, peaks_per_band_top_freq_band_labels)
     ]
     combined_string = ", ".join(peaks_per_band_top_freq_band_combined_strings)
