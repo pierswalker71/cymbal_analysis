@@ -875,7 +875,7 @@ with st.expander("Dominant frequencies over time",expanded=True):
             x0=0, x1=max_time_for_plotting,
             y0=lower_bound, y1=upper_bound,
             fillcolor=color,
-            #opacity=0.3,
+            opacity=0.5,
             line_width=0
         )
     
