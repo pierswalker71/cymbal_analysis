@@ -877,16 +877,16 @@ with st.expander("Prominant frequencies over time",expanded=True):
     fig = go.Figure()
     
     # Add coloured backgrounds for frequency bands
-    #for (lower_bound, upper_bound), color in zip(freq_bands, freq_band_colours):
-    #    fig.add_shape(
-    #        type='rect',
-    #        x0=0, x1=max_time_for_plotting,
-    #        y0=lower_bound, y1=upper_bound,
-    #        fillcolor=color,
-    #        opacity=0.5,
-    #        layer="below",  # Add this line to ensure shapes are below traces
-    #        line_width=0
-    #    )
+    for (lower_bound, upper_bound), color in zip(freq_bands, freq_band_colours):
+        fig.add_shape(
+            type='rect',
+            x0=0, x1=max_time_for_plotting,
+            y0=lower_bound, y1=upper_bound,
+            fillcolor=color,
+            opacity=0.5,
+            layer="below",  # Add this line to ensure shapes are below traces
+            line_width=0
+        )
     
     # Reverse the order of prominant frequencies for plotting
     for i in reversed(range(dominant_freqs.shape[1])):  # Iterate through columns
@@ -917,9 +917,9 @@ with st.expander("Prominant frequencies over time",expanded=True):
     )
     
     # Set axis limits and labels
-    #ylims = [np.nanmin(dominant_freqs), np.nanmax(dominant_freqs)]
+    ylims = [0, np.nanmax(dominant_freqs)*1.05]
     fig.update_xaxes(title_text='Time (s)', range=[0, max_time_for_plotting], showgrid=True, gridcolor='lightgrey')
-    #fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+    fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
     
     # Add layout formatting
     fig.update_layout(
