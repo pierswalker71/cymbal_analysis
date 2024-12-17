@@ -399,26 +399,26 @@ st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px
 
 
 with st.expander("Frequency band colour scheme", expanded=True):
-fig = go.Figure()
-
-# Add rectangles (bars) for each frequency band with color
-for name, color, label in zip(freq_band_names, freq_band_colours, freq_band_labels):
-    fig.add_trace(
-        go.Bar(
-            x=[label],
-            y=[1],  # Constant height for all bars
-            marker=dict(color=color, opacity=0.7),
-            name=name
+    fig = go.Figure()
+    
+    # Add rectangles (bars) for each frequency band with color
+    for name, color, label in zip(freq_band_names, freq_band_colours, freq_band_labels):
+        fig.add_trace(
+            go.Bar(
+                x=[label],
+                y=[1],  # Constant height for all bars
+                marker=dict(color=color, opacity=0.7),
+                name=name
+            )
         )
-    )
-
-# Update layout to resemble a legend
-fig.update_layout(
-    title="Frequency Band Color Scheme",
-    xaxis=dict(title="Frequency Bands", tickmode="array", tickangle=45),
-    yaxis=dict(visible=False),  # Hide y-axis
-    barmode="stack",  # Bars side-by-side
-    showlegend=True,
+    
+    # Update layout to resemble a legend
+    fig.update_layout(
+        title="Frequency Band Color Scheme",
+        xaxis=dict(title="Frequency Bands", tickmode="array", tickangle=45),
+        yaxis=dict(visible=False),  # Hide y-axis
+        barmode="stack",  # Bars side-by-side
+        showlegend=True,
     
 
 
