@@ -522,13 +522,14 @@ with st.expander("Frequency bands", expanded=True):
     max_values_with_indices = [(i, arr.max()) for i, arr in enumerate(peaks_per_band)]
     sorted_max_values = sorted(max_values_with_indices, key=lambda x: x[1], reverse=True)
     peaks_per_band_top_indices = [index for index, _ in sorted_max_values[:3]] # hard code 3
-    
+
+    peaks_per_band_top_peak_num = [peaks_per_band[i] for i in peaks_per_band_top_indices]
     peaks_per_band_top_freq_band_names = [freq_band_names[i] for i in peaks_per_band_top_indices]
     peaks_per_band_top_freq_band_labels = [freq_band_labels[i] for i in peaks_per_band_top_indices]
     
     peaks_per_band_top_freq_band_combined_strings = [
-        f"{name} ({label})"
-        for name, label in zip(peaks_per_band_top_freq_band_names, peaks_per_band_top_freq_band_labels)
+        f"{peaks} ({name}, {label})"
+        for peaks, name, label in zip(peaks_per_band_top_peak_num, peaks_per_band_top_freq_band_names, peaks_per_band_top_freq_band_labels)
     ]
     st.write(f"{peaks_per_band_top_freq_band_combined_strings}")
     st.plotly_chart(fig, use_container_width=True)
