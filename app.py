@@ -36,13 +36,13 @@ files_image_no_spaces = {
     key: urllib.parse.quote(value, safe=":/") for key, value in files_image.items()
 }
 
-st.title("Cymbal analysis")
+st.title(":drum: Cymbal analysis")
 st.write('Piers Walker 2024 ([https://github.com/pierswalker71](https://github.com/pierswalker71))')
 intro_text = f'''
-:musical_note: Welcome to the Cymbal Sound Analyser!
+:tada: Welcome to the Cymbal Sound Analyser!
 
 Select an audio file of one of my drumkit cymbals being struck, and this tool will analyse the sound in both the time and frequency domains. 
-You'll gain insights through key metrics and visualizations that reveal unique characteristics of the cymbal's sound.
+It will show you key metrics and visualisations that will reveal unique characteristics of the cymbal's sound.
 
 Sections:
 - Load cymbal audio file
