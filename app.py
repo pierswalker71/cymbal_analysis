@@ -37,12 +37,12 @@ files_image_no_spaces = {
 }
 
 st.title("Cymbal analysis")
-st.write('Piers Walker 2024 [https://github.com/pierswalker71](https://github.com/pierswalker71)')
+st.write('Piers Walker 2024 ([https://github.com/pierswalker71](https://github.com/pierswalker71))')
 intro_text = f'''
-Hi, welcome to my cymbal analyser.
+Hi, welcome to my cymbal sound analyser.
 
-You can select an audio file of one of the cymbals from my drumkit being hit. The audio file will be  
-analysed in both time and frequency and you will be presented with charts that portray the sound in intreresting and informative ways.
+You can select an audio file of one of my drumkit cymbals being hit, which wil then be  
+analysed in both time and frequency. You will see some key metrics and charts that portray the sound in interesting ways.
 '''
 st.write(intro_text)
 
