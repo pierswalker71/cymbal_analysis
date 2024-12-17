@@ -916,14 +916,14 @@ with st.expander("Prominant frequencies over time",expanded=True):
     #    )
     #)
     
-    # Set axis limits and labels
-    ylims = [0, np.nanmax(dominant_freqs)]
+
+    fig.update_layout(title_text="Prominant frequencies over time", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
     fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+    ylims = [0, np.nanmax(dominant_freqs)]
     
     # Add layout formatting
     fig.update_layout(
-        title=f"Prominant frequencies over time",
         plot_bgcolor='white',
         paper_bgcolor='white',
         #legend=dict(
@@ -966,14 +966,13 @@ with st.expander("Prominant frequencies over time",expanded=True):
         )
     )
     
-    # Set axis limits and labels
-    ylims = [0, np.nanmax(pitches)]
-    fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') 
+    fig.update_layout(title_text="Prominant frequencies over time", title_x=0.5, title_xanchor='center')
+    fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
     fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+    ylims = [0, np.nanmax(pitches)]
     
     # Add layout formatting
     fig.update_layout(
-        title=f"Prominant frequencies over time",
         plot_bgcolor='white',
         paper_bgcolor='white',
         #legend=dict(
