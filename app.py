@@ -701,7 +701,7 @@ with st.expander("Significant frequencies",expanded=True):
 
     text = f'''
         The mean of these values is {metrics["significant_frequency_max_frequencies_mean"]:,.0f}Hz
-        and the median is {metrics["significant_frequency_max_frequencies_median"):,.0f}Hz.
+        and the median is {metrics["significant_frequency_max_frequencies_median"]:,.0f}Hz.
         The minimum value is {metrics["significant_frequency_max_frequencies_min"]:,.0f}Hz 
         and the maximum value is {metrics["significant_frequency_max_frequencies_max"]:,.0f}Hz
          '''
