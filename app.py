@@ -980,7 +980,7 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     # Apply KMeans clustering to identify stable groups
     kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
     centroids = kmeans.cluster_centers_
-     = ", ".join(f"{value:.4f}" for value in centroids.flatten())
+    centroid_values = ", ".join(f"{value:.4f}" for value in centroids.flatten())
     st.write(f"Top {n_clusters} frequency clusters: {centroid_values}")
 
     
