@@ -933,7 +933,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
     st.write("Here you can see how the peak frequencies evolve over time. The most prominent frequency peaks are identified within small, overlapping time windows, and this process is repeated continuously throughout the duration of the audio file")
     st.write("""Additionally, if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also shown.""")
 
-    st.write(f"{reversed(range(dominant_freqs.shape[1]))}")
+    st.write(f"{range(dominant_freqs.shape[1])}")
     st.write(f"{dominant_freqs}")
     dominant_freq_1 = dominant_freqs[:, 0].tolist() #  just the first one
     dominant_freq_1 = [freq for freq in dominant_freq_1 if freq != 0] # ignore zeros
