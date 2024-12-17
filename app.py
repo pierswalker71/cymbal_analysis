@@ -706,26 +706,34 @@ with st.expander("Energy in each frequency band",expanded=True):
     
     # Apply log scaling to the y-axis
     fig.update_yaxes(type="log")
+
+    #fig.update_layout(title_text="The normalised energy decay over time", title_x=0.5, title_xanchor='center')
+    fig.update_xaxes(title_text='Time (s)', range=[0, max_time_for_plotting])
+    fig.update_yaxes(title_text='Normalised energy')
+    #fig.update_yaxes(range=[0, np.max([np.max(arr) for arr in energy_decay])*1.05])
+    fig.update_layout(height=400, width=700)
     
     # Formatting axes and grid
-    fig.update_layout(
-        title="Normalised Energy Decay over Time",
+    fig.update_layout(     
         xaxis=dict(
-            title="Time (s)",
-            range=[0, max_time_for_plotting]
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
         ),
         yaxis=dict(
-            title="Normalised Energy",
-            showgrid=True,
-            gridcolor="lightgrey",
-            gridwidth=0.7
+        title_font=dict(color="black"), tickfont=dict(color="black"),
+        showline=True, linecolor='black', linewidth=1,
+        gridwidth=0.7, gridcolor='lightgrey',
         ),
-        legend=dict(
-            x=1.02, y=1, traceorder="normal", font_size=10
-        )
+        plot_bgcolor='white',  
+        paper_bgcolor='white'
     )
 
-
+    # Add a legend
+    fig.update_layout(
+        legend=dict(x=1, y=1, traceorder="normal", font_size=10)
+    )
+    
     st.plotly_chart(fig, use_container_width=True)
 
 
