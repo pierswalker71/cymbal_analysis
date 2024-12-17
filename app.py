@@ -856,3 +856,64 @@ with st.expander("Energy in each frequency band",expanded=True):
     )
     
     st.plotly_chart(fig, use_container_width=True)
+
+
+with st.expander("Dominant frequencies over time",expanded=True):
+    fig = go.Figure()
+    
+    # Add colored backgrounds for frequency bands
+    for (lower_bound, upper_bound), color in zip(freq_bands, freq_band_colours):
+        fig.add_shape(
+            type='rect',
+            x0=0, x1=max_time_for_plotting,
+            y0=lower_bound, y1=upper_bound,
+            fillcolor=color,
+            opacity=0.3,
+            line_width=0
+        )
+    
+    # Reverse the order of dominant frequencies for plotting
+    for i in reversed(range(dominant_freqs.shape[1])):
+        fig.add_trace(
+            go.Scatter(
+                x=times,
+                y=dominant_freqs[:, i],
+                mode='lines',
+                line=dict(color=colors[i], width=2),
+                name=f'Dominant Freq {i+1}'
+            )
+        )
+    
+    # Compute pitches
+    pitches, voiced_flag, voiced_probs = librosa.pyin(y, fmin=librosa.note_to_hz('C2'), fmax=librosa.note_to_hz('C7'))
+    pitches = np.array(pitches)
+    pitches_times = librosa.frames_to_time(np.arange(len(pitches)), sr=sr)
+    
+    # Plot fundamental pitches as markers
+    fig.add_trace(
+        go.Scatter(
+            x=pitches_times,
+            y=pitches,
+            mode='markers',
+            marker=dict(symbol='star', color='black', size=8),
+            name='Pitch (Hz)'
+        )
+    )
+    
+    # Set axis limits and labels
+    ylims = [np.nanmin(dominant_freqs), np.nanmax(dominant_freqs)]
+    fig.update_xaxes(title_text='Time (s)', range=[0, max_time_for_plotting], showgrid=True, gridcolor='lightgrey')
+    fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+    
+    # Add layout formatting
+    fig.update_layout(
+        title=f"Dominant Top {top_n} Frequencies Over Time",
+        plot_bgcolor='white',
+        paper_bgcolor='white',
+        legend=dict(
+            x=1.0, y=1.0,
+            traceorder="normal",
+            font=dict(size=10)
+        ),
+        height=600, width=800
+    )
