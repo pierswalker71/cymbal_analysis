@@ -917,8 +917,8 @@ with st.expander("Prominant frequencies over time",expanded=True):
     )
     
     # Set axis limits and labels
-    ylims = [0, np.nanmax(dominant_freqs)*1.05]
-    fig.update_xaxes(title_text='Time (s)', range=[0, max_time_for_plotting], showgrid=True, gridcolor='lightgrey')
+    ylims = [0, np.nanmax(dominant_freqs)]
+    fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
     fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
     
     # Add layout formatting
@@ -937,19 +937,10 @@ with st.expander("Prominant frequencies over time",expanded=True):
     st.write("Here you can see how the peak frequencies evolve over time. The most prominent frequency peaks are identified within small, overlapping time windows, and this process is repeated continuously throughout the duration of the audio file")
     st.write("""Additionally, if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it), they are also shown.""")
 
-    #st.write(f"{dominant_freqs}")
     dominant_freq_1 = dominant_freqs[:, 0].tolist() #  just the first one
     dominant_freq_1 = [freq for freq in dominant_freq_1 if freq != 0] # ignore zeros
-    st.write(f"The data length is {len(dominant_freq_1)}")
     st.write(f"The mean prominant frequency is {np.mean(dominant_freq_1):,.0f} and the median is {np.median(dominant_freq_1):,.0f}.")
     st.write(f"The min prominant frequency is {np.min(dominant_freq_1):,.0f} and the max is {np.max(dominant_freq_1):,.0f}.")
-
-    #dominant_freq_2 = dominant_freqs[:, 1].tolist() #  just the first one
-    #dominant_freq_2 = [freq for freq in dominant_freq_2 if freq != 0] # ignore zeros
-    #st.write(f"The mean prominant frequency is {np.mean(dominant_freq_2):,.0f} and the median is {np.median(dominant_freq_2):,.0f}.")
-    #st.write(f"The min prominant frequency is {np.min(dominant_freq_2):,.0f} and the max is {np.max(dominant_freq_2):,.0f}.")
-
-    st.write(f"{dominant_freq_1}")
     
     st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
     
