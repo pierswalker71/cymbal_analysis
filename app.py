@@ -689,7 +689,7 @@ with st.expander("Significant frequencies",expanded=True):
     
     st.write("Here you can see the frequencies which cumultatively add up to the top 50% of the total energy in the audio signal.")
 
-    st.write(f"The average significant frequencies that contribute to the top 50% of total energy are: mean: {max_frequencies.mean()}, mendian: {max_frequencies.median()}")
+    st.write(f"The average significant frequencies that contribute to the top 50% of total energy are: mean: {np.mean(max_frequencies)}, median: {np.median(max_frequencies)}")
 
     
     st.plotly_chart(fig)
