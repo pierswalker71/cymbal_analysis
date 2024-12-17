@@ -857,7 +857,11 @@ with st.expander("Energy in each frequency band",expanded=True):
     
     st.plotly_chart(fig, use_container_width=True)
 
-
+#==============================================================    
+#--------------------------------------------------------------
+# Plot 8
+#--------------------------------------------------------------
+#==============================================================
 with st.expander("Dominant frequencies over time",expanded=True):
 
     top_n = 2
@@ -903,7 +907,7 @@ with st.expander("Dominant frequencies over time",expanded=True):
             y=pitches,
             mode='markers',
             marker=dict(symbol='star', color='black', size=8),
-            name='Pitch (Hz)'
+            name='Fundamental pitches (Hz)'
         )
     )
     
@@ -914,7 +918,7 @@ with st.expander("Dominant frequencies over time",expanded=True):
     
     # Add layout formatting
     fig.update_layout(
-        title=f"Dominant Top {top_n} Frequencies Over Time",
+        title=f"Dominant top {top_n} frequencies over time",
         plot_bgcolor='white',
         paper_bgcolor='white',
         legend=dict(
