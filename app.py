@@ -495,7 +495,7 @@ with st.expander("Frequency bands", expanded=True):
             )
         )
 
-    #fig.update_layout(title_text="Energy and number of peaks in key frequency bands", title_x=0.5, title_xanchor='center')
+    fig.update_layout(title_text="Energy and number of peaks in key frequency bands2", title_x=0.5, title_xanchor='center')
 
     # Set the y-axis for both axes to start at zero and configure dual y-axes
     fig.update_layout(
@@ -546,8 +546,6 @@ with st.expander("Frequency bands", expanded=True):
     fig.data[1].update(yaxis='y2')
     for i in range(len(x_values)):
         fig.data[2 + i].update(yaxis='y2')  # Update the stalks to use the secondary y-axis
-
-    # Display the figure in the Streamlit app
     
     st.write("Here you can see the amount of energy and the number of the peak frequencies in each of the audio bands.")
 
@@ -577,6 +575,7 @@ with st.expander("Frequency bands", expanded=True):
     ]
     combined_string = ", ".join(peaks_per_band_top_freq_band_combined_strings)
     st.write(f"The bands with the most number of top 20 peaks are: {combined_string}.")
+    
     st.plotly_chart(fig, use_container_width=True)
 
 
