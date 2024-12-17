@@ -1027,23 +1027,23 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
 
     st.write("""Here you can see if any fundamental pitches are detected (i.e. the lowest frequency when harmonic frequencies are present as multiples of it).""")
     
-    st.write(f"The mean fundamental pitch is {np.mean(pitches)} and the median is {np.mean(pitches)}.")
-    
-    n_clusters = 2
     
     # Reshape data for clustering
     valid_pitches = pitches[~np.isnan(pitches)]
+
+    st.write(f"The mean fundamental pitch is {np.mean(valid_pitches)} and the median is {np.mean(valid_pitches)}.")
+
     data = valid_pitches.reshape(-1, 1)
-    
+
+    n_clusters = 2
+
     if len(valid_pitches) >= n_clusters:
         # Reshape data for clustering
         data = valid_pitches.reshape(-1, 1)
     
-        # Apply KMeans clustering to identify stable groups
         kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
         centroids = kmeans.cluster_centers_
     
-        # Format cluster centers for display
         centroid_values = ", ".join(f"{value:,.0f}Hz" for value in centroids.flatten())
         st.write(f"The top {n_clusters} fundamental frequency clusters: {centroid_values}")
 
