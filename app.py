@@ -365,6 +365,7 @@ with st.expander("Audio waveform",expanded=True):
         plot_bgcolor='white',  # Background color of the plot area
         paper_bgcolor='white',  # Background color of the entire figure
     )
+    fig.update_layout(height=400, width=700)
     
     st.write("Here you can see the amplitude of the audio waveform as it changes in time.")
     st.plotly_chart(fig)
@@ -563,6 +564,7 @@ with st.expander("Frequency bands", expanded=True):
         plot_bgcolor='white',  
         paper_bgcolor='white', 
     )
+    fig.update_layout(height=400, width=700)
 
     # Assign the Scatter trace for peaks to use the secondary y-axis
     fig.data[1].update(yaxis='y2')
@@ -910,6 +912,7 @@ with st.expander("Prominant frequencies over time",expanded=True):
     fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
     ylims = [0, np.nanmax(dominant_freqs)]
     fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
+    fig.update_layout(height=400, width=700) 
     
     fig.update_layout(     
         xaxis=dict(
@@ -983,7 +986,8 @@ with st.expander("Prominant frequencies over time",expanded=True):
     fig.update_xaxes(title_text='Time (s)', showgrid=True, gridcolor='lightgrey') #range=[0, max_time_for_plotting]
     ylims = [0, np.nanmax(pitches)]
     fig.update_yaxes(title_text='Frequency (Hz)', range=ylims, showgrid=True, gridcolor='lightgrey')
-
+    fig.update_layout(height=400, width=700)
+    
     fig.update_layout(     
         xaxis=dict(
         title_font=dict(color="black"), tickfont=dict(color="black"),
