@@ -271,6 +271,20 @@ for band in freq_bands:
 
 metrics["peaks_per_band"] = {band:peak for band,peak in zip (freq_band_names,peaks_per_band)}
 
+
+# Significant frequencies
+# Define target percentages to explore
+significant_frequency_target_percentages = np.linspace(0.05, 0.50,100)  # eg from 5% to 95%
+
+# Collect the highest significant frequency for each target percentage
+significant_frequency_max_frequencies = [get_max_significant_frequency(yf, xf, p) for p in significant_frequency_target_percentages]
+
+metrics["significant_frequency_max_frequencies_mean"] = np.mean(significant_frequency_max_frequencies)
+metrics["significant_frequency_max_frequencies_median"] = np.median(significant_frequency_max_frequencies)
+metrics["significant_frequency_max_frequencies_min"] = np.min(significant_frequency_max_frequencies)
+metrics["significant_frequency_max_frequencies_max"] = np.max(significant_frequency_max_frequencies)
+
+
 #==============================================================
 # **** Generate plots ****
 #==============================================================
@@ -643,17 +657,13 @@ with st.expander("Frequency spectrum",expanded=True):
 
 with st.expander("Significant frequencies",expanded=True):
     
-    # Define target percentages to explore
-    target_percentages = np.linspace(0.05, 0.50,100)  # eg from 5% to 95%
 
-    # Collect the highest significant frequency for each target percentage
-    max_frequencies = [get_max_significant_frequency(yf, xf, p) for p in target_percentages]
 
     fig = go.Figure()
 
     fig.add_trace(go.Scatter(
-    x=target_percentages,
-    y=max_frequencies,
+    x=significant_frequency_target_percentages,
+    y=significant_frequency_max_frequencies,
     mode='lines+markers',  # Shows both lines and points
     name='Significant Frequencies',
     line=dict(color='black'),
@@ -669,7 +679,7 @@ with st.expander("Significant frequencies",expanded=True):
     fig.update_layout(title_text="The significant frequencies which contribute to the total audio energy", title_x=0.5, title_xanchor='center')
     fig.update_xaxes(title_text="Proportion of total energy (from 0 to 50%)")
     fig.update_yaxes(title_text="Significant frequencies (Hz)")
-    fig.update_yaxes(range=[0, max(max_frequencies) * 1.1])
+    fig.update_yaxes(range=[0, max(significant_frequency_max_frequencies) * 1.1])
     fig.update_layout(height=400, width=700)
     
     fig.update_layout(     
@@ -690,9 +700,11 @@ with st.expander("Significant frequencies",expanded=True):
     st.write("Here you can see the frequencies which cumultatively add up to the top 50% of the total energy in the audio signal.")
 
     text = f'''
-        The mean of these values is {np.mean(max_frequencies):,.0f}Hz and the median is {np.median(max_frequencies):,.0f}Hz.
-        The minimum value is {np.min(max_frequencies):,.0f}Hz and the maximum value is {np.max(max_frequencies):,.0f}Hz.
-    '''
+        The mean of these values is {metrics["significant_frequency_max_frequencies_mean"]:,.0f}Hz
+        and the median is {metrics["significant_frequency_max_frequencies_median"):,.0f}Hz.
+        The minimum value is {metrics["significant_frequency_max_frequencies_min"]:,.0f}Hz 
+        and the maximum value is {metrics["significant_frequency_max_frequencies_max"]:,.0f}Hz
+         '''
     st.write(f"{text}")
     
     st.plotly_chart(fig)
