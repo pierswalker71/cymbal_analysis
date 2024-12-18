@@ -59,11 +59,11 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["1. Load audio",
 with tab1:
     st.write("This is where you select the cymbal audio clip.")
 with tab2:
-    st.write("Here you can see how the amplitude of the sound changes in time.")
+    st.write("This section shows how the amplitude of the sound changes in time.")
 with tab3:
     st.write("This section shows metrics relating to the key frequency components of the audio.")
 with tab4:
-    st.write("Here you can see charts of the frequencies found in the entire audio clip")
+    st.write("This section shows charts of the frequencies found in the entire audio clip")
 with tab5:
     st.write("This section shows how the key frequencies change throughout the duration of the audio clip.")    
 
