@@ -969,10 +969,10 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
 
     col_amp1, col_amp2 = st.columns(2)
 
-    with col_amp1:
+    with col_amp2:
         n_clusters = st.number_input('choose number of clusters', min_value=2, max_value=6,value=3)
         
-    with col_amp2:
+    with col_amp1:
         # Reshape data for clustering
         data = dominant_freqs.reshape(-1, 1)
         # Apply KMeans clustering to identify stable groups
@@ -1056,10 +1056,10 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
 
     col_fun1, col_fun2 = st.columns(2)
 
-    with col_fun1:
+    with col_fun2:
         n_clusters = st.number_input('choose number of clusters', min_value=2, max_value=6,value=2)
 
-    with col_fun2:     
+    with col_fun1:     
         if len(valid_pitches) >= n_clusters:
             # Reshape data for clustering
             data = valid_pitches.reshape(-1, 1)
