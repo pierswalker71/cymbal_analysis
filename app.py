@@ -63,7 +63,7 @@ with tab2:
 with tab3:
     st.write(":point_right: This section shows metrics relating to the key frequency components of the audio.")
 with tab4:
-    st.write(":point_right: This section shows charts of the frequencies found in the entire audio clip")
+    st.write(":point_right: This section shows charts of the frequencies found in the entire audio clip.")
 with tab5:
     st.write(":point_right: This section shows how the key frequencies change throughout the duration of the audio clip.")    
 
