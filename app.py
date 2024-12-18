@@ -43,7 +43,7 @@ st.write('Piers Walker 2024 ([https://github.com/pierswalker71](https://github.c
 intro_text = f'''
 :tada: Welcome to the Cymbal Sound Analyser!
 
-Select an audio file of one of my drumkit cymbals being struck, and this tool will analyse the sound in both the time and frequency domains. 
+Select an audio file of one of my drumkit cymbals being struck either as a tap or a crash, and this tool will analyse the sound in both the time and frequency domains. 
 It will show you key metrics and visualisations that will reveal unique characteristics of the cymbal's sound.
 
 Sections:
