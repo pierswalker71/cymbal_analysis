@@ -53,11 +53,11 @@ Sections:
 '''
 st.write(intro_text)
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["1. Load audio", 
-                                        "2. Time", 
-                                        "3. Frequency stats",
-                                        "4. Overall frequency",
-                                        "5. Frequency over time"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎵 1. Load audio", 
+                                        "⏱️ 2. Time", 
+                                        "📊 3. Frequency stats",
+                                        "🎼 4. Overall frequency",
+                                        "📉 5. Frequency over time"])
 
 with tab1:
     st.write(":point_right: This is where you select the cymbal audio clip.")
