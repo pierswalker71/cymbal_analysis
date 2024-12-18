@@ -38,7 +38,10 @@ files_image_no_spaces = {
     key: urllib.parse.quote(value, safe=":/") for key, value in files_image.items()
 }
 
-st.title(":drum: Cymbal analysis")
+text = f'''
+        :drum: Cymbal analysis
+        '''
+st.title("text")
 st.write('Piers Walker 2024 ([https://github.com/pierswalker71](https://github.com/pierswalker71))')
 intro_text = f'''
 :tada: Welcome to the Cymbal Sound Analyser!
