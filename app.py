@@ -833,7 +833,7 @@ with st.expander("High energy frequency bands",expanded=True):
 
     # Normalised energy
 
-    normalized_energy_decay = [energy / np.max(energy) for energy in energy_decay]  # Normalization
+    normalized_energy_decay = [energy / np.max(energy) if np.max(energy) > 0 else np.zeros_like(energy) for energy in energy_decay] # Normalization
     smoothed_energy_decay = [gaussian_filter1d(energy, sigma=2) for energy in normalized_energy_decay]  # Smoothing
     line_styles = assign_line_styles(normalized_band_energies, thresholds=[0.05, 0.06, 0.07, 0.1])
     line_widths = [1.5 for _ in freq_bands]  # Uniform line widths
