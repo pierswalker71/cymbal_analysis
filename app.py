@@ -20,15 +20,15 @@ from PIL import Image
 
 # Define file options in a dropdown menu
 files_audio = {
-    "Ride": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-08-28 20in2786g (Sa ride) - stick - crash.wav",
-    "Crash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 16in1143g (Sa crash) - stick - crash.wav",
-    "Splash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 12in419g (Sa splash) - stick - crash.wav",
+    "Ride cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-08-28 20in2786g (Sa ride) - stick - crash.wav",
+    "Crash cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 16in1143g (Sa crash) - stick - crash.wav",
+    "Splash cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 12in419g (Sa splash) - stick - crash.wav",
 }
 
 files_image = {
-    "Ride": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 20in 2786g (Sa ride).jpg",
-    "Crash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 16in 1143g (Sa crash).jpg",
-    "Splash": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 12in 419g (Sa splash) (2).jpg",
+    "Ride cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 20in 2786g (Sa ride).jpg",
+    "Crash cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 16in 1143g (Sa crash).jpg",
+    "Splash cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 12in 419g (Sa splash) (2).jpg",
 }
 
 # Replace spaces with %20
