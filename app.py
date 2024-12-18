@@ -47,25 +47,25 @@ Select an audio file of one of my drumkit cymbals being struck, and this tool wi
 It will show you key metrics and visualisations that will reveal unique characteristics of the cymbal's sound.
 
 Sections:
-- Load cymbal audio file
-- Time characteristics
-- Frequency stats
-- Overall frequency characteristics
-- Frequency characteristics over time
 '''
 st.write(intro_text)
 
-tab1, tab2, tab3 = st.tabs(["Introduction", "Analysis", "Metrics"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Load cymbal audio file", 
+                                        "Time characteristics", 
+                                        "Frequency stats",
+                                        "Overall frequency characteristics",
+                                        "Frequency characteristics over time"])
 
 with tab1:
-    st.write("This section introduces the tool and its purpose.")
-
+    st.write("This is where you select the cymbal audio clip.")
 with tab2:
-    st.write("Here, we analyze the audio file in time and frequency domains.")
-
+    st.write("Here you can see how the amplitude of the sound changes in time.")
 with tab3:
-    st.write("This section shows key metrics extracted from the analysis.")
-    
+    st.write("This section shows metrics relating to the key frequency components of the audio.")
+with tab4:
+    st.write("Here you can see charts of the frequencies found in the entire audio clip")
+with tab5:
+    st.write("This section shows how the key frequencies change throughout the duration of the audio clip.")    
 
 #==============================================================
 st.header("", divider="orange")
