@@ -966,16 +966,20 @@ with st.expander("High amplitude frequencies and fundamental pitches over time",
     st.write(f"The mean frequency across the time span is {np.mean(dominant_freqs):,.0f}Hz and the median is {np.median(dominant_freqs):,.0f}Hz.")
 
     from sklearn.cluster import KMeans
-    
-    n_clusters = st.number_input('choose number of clusters', min_value=2, max_value=6,value=3)
-    
-    # Reshape data for clustering
-    data = dominant_freqs.reshape(-1, 1)
-    # Apply KMeans clustering to identify stable groups
-    kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
-    centroids = kmeans.cluster_centers_
-    centroid_values = ", ".join(f"{value:,.0f}Hz" for value in centroids.flatten())
-    st.write(f"The top {n_clusters} frequency clusters: {centroid_values}")
+
+    col_amp1, col_amp2 = st.columns(2)
+
+    with col_amp1:
+        n_clusters = st.number_input('choose number of clusters', min_value=2, max_value=6,value=3)
+        
+    with col_amp2:
+        # Reshape data for clustering
+        data = dominant_freqs.reshape(-1, 1)
+        # Apply KMeans clustering to identify stable groups
+        kmeans = KMeans(n_clusters=n_clusters, random_state=42).fit(data)
+        centroids = kmeans.cluster_centers_
+        centroid_values = ", ".join(f"{value:,.0f}Hz" for value in centroids.flatten())
+        st.write(f"The top {n_clusters} frequency clusters: {centroid_values}")
 
     st.plotly_chart(fig, use_container_width=True)
 
