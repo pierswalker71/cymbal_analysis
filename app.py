@@ -24,6 +24,8 @@ files_audio = {
     "Ride cymbal (tap)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 20in2786g (Sa ride) - stick - tap.wav",    
     "Crash cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 16in1143g (Sa crash) - stick - crash.wav",
     "Splash cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-09-28 12in419g (Sa splash) - stick - crash.wav",
+    "Old hihat (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-08-28 14in1182g (pearl tophat) - stick - crash.wav",
+    "New hihat (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-08-28 14in900g (diamond bottomhat) - stick - crash.wav",
 }
 
 files_image = {
@@ -31,6 +33,8 @@ files_image = {
     "Ride cymbal (tap)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 20in 2786g (Sa ride).jpg",
     "Crash cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 16in 1143g (Sa crash).jpg",
     "Splash cymbal (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/2024-12-15 12in 419g (Sa splash) (2).jpg",
+    "Old hihat (crash)": "https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main/no-image-available.jpg",
+    "New hihat (crash)": https://raw.githubusercontent.com/pierswalker71/cymbal_analysis/main//no-image-available.jpg",
 }
 
 # Replace spaces with %20
