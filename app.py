@@ -327,7 +327,7 @@ st.write("**How long it takes for the sound to die down:**.")
 #text = f"It takes <b>{decay_time_50pc:.1f}s</b> for the sound to decay to 50% its initial peak value."
 #st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
-text = f"It takes <b>{decay_time_10pc:.1f}s</b> for the sound to decay to 10% its initial peak value nd <b>{decay_time_50pc:.1f}s</b> for the sound to decay to 50% its initial peak value."."
+text = f"It takes <b>{decay_time_10pc:.1f}s</b> for the sound to decay to 10% its initial peak value and <b>{decay_time_50pc:.1f}s</b> for the sound to decay to 50% its initial peak value."."
 st.markdown(f'<p style="color:blue; background-color:lightyellow; font-size:15px; font-weight:normal;">{text}</p>', unsafe_allow_html=True)
 
 #==============================================================
