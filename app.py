@@ -91,7 +91,7 @@ st.header("Selected cymbal", divider="gray")
 
 
 
-st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from: {", ".join(files_audio.keys())})."
+st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from: {", ".join(files_audio.keys())}.)"
 # Load the selected file
 if file_choice:
     st.markdown(f'<p style="text-align:center; font-size:20px;">You have chosen the {file_choice}</p>', unsafe_allow_html=True)
