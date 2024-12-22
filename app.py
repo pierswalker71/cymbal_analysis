@@ -66,7 +66,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎵 1. Selected cymbal",
                                         "📉 5. Frequency over time"])
 
 with tab1:
-    st.write(":point_right: This is where you see and hear the seected cymbal.")
+    st.write(":point_right: This is where you see and hear the selected cymbal.")
 with tab2:
     st.write(":point_right: This section shows how the amplitude of the sound changes in time.")
 with tab3:
@@ -90,7 +90,7 @@ st.header("Selected cymbal", divider="gray")
 #==============================================================
 
 
-
+# st.write("Use the dropdown menu on the side bar to select the audio")
 #st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from: {", ".join(files_audio.keys())}.)"
 # Load the selected file
 if file_choice:
