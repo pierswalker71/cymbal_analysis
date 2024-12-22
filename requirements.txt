@@ -1,0 +1,10 @@
+streamlit
+numpy
+pandas
+numpy
+matplotlib 
+plotly
+pydub
+librosa
+scipy
+requests
