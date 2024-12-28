@@ -86,11 +86,11 @@ file_choice = st.sidebar.selectbox("Select", options=list(files_audio.keys()))
 
 #==============================================================
 st.header("", divider="orange")
-st.header("Selected cymbal", divider="gray")
+st.header("Select cymbal", divider="gray")
 #==============================================================
 
 
-st.write("**Select audio** :arrow_upper_left: Click the > icon at the top left of the app to select the audio file.")
+st.write("- **Select audio** :arrow_upper_left: Click the > icon at the top left of the app to select the audio file.")
 #st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from: {", ".join(files_audio.keys())}.")
 # Load the selected file
 if file_choice:
