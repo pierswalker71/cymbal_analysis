@@ -59,7 +59,7 @@ It will show you key metrics and visualisations that will reveal unique characte
 '''
 st.write(intro_text)
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎵 1. Selected cymbal", 
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎵 1. Select cymbal", 
                                         "⏱️ 2. Time", 
                                         "📊 3. Frequency stats",
                                         "🎼 4. Overall frequency",
@@ -90,7 +90,7 @@ st.header("Select cymbal", divider="gray")
 #==============================================================
 
 
-st.write("**Choose your cymbal** Click the > icon at the top left of the app to select the audio file :arrow_upper_left:")
+st.write("**Choose your cymbal:** Click the > icon at the top left of the app to select the audio file :arrow_upper_left:")
 #st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from: {", ".join(files_audio.keys())}.")
 # Load the selected file
 if file_choice:
