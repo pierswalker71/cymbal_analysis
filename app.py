@@ -90,7 +90,7 @@ st.header("Select cymbal", divider="gray")
 #==============================================================
 
 
-st.write("**Choose your cymbal:** Click the > icon at the top left of the app to select the audio file :arrow_upper_left:")
+st.write("**SELECT CYMBAL:** Click the > icon at the top left of the app to open the side bar and select the audio file :arrow_upper_left:")
 #st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from: {", ".join(files_audio.keys())}.")
 # Load the selected file
 if file_choice:
