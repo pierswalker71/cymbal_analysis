@@ -90,7 +90,7 @@ st.header("Selected cymbal", divider="gray")
 #==============================================================
 
 
-st.write(":arrow_upper_left: Use the dropdown menu on the side bar to select the audio.")
+st.write("Click the < icon at the top left of the app :arrow_upper_left: to select the audio.")
 #st.write(f"There are currently {len(files_audio)} different cymbal sounds to choose from: {", ".join(files_audio.keys())}.")
 # Load the selected file
 if file_choice:
